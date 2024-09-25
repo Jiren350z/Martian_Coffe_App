@@ -1,39 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/home_page.dart';
-/*
 import 'package:martian_cofee_app/pages/recipe.dart';
 import 'package:martian_cofee_app/pages/ingredient.dart'; 
-import 'package:martian_cofee_app/pages/Users.dart';
+import 'package:martian_cofee_app/pages/users.dart';
 import 'package:martian_cofee_app/pages/product.dart';
-*/
-
-void main() {
-  runApp(const MyApp());
-}
-
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 139, 58, 183)),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Cafe Universal'),
-    );
-  }
-}
 
 
 
-/*
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -46,14 +18,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,13 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+          
             // Aquí añadimos la Card con los botones
             Card(
               margin: const EdgeInsets.all(16.0),
@@ -84,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         
                         Recipe reciped = Recipe(
-                          name: 'Café Marciano',
+                          name: 'Cafe Marcianeke',
                           ingredients: [
                             Ingredient(type: 'Agua', value: 1, ubication: "miasa"),
                             Ingredient(type: 'Café en polvo', value: 2, ubication: "tucasa"),
@@ -100,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => RecipeWidget(recipe: reciped)),
+                          MaterialPageRoute(builder: (context) => RecipeListWidget(recipes: [reciped])),
                         );
                       },
                       child: const Text('Ir a Recetas'),
@@ -169,12 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      
     );
   }
 }
-*/
+
