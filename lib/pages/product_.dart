@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/users.dart';
+import 'package:martian_cofee_app/pages/users_.dart';
 
-class Product {
+class ProductNew {
   String name;
   int id;
   double price;
-  User userCreator;
+  UserNew userCreator;
 
-  Product({
+  ProductNew({
     required this.name,
     required this.id,
     required this.price,
@@ -29,7 +29,7 @@ class Product {
 
 
 class ProductWidget extends StatelessWidget {
-  final Product product;
+  final ProductNew product;
 
   const ProductWidget({super.key,required this.product});
 

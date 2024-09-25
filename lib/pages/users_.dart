@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/recipe.dart';
-import 'package:martian_cofee_app/pages/product.dart';
+import 'package:martian_cofee_app/pages/product_.dart';
+import 'package:martian_cofee_app/pages/recipe_.dart';
 
-class User {
+class UserNew {
   String name;
   String email;
-  List<Recipe> createdRecipe;
-  List<Product> purshasedProducts;
-  List<Recipe> favorites;
+  List<RecipeNew> createdRecipe;
+  List<ProductNew> purshasedProducts;
+  List<RecipeNew> favorites;
   List<String> history;
 
-  User({
+  UserNew({
     required this.name,
     required this.email,
     required this.createdRecipe,
@@ -19,17 +19,17 @@ class User {
     required this.history,
   });
 
-  void rateRecipe(Recipe recipe, int calification) {
+  void rateRecipe(RecipeNew recipe, int calification) {
     // Lógica para calificar receta
   }
 
-  void addToFavorites(Recipe recipe) {
+  void addToFavorites(RecipeNew recipe) {
     favorites.add(recipe);
   }
 }
 
 class UserScreen extends StatelessWidget {
-  final User user;
+  final UserNew user;
 
   const UserScreen({super.key, required this.user});
 
@@ -102,7 +102,7 @@ class UserScreen extends StatelessWidget {
   }
 
   // Lista de recetas creadas y favoritas
-  Widget _buildRecipeList(List<Recipe> recipes) {
+  Widget _buildRecipeList(List<RecipeNew> recipes) {
     return ListView.builder(
       shrinkWrap: true, // Para evitar problemas con el scroll dentro de SingleChildScrollView
       physics: const NeverScrollableScrollPhysics(), // No permitir el scroll individual aquí
@@ -117,7 +117,7 @@ class UserScreen extends StatelessWidget {
   }
 
   // Lista de productos comprados
-  Widget _buildProductList(List<Product> products) {
+  Widget _buildProductList(List<ProductNew> products) {
     return ListView.builder(
       shrinkWrap: true, // Para evitar problemas con el scroll dentro de SingleChildScrollView
       physics: const NeverScrollableScrollPhysics(), // No permitir el scroll individual aquí

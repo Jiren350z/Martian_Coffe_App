@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/recipe.dart';
-import 'package:martian_cofee_app/pages/ingredient.dart'; 
-import 'package:martian_cofee_app/pages/users.dart';
-import 'package:martian_cofee_app/pages/product.dart';
-
+import 'package:martian_cofee_app/pages/recipe_.dart';
+import 'package:martian_cofee_app/pages/ingredient_.dart';
+import 'package:martian_cofee_app/pages/users_.dart';
+import 'package:martian_cofee_app/pages/product_.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -42,14 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ElevatedButton(
                       onPressed: () {
                         
-                        Recipe reciped = Recipe(
+                        RecipeNew reciped = RecipeNew(
                           name: 'Cafe Marcianeke',
                           ingredients: [
-                            Ingredient(type: 'Agua', value: 1, ubication: "miasa"),
-                            Ingredient(type: 'Café en polvo', value: 2, ubication: "tucasa"),
+                            IngredientNew(type: 'Agua', value: 1, ubication: "miasa"),
+                            IngredientNew(type: 'Café en polvo', value: 2, ubication: "tucasa"),
                           ],
                           utensils: ['Cafetera', 'Cuchara'],
-                          userCreator: User(name: 'John Doe',
+                          userCreator: UserNew(name: 'John Doe',
                           email: "asfjadasdsa",
                           createdRecipe: [],
                           purshasedProducts: [],
@@ -67,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ElevatedButton(
                       onPressed: () {
                             
-                        Ingredient ingredientt = Ingredient(
+                        IngredientNew ingredientt = IngredientNew(
                           type: '',
                           value: 100,
                           ubication: '');
@@ -83,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ElevatedButton(
                       onPressed: () {
                         
-                        User userd = User(
+                        UserNew userd = UserNew(
                           name: 'snake',
                           email: '565656767',
                           createdRecipe: [],
@@ -102,11 +101,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ElevatedButton(
                       onPressed: () {
 
-                        Product productt = Product(
+                        ProductNew productt = ProductNew(
                         name: 'hola',
                         id: 121234,
                         price: 9999,
-                        userCreator: User(
+                        userCreator: UserNew(
                           name: 'cachirula',
                           email: 'mimami',
                           createdRecipe: [],

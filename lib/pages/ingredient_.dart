@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Ingredient {
+class IngredientNew {
   String type;
   double value;
   String ubication;
 
-  Ingredient({
+  IngredientNew({
     required this.type,
     required this.value,
     required this.ubication,
@@ -16,7 +16,7 @@ class Ingredient {
   }
 }
 class IngredientWidget extends StatelessWidget {
-  final Ingredient ingredient;
+  final IngredientNew ingredient;
 
   const IngredientWidget({super.key,required this.ingredient});
 
