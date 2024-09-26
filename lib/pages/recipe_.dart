@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/ingredient_.dart';
-import 'package:martian_cofee_app/pages/users_.dart';
+import 'package:martian_cofee_app/models/recipe_class.dart';
+//import 'package:martian_cofee_app/pages/ingredient_.dart';
+//import 'package:martian_cofee_app/pages/users_.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 
+/*
 class RecipeNew {
   String name;
   List<IngredientNew> ingredients;
@@ -24,6 +26,7 @@ class RecipeNew {
     
   }
 }
+*/
 class RecipeListWidget extends StatelessWidget {
   final List<RecipeNew> recipes;
 

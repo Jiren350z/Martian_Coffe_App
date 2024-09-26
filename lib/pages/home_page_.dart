@@ -3,7 +3,10 @@ import 'package:martian_cofee_app/pages/recipe_.dart';
 import 'package:martian_cofee_app/pages/ingredient_.dart';
 import 'package:martian_cofee_app/pages/users_.dart';
 import 'package:martian_cofee_app/pages/product_.dart';
-
+import 'package:martian_cofee_app/models/ingredient_class.dart';
+import 'package:martian_cofee_app/models/recipe_class.dart';
+import 'package:martian_cofee_app/models/users_class.dart';
+import 'package:martian_cofee_app/models/product_class.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

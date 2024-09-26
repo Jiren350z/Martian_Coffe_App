@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/users_.dart';
+import 'package:martian_cofee_app/models/product_class.dart';
+//import 'package:martian_cofee_app/pages/users_.dart';
 
+/*
 class ProductNew {
   String name;
   int id;
@@ -26,7 +28,7 @@ class ProductNew {
     // Lógica para generar demanda de este producto
   }
 }
-
+*/
 
 class ProductWidget extends StatelessWidget {
   final ProductNew product;

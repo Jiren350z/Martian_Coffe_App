@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:martian_cofee_app/models/ingredient_class.dart';
+/*
 class IngredientNew {
   String type;
   double value;
@@ -15,6 +16,7 @@ class IngredientNew {
     // Lógica para buscar ubicación del ingrediente
   }
 }
+*/
 class IngredientWidget extends StatelessWidget {
   final IngredientNew ingredient;
 

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/pages/product_.dart';
-import 'package:martian_cofee_app/pages/recipe_.dart';
+import 'package:martian_cofee_app/models/users_class.dart';
+//import 'package:martian_cofee_app/pages/product_.dart';
+//import 'package:martian_cofee_app/pages/recipe_.dart';
 import 'package:martian_cofee_app/pages/settings_.dart';
 
+/*
 class UserNew {
   String name;
   String email;
@@ -44,6 +46,7 @@ class UserNew {
   }
 
 }
+*/
 class UserScreen extends StatelessWidget {
   final UserNew user;
 
