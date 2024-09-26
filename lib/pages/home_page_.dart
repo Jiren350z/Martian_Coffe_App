@@ -37,8 +37,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             email: "imprimansuenio@gmail.com",
                             createdRecipe: [],
                             purshasedProducts: [],
-                            favorites: [],
+                            favoritesRecipes: [],
+                            favoritesProducts: [],
                             history: [],
+                            country: "EE.UU",
                           ),
                         );
 
@@ -54,8 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             email: "imprimanplata@gmail.com",
                             createdRecipe: [],
                             purshasedProducts: [],
-                            favorites: [],
+                            favoritesRecipes: [],
+                            favoritesProducts: [],
                             history: [],
+                            country: "URSS",
                           ),
                         );
           recipes.add(newRecipe);
@@ -119,12 +123,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ElevatedButton(
                       onPressed: () {
                         UserNew userd = UserNew(
-                          name: 'snake',
-                          email: '565656767',
+                          name: 'Renji',
+                          email: 'RenjiVJ7@gmail.com',
                           createdRecipe: [],
                           purshasedProducts: [],
-                          favorites: [],
+                          favoritesRecipes: [],
+                          favoritesProducts: [],
                           history: [],
+                          country: "Chile"
                         );
 
                         Navigator.push(
@@ -145,8 +151,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             email: 'mimami',
                             createdRecipe: [],
                             purshasedProducts: [],
-                            favorites: [],
+                            favoritesRecipes: [],
+                            favoritesProducts: [],
                             history: [],
+                            country: "isla cachirula",
                           ),
                         );
 
