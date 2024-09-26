@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:martian_cofee_app/pages/ingredient.dart';
-//import 'package:martian_cofee_app/pages/users.dart';
 import 'package:martian_cofee_app/pages/recipe_.dart';
 
 class RecipeDetailPage extends StatelessWidget {
