@@ -1,34 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/product_class.dart';
-//import 'package:martian_cofee_app/pages/users_.dart';
 
-/*
-class ProductNew {
-  String name;
-  int id;
-  double price;
-  UserNew userCreator;
-
-  ProductNew({
-    required this.name,
-    required this.id,
-    required this.price,
-    required this.userCreator,
-  });
-
-  void sell() {
-    // Lógica para vender producto
-  }
-
-  void contactSeller() {
-    // Lógica para contactar al creador del producto
-  }
-
-  void demand() {
-    // Lógica para generar demanda de este producto
-  }
-}
-*/
 
 class ProductWidget extends StatelessWidget {
   final ProductNew product;
@@ -73,6 +45,7 @@ class ProductWidget extends StatelessWidget {
             Text('Vendedor: ${product.userCreator.name}'),
             const Spacer(),
             // Botón para regresar al menú principal
+            /*
             ElevatedButton(
               onPressed: () {
                 // Navegar de vuelta a la pantalla principal
@@ -80,6 +53,7 @@ class ProductWidget extends StatelessWidget {
               },
               child: const Text('Volver al Menú Principal'),
             ),
+            */
           ],
         ),
       ),

@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/ingredient_class.dart';
-/*
-class IngredientNew {
-  String type;
-  double value;
-  String ubication;
 
-  IngredientNew({
-    required this.type,
-    required this.value,
-    required this.ubication,
-  });
-
-  void lookUbication() {
-    // Lógica para buscar ubicación del ingrediente
-  }
-}
-*/
 class IngredientWidget extends StatelessWidget {
   final IngredientNew ingredient;
 
@@ -61,12 +45,14 @@ class IngredientWidget extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Botón para regresar al menú principal
+            /*
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
               child: const Text('Volver al Menú Principal'),
             ),
+            */
           ],
         ),
       ),
