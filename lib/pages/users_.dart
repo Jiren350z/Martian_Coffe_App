@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/users_class.dart';
 import 'package:martian_cofee_app/pages/settings_.dart';
-
+import 'package:martian_cofee_app/pages/help_.dart';
+import 'package:martian_cofee_app/pages/perfil_edit_.dart';
 
 class UserScreen extends StatelessWidget {
   final UserNew user;
@@ -25,23 +26,38 @@ class UserScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // Lógica para el ícono de mensajes
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HelpScreen(
+                            userName: user.name,
+                            userEmail: user.email,
+                          ),
+                        ),
+                      );
                     },
                     child: const Icon(
-                      Icons.message,
+                      Icons.help,
                       size: 30,
-                      color: Colors.blue,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(width: 10),
                   GestureDetector(
                     onTap: () {
-                      // Lógica para el ícono de notificaciones
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditPerfilScreen(
+                            user: user,
+                          ),
+                        ),
+                      );
                     },
                     child: const Icon(
-                      Icons.notifications,
+                      Icons.edit,
                       size: 30,
-                      color: Colors.red,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -60,7 +76,7 @@ class UserScreen extends StatelessWidget {
                     child: const Icon(
                       Icons.settings,
                       size: 30,
-                      color: Colors.green,
+                      color: Colors.black,
                     ),
                   ),
                 ],
@@ -73,8 +89,8 @@ class UserScreen extends StatelessWidget {
                     // Imagen de perfil circular
                     const CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(
-                        'https://example.com/user-profile.jpg', // Cambia por tu imagen
+                      backgroundImage: AssetImage(
+                        'assets/images/gato_mewing.jpg',
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -90,6 +106,8 @@ class UserScreen extends StatelessWidget {
                         const Icon(Icons.flag), // Coloca un ícono o imagen de la bandera
                         const SizedBox(width: 5),
                         Text(user.country),
+                        const SizedBox(width: 5),
+                        Text(user.city)
                       ],
                     ),
                   ],
@@ -115,6 +133,60 @@ class UserScreen extends StatelessWidget {
                   _buildCard('Métodos de Preparación Creados', '0'),
                 ],
               ),
+              // Nueva Card para Biografía, Tipo de Experiencia y Edad
+            Card(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //biografia con el tipo de experiencia con el cafe
+                    Row(
+                      children: [
+                        const Text(
+                          'Biografía',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          '(${user.typeOfExperienceWithCoffee})',
+                          style: const TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    
+                    // Texto de la biografía
+                    Text(
+                      user.biography,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 10),
+
+                    // Edad
+                    Text(
+                      'Edad: ${user.age} años',
+                      style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 20, 20, 20)),
+                    ),
+                    // Genero
+                    Text(
+                      'Genero: ${user.genre}',
+                      style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 20, 20, 20)),
+                    ),
+                    // fecha de nacimiento
+                    Text(
+                      'fecha de nacimiento: ${user.bornData}',
+                      style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 20, 20, 20)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
               const SizedBox(height: 20),
               // Apartado para accesorios y máquinas
               const Text(
@@ -258,17 +330,6 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Botón para volver al menú principal
-              /*
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Volver al Menú Principal'),
-                ),
-              ),
-              */
             ],
           ),
         ),

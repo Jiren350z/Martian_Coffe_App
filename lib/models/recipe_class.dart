@@ -5,6 +5,7 @@ class RecipeNew {
   String name;
   List<IngredientNew> ingredients;
   List<String> utensils;
+  String preparation;
   UserNew userCreator;
   String imageUrl;  // Nuevo atributo para la URL de la imagen
   double rating;     // Nuevo atributo para la valoración (0.0 a 5.0)
@@ -13,6 +14,7 @@ class RecipeNew {
     required this.name,
     required this.ingredients,
     required this.utensils,
+    required this.preparation,
     required this.userCreator,
     required this.imageUrl,  // Asegúrate de que esté incluido en el constructor
     required this.rating,     // Asegúrate de que esté incluido en el constructor
@@ -30,5 +32,7 @@ class RecipeNew {
   {
 
   }
+
+
 
 }

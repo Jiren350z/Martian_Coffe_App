@@ -23,7 +23,7 @@ class ProductWidget extends StatelessWidget {
               height: 200.0,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/product_image.png'), // Asegúrate de tener la imagen en la carpeta assets
+                  image: AssetImage('assets/images/caffe_mokka.jpg'), // Asegúrate de tener la imagen en la carpeta assets
                   fit: BoxFit.cover,
                 ),
               ),

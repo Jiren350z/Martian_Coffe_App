@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Settings extends StatelessWidget {
+  
   final String userName;
   final String userEmail;
 

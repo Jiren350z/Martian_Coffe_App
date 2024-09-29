@@ -4,6 +4,11 @@ import 'package:martian_cofee_app/models/product_class.dart';
 class UserNew {
   String name;
   String email;
+  String biography;
+  int age;
+  String genre;
+  DateTime bornData;
+  String typeOfExperienceWithCoffee;
   List<RecipeNew> createdRecipe;
   //List<PreparationMetodsNew> createdPreparationMetods
   List<ProductNew> purshasedProducts;
@@ -13,16 +18,25 @@ class UserNew {
   //List<CoffeeBrand> favoritesCoffeeBrands
   List<String> history;
   String country;
+  String region;
+  String city;
 
   UserNew({
     required this.name,
     required this.email,
+    required this.biography,
+    required this.typeOfExperienceWithCoffee,
+    required this.age,
+    required this.genre,
+    required this.bornData,
     required this.createdRecipe,
     required this.purshasedProducts,
     required this.favoritesRecipes,
     required this.favoritesProducts,
     required this.history,
-    required this.country
+    required this.country,
+    required this.region,
+    required this.city,
   });
 
   void rateRecipe(RecipeNew recipe, int calification) {
