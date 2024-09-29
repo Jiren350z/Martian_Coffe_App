@@ -4,12 +4,20 @@ class ProductNew {
   String name;
   int id;
   double price;
+  String description;
+  int stock;
+  String contact;
   UserNew userCreator;
+  
+  
 
   ProductNew({
     required this.name,
     required this.id,
     required this.price,
+    required this.description,
+    required this.stock,
+    required this.contact,
     required this.userCreator,
   });
 

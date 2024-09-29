@@ -42,6 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
     name: 'hola',
     id: 121234,
     price: 9999,
+    description: "",
+    stock: 0,
+    contact: "",
     userCreator: UserNew(
     name: 'Cachirula',
     email: 'cchirula@gmail.com',

@@ -33,6 +33,10 @@ class RecipeNew {
 
   }
 
+  void shareRecipe()
+  {
+    
+  }
 
 
 }
