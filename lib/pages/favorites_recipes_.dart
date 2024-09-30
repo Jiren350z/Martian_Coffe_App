@@ -5,13 +5,13 @@ import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 
 class RecipeListWidget extends StatelessWidget {
   final List<RecipeNew> recipes;
-
+  
   const RecipeListWidget({super.key, required this.recipes});
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Listado de Recetas')),
+      appBar: AppBar(title: const Text('Listado de Recetas Favoritas')),
       body: ListView.builder(
         itemCount: recipes.length,
         itemBuilder: (context, index) {
@@ -55,7 +55,7 @@ class RecipeListWidget extends StatelessWidget {
                       children: List.generate(5, (starIndex) {
                         return Icon(
                           starIndex < recipe.rating ? Icons.star : Icons.star_border,
-                          color: Colors.yellow,
+                          color: Colors.amber,
                           size: 20,
                         );
                       }),
@@ -67,6 +67,7 @@ class RecipeListWidget extends StatelessWidget {
           );
         },
       ),
+      /*
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Acción para agregar receta
@@ -75,7 +76,9 @@ class RecipeListWidget extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 56, 102, 48),
         child: const Icon(Icons.add), 
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // Coloca el botón en la parte inferior derecha
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, 
+      */
+      // Coloca el botón en la parte inferior derecha
     );
 
   }

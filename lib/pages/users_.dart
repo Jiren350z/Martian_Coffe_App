@@ -3,10 +3,12 @@ import 'package:martian_cofee_app/models/users_class.dart';
 import 'package:martian_cofee_app/pages/settings_.dart';
 import 'package:martian_cofee_app/pages/help_.dart';
 import 'package:martian_cofee_app/pages/perfil_edit_.dart';
+import 'package:martian_cofee_app/pages/favorites_recipes_.dart';
 
 class UserScreen extends StatelessWidget {
   
   final UserNew user;
+  
 
   const UserScreen({super.key, required this.user});
   
@@ -316,6 +318,12 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Recetas Favoritas'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RecipeListWidget(recipes:user.favoritesRecipes,),
+                      ),
+                    );
                     // Navegar a la pantalla de recetas
                   },
                 ),

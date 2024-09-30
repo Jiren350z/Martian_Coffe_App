@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/shop_class.dart';
 import 'package:martian_cofee_app/pages/product_detail_page.dart';
 
+
 class ShopWidget extends StatelessWidget {
   final ShopNew shop;
 
@@ -9,6 +10,7 @@ class ShopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Productos
     return Scaffold(
       appBar: AppBar(
         title: Text(shop.name),

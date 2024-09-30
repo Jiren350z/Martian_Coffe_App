@@ -4,7 +4,7 @@ import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/shop_class.dart';
 import 'package:martian_cofee_app/pages/shop_.dart';
-import 'package:martian_cofee_app/pages/recipe_.dart';
+//import 'package:martian_cofee_app/pages/recipe_.dart';
 //import 'package:martian_cofee_app/pages/ingredient_.dart';
 import 'package:martian_cofee_app/pages/users_.dart';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
@@ -14,7 +14,8 @@ import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/models/users_class.dart';
 import 'package:martian_cofee_app/models/product_class.dart';
 //import 'package:intl/intl.dart';
-
+import 'package:martian_cofee_app/pages/browser_.dart';
+import 'package:martian_cofee_app/models/browser_class.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -33,10 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
   List<UserNew> users = [];
   List<PreparationMetodNew> metods = [];
   List<CoffeeMarkNew> marks = [];
-  List<PostNew> posts = []; 
-  List<ShopNew> shop = [];
+  List<PostNew> posts = [];
+  
+  //final List<SearchItemsDelegate> allItems = [];
+  //List<ShopNew> shop = [];
   late ShopNew myShop;
- 
+  final List<SearchableItem> allItems = []; 
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
   UserNew userd = UserNew(
@@ -782,12 +785,12 @@ class _MyHomePageState extends State<MyHomePage> {
       recipes.add(newRecipe3);
       recipes.add(newRecipe4);
       recipes.add(newRecipe5);
-      users.add(userd);
-      products.add(productt);
-      products.add(productt2);
-      products.add(productt3);
-      products.add(productt4);
-      products.add(productt5);
+      userd.favoritesRecipes.add(newRecipe);
+      userd.favoritesRecipes.add(newRecipe2);
+      userd.favoritesRecipes.add(newRecipe3);
+      userd.favoritesRecipes.add(newRecipe4);
+      userd.favoritesRecipes.add(newRecipe5);
+
   }
    // Método para cambiar entre las pantallas
   
@@ -796,20 +799,30 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
     });
   }
+  /*
+  void openSearch() {
+    showSearch(
+      context: context,
+      delegate: SearchItemsDelegate(allItems),
+    );
+  }
+  */
    // Método para retornar la pantalla según el índice seleccionado
   // Pantallas correspondientes a cada selección de la barra de navegación
   Widget _getSelectedScreen() {
     switch (_selectedIndex) {
       case 0:
-        return RecipeListWidget(recipes: recipes);
+        return const SearchScreen();
+        //openSearch(); // Llama al método para abrir el buscador
+        //return const Center(child: Text('Buscando...'));
+        //return RecipeListWidget(recipes: recipes);
       case 1:
           return ShopWidget(shop: myShop); 
-        //return ProductWidget(product: productt);
-        //return IngredientWidget(ingredient: ingredientt);
+ 
       case 2:
-        //return ProductWidget(product: productt);
+        
         return PostListWidget(posts: postd);
-        //return IngredientWidget(ingredient: ingredientt);
+   
       case 3:
         return UserScreen(user: userd);
       default:
@@ -828,8 +841,10 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: 'Recetas',
+            icon: Icon(Icons.search),
+            label: 'Descubrir',
+            //icon: Icon(Icons.menu_book),
+            //label: 'Recetas',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
