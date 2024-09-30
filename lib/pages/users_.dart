@@ -5,9 +5,12 @@ import 'package:martian_cofee_app/pages/help_.dart';
 import 'package:martian_cofee_app/pages/perfil_edit_.dart';
 
 class UserScreen extends StatelessWidget {
+  
   final UserNew user;
 
   const UserScreen({super.key, required this.user});
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,10 +90,11 @@ class UserScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     // Imagen de perfil circular
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage(
-                        'assets/images/gato_mewing.jpg',
+                      user.profileURL,
+
                       ),
                     ),
                     const SizedBox(height: 10),

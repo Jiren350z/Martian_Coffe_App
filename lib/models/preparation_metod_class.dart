@@ -14,7 +14,7 @@ class PreparationMetodNew
   String dificulty; // E.g., fácil, medio, difícil
   String filterType; // E.g., filtro de papel, metal
   String recomendations; // Recomendaciones adicionales
-
+  double rating; 
   PreparationMetodNew({
     required this.name,
     required this.description,
@@ -28,6 +28,7 @@ class PreparationMetodNew
     required this.dificulty,
     required this.filterType,
     required this.recomendations,
+    required this.rating,
   });
 
   void prepare() {

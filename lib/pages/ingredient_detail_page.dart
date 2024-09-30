@@ -45,14 +45,7 @@ class IngredientWidget extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Botón para regresar al menú principal
-            /*
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Volver al Menú Principal'),
-            ),
-            */
+ 
           ],
         ),
       ),

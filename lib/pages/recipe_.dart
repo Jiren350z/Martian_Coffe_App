@@ -71,8 +71,9 @@ class RecipeListWidget extends StatelessWidget {
         onPressed: () {
           // Acción para agregar receta
         },
-        child: const Icon(Icons.add),
-        backgroundColor: const Color.fromARGB(255, 56, 102, 48), // Puedes ajustar el color a tu preferencia
+        
+        backgroundColor: const Color.fromARGB(255, 56, 102, 48),
+        child: const Icon(Icons.add), 
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // Coloca el botón en la parte inferior derecha
     );

@@ -20,6 +20,7 @@ class UserNew {
   String country;
   String region;
   String city;
+  String profileURL;
 
   UserNew({
     required this.name,
@@ -37,6 +38,7 @@ class UserNew {
     required this.country,
     required this.region,
     required this.city,
+    required this.profileURL,
   });
 
   void rateRecipe(RecipeNew recipe, int calification) {

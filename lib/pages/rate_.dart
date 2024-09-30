@@ -15,7 +15,10 @@ class RatingPage extends StatefulWidget {
 }
 
 class RatingPageState extends State<RatingPage> {
+  
   double _currentRating = 0;
+
+  final TextEditingController comment = TextEditingController();
 
   @override
   void initState() {
@@ -29,16 +32,17 @@ class RatingPageState extends State<RatingPage> {
       appBar: AppBar(
         title: Text('Calificar ${widget.recipeName}'),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 90),
             const Text(
               'Selecciona tu calificación:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(5, (index) {
@@ -73,6 +77,30 @@ class RatingPageState extends State<RatingPage> {
                 Navigator.pop(context, _currentRating.toInt()); // Regresar la calificación
               },
               child: const Text('Enviar Calificación'),
+            ),
+            const SizedBox(height: 350),
+            TextField(
+              controller: comment,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.grey[200], // Fondo claro
+                hintText: 'Comparte tu evaluación de café...',
+                hintStyle: TextStyle(color: Colors.grey[600]), // Estilo del hint
+                contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0), // Espaciado interno
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0), // Bordes redondeados
+                  borderSide: BorderSide.none, // Sin bordes visibles
+                ),
+                //prefixIcon: Icon(Icons.send, color: Colors.grey[600]), // Icono de emoji
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.send, color: Theme.of(context).primaryColor), // Icono de enviar
+                  onPressed: () {
+                    // Funcionalidad para enviar el comentario
+                    //print('Comentario enviado: ${comment.text}');
+                    //comment.clear(); // Limpiar el campo de texto después de enviar
+                  },
+                ),
+              ),
             ),
           ],
         ),
