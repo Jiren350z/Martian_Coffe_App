@@ -43,7 +43,7 @@ class ProductWidgetState extends State<ProductWidget> {
                     children: List.generate(5, (starIndex) {
                       return Icon(
                         starIndex < widget.product.rating ? Icons.star : Icons.star_border,
-                        color: Colors.yellow,
+                        color: Colors.amber,
                         size: 30,
                       );
                     }),

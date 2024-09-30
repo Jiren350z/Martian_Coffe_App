@@ -48,7 +48,7 @@ class RatingPageState extends State<RatingPage> {
               children: List.generate(5, (index) {
                 return Icon(
                   index < _currentRating ? Icons.star : Icons.star_border,
-                  color: Colors.yellow,
+                  color: Colors.amber,
                   size: 40,
                 );
               }),
@@ -95,9 +95,7 @@ class RatingPageState extends State<RatingPage> {
                 suffixIcon: IconButton(
                   icon: Icon(Icons.send, color: Theme.of(context).primaryColor), // Icono de enviar
                   onPressed: () {
-                    // Funcionalidad para enviar el comentario
-                    //print('Comentario enviado: ${comment.text}');
-                    //comment.clear(); // Limpiar el campo de texto después de enviar
+
                   },
                 ),
               ),

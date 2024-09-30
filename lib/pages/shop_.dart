@@ -30,9 +30,8 @@ class ShopWidget extends StatelessWidget {
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //Text(product.description),
                   Text('Precio: \$${product.price}', style: const TextStyle(color: Colors.green)),
-                  //Text('Stock: ${product.stock}'),
+                  Text('Stock: ${product.stock}'),
                   Row(
                     children: List.generate(5, (starIndex) {
                       return Icon(

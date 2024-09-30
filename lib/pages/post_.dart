@@ -133,22 +133,13 @@ class PostListWidget extends StatelessWidget {
                         // Devuelve el icono correspondiente
                         return Icon(
                           starIndex < rating ? Icons.star : Icons.star_border,
-                          color: const Color.fromARGB(255, 234, 211, 8),
+                          color: //const Color.fromARGB(255, 234, 211, 8),
+                          Colors.amber,
                           size: 20,
                         );
                       }),
                     ),
-                    /*
-                    Row(
-                      children: List.generate(5, (starIndex) {
-                        return Icon(
-                          starIndex < post.recipe.rating ? Icons.star : Icons.star_border,
-                          color: const Color.fromARGB(255, 234, 211, 8),
-                          size: 20,
-                        );
-                      }),
-                    ),
-                  */  
+ 
                   const SizedBox(height: 10),
                   // Botones de interacción (favoritos, comentarios, compartir)
                   const Row(
@@ -195,7 +186,8 @@ class PostListWidget extends StatelessWidget {
         onPressed: () {
           // Acción para agregar una publicación
         },
-        backgroundColor: const Color.fromARGB(255, 234, 227, 10),
+        backgroundColor:// const Color.fromARGB(255, 234, 227, 10),
+        Colors.amber,
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
