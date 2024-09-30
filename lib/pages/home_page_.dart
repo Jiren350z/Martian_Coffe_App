@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/coffee_mark_class.dart';
 import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
+import 'package:martian_cofee_app/models/shop_class.dart';
+import 'package:martian_cofee_app/pages/shop_.dart';
 import 'package:martian_cofee_app/pages/recipe_.dart';
 //import 'package:martian_cofee_app/pages/ingredient_.dart';
 import 'package:martian_cofee_app/pages/users_.dart';
-import 'package:martian_cofee_app/pages/product_detail_page.dart';
+//import 'package:martian_cofee_app/pages/product_detail_page.dart';
 import 'package:martian_cofee_app/pages/post_.dart';
 import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
@@ -32,6 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
   List<PreparationMetodNew> metods = [];
   List<CoffeeMarkNew> marks = [];
   List<PostNew> posts = []; 
+  List<ShopNew> shop = [];
+  late ShopNew myShop;
+ 
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
   UserNew userd = UserNew(
@@ -52,50 +57,26 @@ class _MyHomePageState extends State<MyHomePage> {
     city: "Santiago",
     profileURL: 'assets/images/gato_mewing.jpg',
     );
-  ProductNew productt = ProductNew(
-    name: 'hola',
-    id: 121234,
-    price: 9999,
-    description: "kkldklasjkdlajskljwjahljhfjhsjkfhasfjhsahkfashfkjaskjfahskfsaf",
-    stock: 25,
-    contact: "sadasdasdasd",
-    userCreator: UserNew(
-    name: 'Cachirula',
-    email: 'cchirula@gmail.com',
-    biography: "Adoro mi coleccion de cafe",
-    typeOfExperienceWithCoffee: "Productor/a",
-    age: 15,
-    genre: "Femenino",
-    bornData: DateTime(2009,4,10),
-    createdRecipe: [],
-    purshasedProducts: [],
-    favoritesRecipes: [],
-    favoritesProducts: [],
-    history: [],
-    country: "Isla Cachirula",
-    region: "",
-    city: "",
-    profileURL: '',
-    ),
-    //imageUrl: '', // Nuevo atributo para la URL de la imagen
-    rating: 4.5
+  
 
-  );
   IngredientNew ingredientt = IngredientNew(
     type: '',
     value: 100,
     ubication: '',
     rating: 0.0,
+    imageOfIngredient: '',
   );
   IngredientNew ingredientt2 = IngredientNew(
     type: '',
     value: 100,
     ubication: '',
     rating: 0.0,
+    imageOfIngredient: '',
   );
 
 
-  // Publicación de ejemplo
+
+  // publicaciones de ejemplo
     final postd = [
       PostNew (
         userData: UserNew(
@@ -120,8 +101,19 @@ class _MyHomePageState extends State<MyHomePage> {
         recipe: RecipeNew(
         name: 'Café Marcianeke',
         ingredients: [
-          IngredientNew(type: 'Agua Caliente', value: 1, ubication: "mi casita",rating: 0.0,),
-          IngredientNew(type: 'Café en polvo', value: 2, ubication: "tucasa",rating: 0.0,),
+          IngredientNew(
+            type: 'Agua Caliente',
+            value: 1, ubication: "mi casita",
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
+          IngredientNew(
+            type: 'Café en polvo',
+            value: 2,
+            ubication: "tucasa",
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
         ],
         utensils: ['Cafetera', 'Cuchara'],
         preparation: "",
@@ -151,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
           value: 100,
           ubication: '',
           rating: 0.0,
+          imageOfIngredient: '',
         ),
         preparationMetod: PreparationMetodNew(
           name : '',
@@ -171,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
         statement: 'Delicioso café hecho con amor!',
         publicDate: DateTime.now(),
       ),
-        PostNew(
+      PostNew(
           userData: UserNew(
             name: 'Juan Pérez',
             email: 'juanperez@gmail.com',
@@ -217,7 +210,13 @@ class _MyHomePageState extends State<MyHomePage> {
             imageUrl: '',
             rating: 0.0,
           ),
-          ingredient: IngredientNew(type: '', value: 0, ubication: '',rating: 0.0,),
+          ingredient: IngredientNew(
+            type: '',
+            value: 0,
+            ubication: '',
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
           preparationMetod: PreparationMetodNew(
             name: '',
             description: '',
@@ -283,7 +282,13 @@ class _MyHomePageState extends State<MyHomePage> {
           imageUrl: '',
           rating: 0.0,
         ),
-        ingredient: IngredientNew(type: '', value: 0, ubication: '',rating: 0.0,),
+        ingredient: IngredientNew(
+          type: '',
+          value: 0,
+          ubication: '',
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
         preparationMetod: PreparationMetodNew(
           name: 'Método Chemex',
           description: 'Un método de preparación suave y claro que resalta las notas frutales.',
@@ -354,6 +359,7 @@ class _MyHomePageState extends State<MyHomePage> {
           value: 500, // gramos
           ubication: 'Colombia',
           rating: 4.5,
+          imageOfIngredient: 'assets/images/cafe_arabico.jpg',
         ),
         preparationMetod: PreparationMetodNew(
           name: '',
@@ -385,8 +391,20 @@ class _MyHomePageState extends State<MyHomePage> {
       RecipeNew newRecipe = RecipeNew(
         name: 'Café Marcianeke',
         ingredients: [
-          IngredientNew(type: 'Agua Caliente', value: 1, ubication: "mi casita",rating: 0.0,),
-          IngredientNew(type: 'Café en polvo', value: 2, ubication: "tucasa",rating: 0.0,),
+          IngredientNew(
+            type: 'Agua Caliente',
+            value: 1,
+            ubication: "mi casita",
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
+          IngredientNew(
+            type: 'Café en polvo',
+            value: 2,
+            ubication: "tucasa",
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
         ],
         utensils: ['Cafetera', 'Cuchara'],
         preparation: "",
@@ -415,8 +433,20 @@ class _MyHomePageState extends State<MyHomePage> {
       RecipeNew newRecipe2 = RecipeNew(
         name: 'Café Chocolate',
         ingredients: [
-        IngredientNew(type: 'Agua hirviendo', value: 1, ubication: "micasa",rating: 0.0,),
-        IngredientNew(type: 'Sobre de cafe puro', value: 2, ubication: "tucasa",rating: 0.0,),
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1,
+          ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
@@ -441,11 +471,24 @@ class _MyHomePageState extends State<MyHomePage> {
         imageUrl: 'assets/images/caffe_chocolate.jpg',
         rating: 3.0,  
      );
-     RecipeNew newRecipe3 = RecipeNew(
+      
+      RecipeNew newRecipe3 = RecipeNew(
         name: 'Café Latte',
         ingredients: [
-        IngredientNew(type: 'Agua hirviendo', value: 1, ubication: "micasa",rating: 0.0,),
-        IngredientNew(type: 'Sobre de cafe puro', value: 2, ubication: "tucasa",rating: 0.0,),
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1,
+          ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
@@ -470,11 +513,21 @@ class _MyHomePageState extends State<MyHomePage> {
         imageUrl: 'assets/images/caffe_latte.jpg',
         rating: 4.0,  
      );
-     RecipeNew newRecipe4 = RecipeNew(
+      
+      RecipeNew newRecipe4 = RecipeNew(
         name: 'Café Mokka',
         ingredients: [
-        IngredientNew(type: 'Agua hirviendo', value: 1, ubication: "micasa",rating: 0.0,),
-        IngredientNew(type: 'Sobre de cafe puro', value: 2, ubication: "tucasa",rating: 0.0,),
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1, ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',),
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
@@ -499,11 +552,22 @@ class _MyHomePageState extends State<MyHomePage> {
         imageUrl: 'assets/images/caffe_mokka.jpg',
         rating: 4.5,    
      );
-     RecipeNew newRecipe5 = RecipeNew(
+      
+      RecipeNew newRecipe5 = RecipeNew(
         name: 'Café Capuccino',
         ingredients: [
-        IngredientNew(type: 'Agua hirviendo', value: 1, ubication: "micasa",rating: 0.0,),
-        IngredientNew(type: 'Sobre de cafe puro', value: 2, ubication: "tucasa",rating: 0.0,),
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1, ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',),
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
@@ -528,12 +592,202 @@ class _MyHomePageState extends State<MyHomePage> {
         imageUrl: 'assets/images/caffe_capuccino.jpg',
         rating: 4.8,  
      );       
-    recipes.add(newRecipe);
-    recipes.add(newRecipe2);
-    recipes.add(newRecipe3);
-    recipes.add(newRecipe4);
-    recipes.add(newRecipe5);
-    users.add(userd);
+    
+      ProductNew productt = ProductNew(
+      name: 'Najjar Coffee con Cardamom 200g',
+      id: 022644006361,
+      price: 8990,
+      description: 
+      "Najjar Café puro Arábica brasileño con cardamomo para hacer café al estilo turco, importado del Líbano"
+      "Los granos de tostado oscuro se muelen cuidadosamente para producir un café con sabor intenso y rico aroma."
+      "Para prepararlo: simplemente añade 1 cucharadita de este café finamente molido por cada taza de 60ml de agua recién calentada. "
+      "Calienta revolviendo constantemente hasta que el café se disuelva y luego deja de revolver."
+      "Continúe calentando hasta que la superficie del café haga espuma y luego retírelo del fuego antes de que hierva."
+      "¡Deja reposar y luego disfruta!"
+      ,
+      stock: 10,
+      contact: "cchicrula@gmail.com",
+      userCreator: UserNew(
+      name: 'Cachirula',
+      email: 'cchirula@gmail.com',
+      biography: "Adoro mi coleccion de cafe",
+      typeOfExperienceWithCoffee: "Productor/a",
+      age: 15,
+      genre: "Femenino",
+      bornData: DateTime(2009,4,10),
+      createdRecipe: [],
+      purshasedProducts: [],
+      favoritesRecipes: [],
+      favoritesProducts: [],
+      history: [],
+      country: "Isla Cachirula",
+      region: "",
+      city: "",
+      profileURL: '',
+      ),
+      imageOfProduct: 'assets/images/caffe_najjar.jpg', // Nuevo atributo para la URL de la imagen
+      rating: 4.5
+
+    );
+    
+      ProductNew productt2 = ProductNew(
+      name: 'Cafetera Italiana 6 Tazas Greca',
+      id: 7465675647,
+      price: 5000,
+      description: 
+      "Vendo Cafetera nueva a buen precio"
+      "Material: PVC"
+      "Cantidad de piezas: 1 pieza"
+      ,
+      stock: 28,
+      contact: "+5699898877",
+      userCreator: UserNew(
+      name: 'Brad Vickers',
+      email: 'bradvickers@gmail.com',
+      biography: "Adoro mi coleccion de cafe",
+      typeOfExperienceWithCoffee: "Productor/a",
+      age: 25,
+      genre: "Masculino",
+      bornData: DateTime(2009,4,10),
+      createdRecipe: [],
+      purshasedProducts: [],
+      favoritesRecipes: [],
+      favoritesProducts: [],
+      history: [],
+      country: "EEUU",
+      region: "Arklay",
+      city: "Racoon City",
+      profileURL: '',
+      ),
+      imageOfProduct: 'assets/images/cafetera_1.jpg', // Nuevo atributo para la URL de la imagen
+      rating: 4.5
+
+    );
+    
+      ProductNew productt3 = ProductNew(
+      name: 'Cafetera Nescafe Dolce Gusto Piccolo Xs Negra',
+      id: 14550302,
+      price: 44.990,
+      description: 
+      "Material de electrodoméstico: Plástico"
+      "País de origen: Indonesia"
+      "Condicion del producto: Nuevo"
+      "Modelo: 9781"
+      "Espumador de leche: No"
+      "Posee filtro: No"
+      "Capacidad: 0.8 lt"
+      ,
+      stock: 30,
+      contact: "+56895577",
+      userCreator: UserNew(
+      name: 'Angela Orosco',
+      email: 'aorocso@gmail.com',
+      biography: "Nativa de Silent Hill",
+      typeOfExperienceWithCoffee: "Barista",
+      age: 15,
+      genre: "Femenino",
+      bornData: DateTime(2009,4,10),
+      createdRecipe: [],
+      purshasedProducts: [],
+      favoritesRecipes: [],
+      favoritesProducts: [],
+      history: [],
+      country: "Isla Cachirula",
+      region: "",
+      city: "",
+      profileURL: '',
+      ),
+      imageOfProduct: 'assets/images/cafetera_2.jpg', // Nuevo atributo para la URL de la imagen
+      rating: 4.5
+
+    );
+      
+      ProductNew productt4 = ProductNew(
+      name: '2-Pk Mexican Nescafe Clasico Instant Coffee 200gr/7.05oz ea.',
+      id: 575667585,
+      price: 24.990,
+      description: 
+      "Ultimos Stocks Disponibles"
+      ,
+      stock: 3,
+      contact: "966688695",
+      userCreator: UserNew(
+      name: 'Jimmy Hopkins',
+      email: 'jhopkins@gmail.com',
+      biography: "Graduado del Peor Instituto de EEUU",
+      typeOfExperienceWithCoffee: "Consumidor",
+      age: 20,
+      genre: "Masculino",
+      bornData: DateTime(2009,4,10),
+      createdRecipe: [],
+      purshasedProducts: [],
+      favoritesRecipes: [],
+      favoritesProducts: [],
+      history: [],
+      country: "EEUU",
+      region: "Canis Cadem",
+      city: "BullWorth",
+      profileURL: '',
+      ),
+      imageOfProduct: 'assets/images/caffe_nescafe.jpg', // Nuevo atributo para la URL de la imagen
+      rating: 4.5
+
+    );
+      
+      ProductNew productt5 = ProductNew(
+      name: 'GANO CAFÉ CLASSIC: Para adelgazar, su beneficio y precios',
+      id: 002103203020,
+      price: 19.990,
+      description: 
+      "El Gano Café Classic es un delicioso y fino café negro sin azúcar,"
+      "altamente potenciado con las magníficas propiedades del hongo Ganoderma Lucidum."
+      "Es un producto especialmente recomendado para las personas con problemas de peso,"
+      "y para individuos con problemas de glucosa en la sangre."
+      ,
+      stock: 150,
+      contact: "350 7689721",
+      userCreator: UserNew(
+      name: 'Randy Cunningham',
+      email: 'rcunningham@gmail.com',
+      biography: "El Ninja del Cafe",
+      typeOfExperienceWithCoffee: "Consumidor",
+      age: 20,
+      genre: "Masculino",
+      bornData: DateTime(2009,4,10),
+      createdRecipe: [],
+      purshasedProducts: [],
+      favoritesRecipes: [],
+      favoritesProducts: [],
+      history: [],
+      country: "EEUU",
+      region: "",
+      city: "NorrisVille",
+      profileURL: '',
+      ),
+      imageOfProduct: 'assets/images/caffe_gano.jpg', // Nuevo atributo para la URL de la imagen
+      rating: 4.5
+
+    ); 
+
+    // Ahora puedes crear tu tienda
+    myShop = ShopNew(
+      name: 'Tienda de Café Marciano',
+      products: [productt, productt2, productt3, productt4, productt5],
+      payMetods: ['Visa', 'MasterCard', 'Paypal'],
+    );
+
+
+      recipes.add(newRecipe);
+      recipes.add(newRecipe2);
+      recipes.add(newRecipe3);
+      recipes.add(newRecipe4);
+      recipes.add(newRecipe5);
+      users.add(userd);
+      products.add(productt);
+      products.add(productt2);
+      products.add(productt3);
+      products.add(productt4);
+      products.add(productt5);
   }
    // Método para cambiar entre las pantallas
   
@@ -549,7 +803,8 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         return RecipeListWidget(recipes: recipes);
       case 1:
-        return ProductWidget(product: productt);
+          return ShopWidget(shop: myShop); 
+        //return ProductWidget(product: productt);
         //return IngredientWidget(ingredient: ingredientt);
       case 2:
         //return ProductWidget(product: productt);
@@ -578,15 +833,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
-            label: 'Productos',
+            label: 'Tienda',
             //icon: Icon(Icons.emoji_food_beverage),
             //label: 'Ingredientes',
           ),
           BottomNavigationBarItem(
             //icon: Icon(Icons.shopping_bag),
             //label: 'Productos',
-            icon: Icon(Icons.emoji_food_beverage),
-            label: 'Ingredientes',
+            icon: Icon(Icons.list),
+            label: 'Post',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

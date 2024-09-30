@@ -69,9 +69,17 @@ flutter:
     - assets/images/caffe_chocolate.jpg
     - assets/images/caffe_mokka.jpg
     - assets/images/caffe_marciano.jpg
+    - assets/images/caffe_gano.jpg
+    - assets/images/caffe_najjar.jpg
+    - assets/images/caffe_nescafe.jpg
+    - assets/images/cafetera_1.jpg
+    - assets/images/cafetera_2.jpg
     - assets/images/gato_mewing.jpg
     - assets/images/alien_cat.jpg
+    - assets/images/alien_cat_2.jpg
+    - assets/images/alien_cat_3.jpg
     - assets/images/alien_dog.jpg
+    - assets/images/alien_dog_2.jpg
     - assets/images/alien_thing.jpg
     - assets/images/alien.jpg
     - assets/images/valparaiso.jpg

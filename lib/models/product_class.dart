@@ -8,7 +8,7 @@ class ProductNew {
   int stock;
   String contact;
   UserNew userCreator;
-  //String imageUrl;  // Nuevo atributo para la URL de la imagen
+  String imageOfProduct;  // Nuevo atributo para la URL de la imagen
   double rating;     // Nuevo atributo para la valoración (0.0 a 5.0)
 
   
@@ -21,6 +21,7 @@ class ProductNew {
     required this.stock,
     required this.contact,
     required this.userCreator,
+    required this.imageOfProduct,
     required this.rating,
   });
 
