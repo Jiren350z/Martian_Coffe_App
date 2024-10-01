@@ -812,16 +812,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getSelectedScreen() {
     switch (_selectedIndex) {
       case 0:
-        return const SearchScreen();
-        //openSearch(); // Llama al método para abrir el buscador
-        //return const Center(child: Text('Buscando...'));
-        //return RecipeListWidget(recipes: recipes);
+        //return const SearchScreen();
+        return ShopWidget(shop: myShop); 
+
       case 1:
-          return ShopWidget(shop: myShop); 
- 
+          //return ShopWidget(shop: myShop); 
+          return PostListWidget(posts: postd);
       case 2:
         
-        return PostListWidget(posts: postd);
+        //return PostListWidget(posts: postd);
+        return const SearchScreen();
    
       case 3:
         return UserScreen(user: userd);
@@ -841,22 +841,22 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Descubrir',
-            //icon: Icon(Icons.menu_book),
-            //label: 'Recetas',
-          ),
-          BottomNavigationBarItem(
+            
             icon: Icon(Icons.shopping_bag),
             label: 'Tienda',
-            //icon: Icon(Icons.emoji_food_beverage),
-            //label: 'Ingredientes',
+
           ),
           BottomNavigationBarItem(
-            //icon: Icon(Icons.shopping_bag),
-            //label: 'Productos',
+
             icon: Icon(Icons.list),
             label: 'Post',
+
+          ),
+          BottomNavigationBarItem(
+
+            icon: Icon(Icons.search),
+            label: 'Descubrir',
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

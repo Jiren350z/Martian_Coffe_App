@@ -44,7 +44,7 @@ class HelpScreen extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Lógica de envío (solo visual)
+
                 },
                 child: const Text("Enviar"),
               ),

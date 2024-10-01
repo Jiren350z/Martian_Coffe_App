@@ -21,7 +21,7 @@ class ProductWidgetState extends State<ProductWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.product.name)),
-      body: SingleChildScrollView( // Envolver el contenido en un SingleChildScrollView
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -76,6 +76,7 @@ class ProductWidgetState extends State<ProductWidget> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.product.name,
+                        category: 'Producto', // Pasa la categoría adecuada
                       ),
                     ),
                   );
@@ -92,27 +93,27 @@ class ProductWidgetState extends State<ProductWidget> {
 
               const Text('Descripción:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 Text(
-                  widget.product.description, // Asegúrate de que `ProductNew` tenga esta propiedad
+                  widget.product.description, 
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 10),
-                // Precio del producto
+                //precio del producto
                 Text('Precio: \$${widget.product.price.toStringAsFixed(2)}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                // Precio del producto
+                //stock del producto
                 Text('Stock: ${widget.product.stock.toStringAsFixed(2)}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                // Precio del producto
+                //contacto
                 Text('Contacto: ${widget.product.contact}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                // Nombre del vendedor
+                //nombre del vendedor
                 Text('Vendedor: ${widget.product.userCreator.name}', style: const TextStyle(fontSize: 16)),
                 
                 const SizedBox(height: 10.0),
-                // Botón para comprar (ancho completo)
+                
                 ElevatedButton(
                   onPressed: () {
-                    // Funcionalidad para comprar
+ 
                   },
 
                   style: ElevatedButton.styleFrom(

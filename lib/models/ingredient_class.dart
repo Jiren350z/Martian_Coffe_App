@@ -16,6 +16,6 @@ class IngredientNew {
   });
 
   void lookUbication() {
-    // Lógica para buscar ubicación del ingrediente
+
   }
 }

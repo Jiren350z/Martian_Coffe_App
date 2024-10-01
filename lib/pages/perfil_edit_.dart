@@ -31,7 +31,7 @@ class EditPerfilScreenState extends State<EditPerfilScreen> {
   @override
   void initState() {
     super.initState();
-    // Inicializamos los controladores con los datos del usuario
+
     nameController.text = widget.user.name;
     bioController.text = widget.user.biography;
     selectedCountry = widget.user.country;
@@ -57,7 +57,7 @@ class EditPerfilScreenState extends State<EditPerfilScreen> {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  // Lógica para cambiar imagen de perfil (solo visual)
+
                 },
                 child: const CircleAvatar(
                   radius: 40,

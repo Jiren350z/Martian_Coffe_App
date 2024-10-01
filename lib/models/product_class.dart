@@ -8,8 +8,8 @@ class ProductNew {
   int stock;
   String contact;
   UserNew userCreator;
-  String imageOfProduct;  // Nuevo atributo para la URL de la imagen
-  double rating;     // Nuevo atributo para la valoración (0.0 a 5.0)
+  String imageOfProduct;  
+  double rating;    
 
   
 
@@ -26,14 +26,14 @@ class ProductNew {
   });
 
   void sell() {
-    // Lógica para vender producto
+
   }
 
   void contactSeller() {
-    // Lógica para contactar al creador del producto
+ 
   }
 
   void demand() {
-    // Lógica para generar demanda de este producto
+
   }
 }

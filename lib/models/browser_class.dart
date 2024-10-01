@@ -8,10 +8,10 @@ class SearchableItem {
   final String image;
   final bool isProduct;
   final bool isPost;
-  final String? postType; // 'Receta', 'Ingrediente', etc.
-  final ProductNew? product; // Solo para productos
-  final RecipeNew? recipe; // Solo si es receta
-  final IngredientNew? ingredient; // Solo si es ingrediente
+  final String? postType; 
+  final ProductNew? product; 
+  final RecipeNew? recipe; 
+  final IngredientNew? ingredient; 
   
   SearchableItem({
     required this.name,
@@ -26,18 +26,3 @@ class SearchableItem {
   });
 }
 
-/*
-class SearchableItem {
-  
-  final String name;
-  final String description;
-  final String image;
-  final bool isProduct; // Para distinguir entre productos y publicaciones
-
-  SearchableItem({
-    required this.name,
-    required this.description,
-    required this.image,
-    required this.isProduct,
-  });
-}*/

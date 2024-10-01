@@ -9,7 +9,7 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String selectedLanguage = 'Español'; // Valor por defecto
+    String selectedLanguage = 'Español'; 
 
     return Scaffold(
       appBar: AppBar(
@@ -18,7 +18,7 @@ class Settings extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
-              Navigator.of(context).pop(); // Cerrar la pantalla
+              Navigator.of(context).pop(); 
             },
           ),
         ],
@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Nombre y correo del usuario
+            //nombre y correo del usuario
             Text(
               userName,
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -40,7 +40,7 @@ class Settings extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Selección de idioma
+            //selección de idioma
             const Text(
               'Selección de idioma',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -49,7 +49,7 @@ class Settings extends StatelessWidget {
             DropdownButton<String>(
               value: selectedLanguage,
               onChanged: (String? newValue) {
-                // Aquí puedes implementar la lógica para cambiar el idioma
+     
               },
               items: <String>['Español', 'Inglés', 'Francés']
                   .map<DropdownMenuItem<String>>((String value) {
@@ -61,39 +61,39 @@ class Settings extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Configuraciones de la cuenta
+            //configuraciones de la cuenta
             const Text(
               'Configuraciones de la cuenta',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
 
-            // Cambiar contraseña
+            //cambiar contraseña
             ListTile(
               title: const Text('Cambiar la contraseña'),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
-                // Navegar a la pantalla de cambiar contraseña
+
               },
             ),
 
-            // Borrar cuenta
+            //borrar cuenta
             ListTile(
               title: const Text('Borrar cuenta'),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
-                // Navegar a la pantalla de borrar cuenta o mostrar alerta de confirmación
+               
               },
             ),
           ],
         ),
       ),
 
-      // Botón flotante para cerrar sesión
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // Lógica para cerrar sesión
+ 
         },
         label: const Text('Cerrar sesión'),
         icon: const Icon(Icons.logout),

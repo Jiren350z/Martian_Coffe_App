@@ -4,17 +4,18 @@ class PreparationMetodNew
 {
   String name;
   String description;
-  int preparationTime; // En minutos
-  double waterTemperature; // En grados Celsius
-  double waterAmount; // En ml
-  double coffeeAmount; // En gramos
-  String grindingThickness; // E.g., grueso, medio, fino
-  List<String> equipment; // Lista de herramientas necesarias
-  List<String> flavorNotes; // E.g., afrutado, achocolatado
-  String dificulty; // E.g., fácil, medio, difícil
-  String filterType; // E.g., filtro de papel, metal
-  String recomendations; // Recomendaciones adicionales
+  int preparationTime; 
+  double waterTemperature; 
+  double waterAmount; 
+  double coffeeAmount; 
+  String grindingThickness; 
+  List<String> equipment; 
+  List<String> flavorNotes; 
+  String dificulty; 
+  String filterType; 
+  String recomendations; 
   double rating; 
+  
   PreparationMetodNew({
     required this.name,
     required this.description,

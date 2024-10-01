@@ -63,7 +63,8 @@ class ShopWidget extends StatelessWidget {
         onPressed: () {
           // Acción para agregar una publicación
         },
-        backgroundColor: const Color.fromARGB(255, 234, 227, 10),
+        backgroundColor: Colors.amber,
+        //backgroundColor: const Color.fromARGB(255, 234, 227, 10),
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

@@ -29,6 +29,25 @@ class UserScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  
+                  IconButton(
+                    icon: const Icon(
+                      Icons.help,
+                      color: Colors.black),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HelpScreen(
+                            userName: user.name,
+                            userEmail: user.email,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  
+                  /*
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -47,7 +66,25 @@ class UserScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
+                  */
                   const SizedBox(width: 10),
+                  
+                  IconButton(
+                    icon: const Icon(
+                      Icons.edit,
+                      color: Colors.black),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditPerfilScreen(
+                            user: user,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  /*
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -65,7 +102,26 @@ class UserScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
+                  */
                   const SizedBox(width: 10),
+                  
+                  IconButton(
+                    icon: const Icon(
+                      Icons.settings,
+                      color: Colors.black),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Settings(
+                            userName: user.name,
+                            userEmail: user.email,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  /*
                   GestureDetector(
                     onTap: () {
                        Navigator.push(
@@ -84,14 +140,15 @@ class UserScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
+                  */
                 ],
               ),
-              const SizedBox(height: 10), // Espaciado para la imagen de perfil
+              const SizedBox(height: 10), //espaciado para la imagen de perfil
 
               Center(
                 child: Column(
                   children: [
-                    // Imagen de perfil circular
+                    //imagen de perfil circular
                     CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage(
@@ -100,16 +157,16 @@ class UserScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // Nombre del usuario
+                    //nombre del usuario
                     Text(
                       user.name,
                       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    // Nacionalidad con la bandera
+                    //nacionalidad con la bandera
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.flag), // Coloca un ícono o imagen de la bandera
+                        const Icon(Icons.flag), 
                         const SizedBox(width: 5),
                         Text(user.country),
                         const SizedBox(width: 5),
@@ -120,16 +177,16 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // GridView para las cards
+              
               GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 2, //largo
                 childAspectRatio: 1.7, // ancho
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 5,
-                physics: const NeverScrollableScrollPhysics(), // Evitar scroll independiente
+                physics: const NeverScrollableScrollPhysics(), // evitar scroll independiente
                 children: [
-                  _buildCard('Publicaciones', '0'), // Información de ejemplo
+                  _buildCard('Publicaciones', '0'), 
                   _buildCard('Cafés Favoritos', '0'),
                   _buildCard('Marcas de Café Favoritos', '0'),
                   _buildCard('Productos Favoritos', '0'),
@@ -139,7 +196,7 @@ class UserScreen extends StatelessWidget {
                   _buildCard('Métodos de Preparación Creados', '0'),
                 ],
               ),
-              // Nueva Card para Biografía, Tipo de Experiencia y Edad
+              // nueva card para Biografia, tipo de experiencia y edad
             Card(
               elevation: 2,
               child: Padding(
@@ -166,19 +223,19 @@ class UserScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     
-                    // Texto de la biografía
+                    // texto de la biografia
                     Text(
                       user.biography,
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 10),
 
-                    // Edad
+                    // edad
                     Text(
                       'Edad: ${user.age} años',
                       style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 20, 20, 20)),
                     ),
-                    // Genero
+                    // genero
                     Text(
                       'Genero: ${user.genre}',
                       style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 20, 20, 20)),
@@ -194,7 +251,7 @@ class UserScreen extends StatelessWidget {
             ),
 
               const SizedBox(height: 20),
-              // Apartado para accesorios y máquinas
+              // apartado para accesorios y maquinas
               const Text(
                 'Mis Accesorios',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -207,7 +264,7 @@ class UserScreen extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.add_circle),
                     onPressed: () {
-                      // Lógica para añadir accesorio
+
                     },
                   ),
                 ],
@@ -224,13 +281,13 @@ class UserScreen extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.add_circle),
                     onPressed: () {
-                      // Lógica para añadir máquina
+    
                     },
                   ),
                 ],
               ),
               const SizedBox(height: 20),
-              // Apartado para publicaciones
+              // apartado para publicaciones
               const Text(
                 'Publicaciones Creadas',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -240,7 +297,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Mis Publicaciones'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de publicaciones
+                    
                   },
                 ),
               ),
@@ -253,7 +310,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Mis Recetas'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de recetas
+
                   },
                 ),
               ),
@@ -266,7 +323,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Mis Metodos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de recetas
+
                   },
                 ),
               ),
@@ -279,7 +336,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Mis Cafés Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de recetas
+
                   },
                 ),
               ),
@@ -292,7 +349,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Marcas de Café Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de recetas
+
                   },
                 ),
               ),
@@ -305,7 +362,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Productos Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de recetas
+                    
                   },
                 ),
               ),
@@ -324,7 +381,7 @@ class UserScreen extends StatelessWidget {
                         builder: (context) => RecipeListWidget(recipes:user.favoritesRecipes,),
                       ),
                     );
-                    // Navegar a la pantalla de recetas
+
                   },
                 ),
               ),
@@ -337,7 +394,7 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Metodos Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    // Navegar a la pantalla de recetas
+        
                   },
                 ),
               ),
@@ -349,7 +406,7 @@ class UserScreen extends StatelessWidget {
     );
   }
 
-  // Método para construir las cards
+  // metodo para construir las cards
   Widget _buildCard(String title, String count) {
     return Card(
       elevation: 2,

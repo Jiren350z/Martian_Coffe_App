@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/models/post_class.dart'; // Asegúrate de tener la clase PostNew.
+import 'package:martian_cofee_app/models/post_class.dart'; 
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 import 'package:martian_cofee_app/pages/ingredient_detail_page.dart';
 
 
 class PostListWidget extends StatelessWidget {
-  final List<PostNew> posts; // Lista de publicaciones
+  final List<PostNew> posts; //lista de publicaciones
   
   const PostListWidget({super.key, required this.posts});
 
@@ -27,7 +27,7 @@ class PostListWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Header con foto de perfil, nombre de usuario, tipo de publicación y menú de 3 puntos
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -52,19 +52,19 @@ class PostListWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(post.timeSincePublication()),
-                          //Text(post.publicDate.toString(), style: const TextStyle(color: Colors.grey)),
+                          
                           const SizedBox(width: 10),
-                          const Icon(Icons.more_vert), // 3 puntos de menú
+                          const Icon(Icons.more_vert), 
                         ],
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
                   
-                  // Imagen de la publicación
+
                   GestureDetector(
                     onTap: () {
-                      // Acción para abrir receta, ingrediente, etc.
+                      //ir a detalles de la receta.
                       if (post.pubType == 'Receta') {
                         Navigator.push(
                           context,
@@ -73,7 +73,7 @@ class PostListWidget extends StatelessWidget {
                           ),
                         );
                       }
-                      // Acción para abrir receta, ingrediente, etc.
+                      //ir a detalles del ingrediente
                       if (post.pubType == 'Ingrediente') {
                         Navigator.push(
                           context,
@@ -104,44 +104,43 @@ class PostListWidget extends StatelessWidget {
                       },
                     ),
                   ),
-                  // Imagen de la publicación
+
 
                   const SizedBox(height: 10),
                   
-                  // Descripción de la publicación
+
                   Text(post.statement),
                   
                   const SizedBox(height: 10),
 
-                  // Para publicaciones de recetas, ingredientes o métodos, mostramos las estrellas de valoración
+                  
                   if (post.pubType == 'Receta' || post.pubType == 'Ingrediente' || post.pubType == 'Método') 
                     Row(
                       children: List.generate(5, (starIndex) {
                         double rating;
 
-                        // Determina la valoración según el tipo de publicación
+                        
                         if (post.pubType == 'Receta') {
-                          rating = post.recipe.rating; // Obtén la valoración de la receta
+                          rating = post.recipe.rating; 
                         } else if (post.pubType == 'Ingrediente') {
-                          rating = post.ingredient.rating; // Supón que tienes un campo `rating` en IngredientNew
+                          rating = post.ingredient.rating; 
                         } else if (post.pubType == 'Método') {
-                          rating = post.preparationMetod.rating; // Supón que tienes un campo `rating` en PreparationMetodNew
+                          rating = post.preparationMetod.rating; 
                         } else {
-                          rating = 0; // Valor por defecto si no es ninguno de los tipos esperados
+                          rating = 0; 
                         }
 
                         // Devuelve el icono correspondiente
                         return Icon(
                           starIndex < rating ? Icons.star : Icons.star_border,
-                          color: //const Color.fromARGB(255, 234, 211, 8),
-                          Colors.amber,
+                          color:  Colors.amber,
                           size: 20,
                         );
                       }),
                     ),
  
                   const SizedBox(height: 10),
-                  // Botones de interacción (favoritos, comentarios, compartir)
+                  //botones de interaccion (favoritos, comentarios, compartir)
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -155,12 +154,12 @@ class PostListWidget extends StatelessWidget {
                         ],
                       ),
 
-                      //SizedBox(height: 5),
+
                     ],
 
                   ),
                   const SizedBox(height: 15),
-                  // Barra para añadir comentarios
+                  //barra para añadir comentarios
                       Row(
                         children: [
                           Expanded(
@@ -184,7 +183,7 @@ class PostListWidget extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Acción para agregar una publicación
+
         },
         backgroundColor:// const Color.fromARGB(255, 234, 227, 10),
         Colors.amber,

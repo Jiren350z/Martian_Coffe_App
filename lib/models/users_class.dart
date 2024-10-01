@@ -10,7 +10,6 @@ class UserNew {
   DateTime bornData;
   String typeOfExperienceWithCoffee;
   List<RecipeNew> createdRecipe;
-  //List<PreparationMetodsNew> createdPreparationMetods
   List<ProductNew> purshasedProducts;
   List<RecipeNew> favoritesRecipes;
   //List<PreparationMetodsNew> favoritedPreparationMetods

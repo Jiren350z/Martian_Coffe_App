@@ -12,7 +12,7 @@ class RecipeDetailPage extends StatefulWidget {
   RecipeDetailPageState createState() => RecipeDetailPageState();
 }
 class RecipeDetailPageState extends State<RecipeDetailPage> {
-  bool isFavorite = false; // Para controlar el estado del ícono de favoritos
+  bool isFavorite = false; 
   int userRating = 0;
 
   final TextEditingController comment = TextEditingController();
@@ -21,7 +21,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.recipe.name)),
-      body: SingleChildScrollView( // Envolver el contenido en un SingleChildScrollView
+      body: SingleChildScrollView( 
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -76,6 +76,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.recipe.name,
+                        category: 'Receta',
                       ),
                     ),
                   );
