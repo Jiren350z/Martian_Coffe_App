@@ -4,6 +4,9 @@ import 'package:martian_cofee_app/pages/settings_.dart';
 import 'package:martian_cofee_app/pages/help_.dart';
 import 'package:martian_cofee_app/pages/perfil_edit_.dart';
 import 'package:martian_cofee_app/pages/favorites_recipes_.dart';
+import 'package:martian_cofee_app/pages/favorites_ingredients_.dart';
+import 'package:martian_cofee_app/pages/favorites_preparation_metods_.dart';
+import 'package:martian_cofee_app/pages/favorites_products_.dart';
 
 class UserScreen extends StatelessWidget {
   
@@ -187,7 +190,7 @@ class UserScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(), // evitar scroll independiente
                 children: [
                   _buildCard('Publicaciones', '0'), 
-                  _buildCard('Ingredientes Publicados', '0'),
+                  //_buildCard('Ingredientes Publicados', '0'),
                   _buildCard('Ingredientes Favoritos', '0'),
                   //_buildCard('Cafés Favoritos', '0'),
                   //_buildCard('Marcas de Café Favoritos', '0'),
@@ -330,13 +333,15 @@ class UserScreen extends StatelessWidget {
                   },
                 ),
               ),
+              /*
                 const Text(
                 'Ingredientes Publicados',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              
               Card(
                 child: ListTile(
-                  title: const Text('Ver Mis Cafés Favoritos'),
+                  title: const Text('Ver Ingredientes Publicados'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
 
@@ -347,12 +352,18 @@ class UserScreen extends StatelessWidget {
                 'Ingredientes Favoritos',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              */
               Card(
                 child: ListTile(
-                  title: const Text('Ver Marcas de Café Favoritos'),
+                  title: const Text('Ver Ingredientes Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => IngredientListWidget(ingredients: user.favoritesIngredient,),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -365,7 +376,12 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Productos Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductListWidget(products: user.favoritesProducts,),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -397,7 +413,12 @@ class UserScreen extends StatelessWidget {
                   title: const Text('Ver Metodos Favoritos'),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-        
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PreparationMethodListWidget(methods: user.favoritedPreparationMetods,),
+                      ),
+                    );        
                   },
                 ),
               ),
