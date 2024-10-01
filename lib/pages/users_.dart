@@ -348,11 +348,12 @@ class UserScreen extends StatelessWidget {
                   },
                 ),
               ),
+              */
                 const Text(
                 'Ingredientes Favoritos',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              */
+              
               Card(
                 child: ListTile(
                   title: const Text('Ver Ingredientes Favoritos'),

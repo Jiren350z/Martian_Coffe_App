@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
+import 'package:martian_cofee_app/pages/preparation_metod__details_.dart';
 
 class PreparationMethodListWidget extends StatelessWidget {
   final List<PreparationMetodNew> methods;
@@ -18,40 +19,53 @@ class PreparationMethodListWidget extends StatelessWidget {
           return Card(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             elevation: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    method.imageOfMetod,
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: double.infinity,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Text('Error al cargar la imagen');
-                    },
+
+            child: InkWell(
+             
+             onTap: () {
+                // navegar a la pagina de detalles
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PreparationMethodDetailPage(preparationMethod: method),
                   ),
-                  const SizedBox(height: 10),
-                  Text(
-                    method.name,
-                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: List.generate(5, (starIndex) {
-                      return Icon(
-                        starIndex < method.rating ? Icons.star : Icons.star_border,
-                        color: Colors.amber,
-                        size: 20,
-                      );
-                    }),
-                  ),
-                  const SizedBox(height: 5),
-                  Text('Tiempo de Preparación: ${method.preparationTime} minutos'),
-                  Text('Temperatura del Agua: ${method.waterTemperature} °C'),
-                  Text('Dificultad: ${method.dificulty}'),
-                ],
+                );
+              }, 
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      method.imageOfMetod,
+                      fit: BoxFit.cover,
+                      height: 200,
+                      width: double.infinity,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Text('Error al cargar la imagen');
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      method.name,
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 5),
+                    Row(
+                      children: List.generate(5, (starIndex) {
+                        return Icon(
+                          starIndex < method.rating ? Icons.star : Icons.star_border,
+                          color: Colors.amber,
+                          size: 20,
+                        );
+                      }),
+                    ),
+                    const SizedBox(height: 5),
+                    Text('Tiempo de Preparación: ${method.preparationTime} minutos'),
+                    Text('Temperatura del Agua: ${method.waterTemperature} °C'),
+                    Text('Dificultad: ${method.dificulty}'),
+                  ],
+                ),                
               ),
             ),
           );

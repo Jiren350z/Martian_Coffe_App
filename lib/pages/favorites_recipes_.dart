@@ -20,6 +20,7 @@ class RecipeListWidget extends StatelessWidget {
           return Card(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             elevation: 4,
+            
             child: InkWell(
               onTap: () {
                 // navegar a la pagina de detalles

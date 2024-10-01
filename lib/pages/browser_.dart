@@ -12,7 +12,7 @@ class SearchScreen extends StatelessWidget {
           padding: EdgeInsets.all(16.0),
           child: TextField(
             decoration: InputDecoration(
-              labelText: 'Buscar cafés o marcas...',
+              labelText: 'Buscar',
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.search),
             ),
