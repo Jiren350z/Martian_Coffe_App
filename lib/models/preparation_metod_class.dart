@@ -15,7 +15,8 @@ class PreparationMetodNew
   String filterType; 
   String recomendations; 
   double rating; 
-  
+  String imageOfMetod;
+
   PreparationMetodNew({
     required this.name,
     required this.description,
@@ -30,6 +31,7 @@ class PreparationMetodNew
     required this.filterType,
     required this.recomendations,
     required this.rating,
+    required this.imageOfMetod,
   });
 
   void prepare() {

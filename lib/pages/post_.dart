@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/post_class.dart'; 
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 import 'package:martian_cofee_app/pages/ingredient_detail_page.dart';
+import 'package:martian_cofee_app/pages/preparation_metod__details_.dart';
 
 
 class PostListWidget extends StatelessWidget {
@@ -82,16 +83,16 @@ class PostListWidget extends StatelessWidget {
                           ),
                         );
                       }
-                      /*
+                      
                       if (post.pubType == 'Método') {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => IngredientWidget(ingredient: post.ingredient),
+                            builder: (context) => PreparationMethodDetailPage(preparationMethod: post.preparationMetod),
                           ),
                         );
                       }
-                      */
+                      
                     },
 
                     child: Image.asset(

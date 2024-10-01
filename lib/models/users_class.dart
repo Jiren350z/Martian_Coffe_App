@@ -1,3 +1,5 @@
+import 'package:martian_cofee_app/models/ingredient_class.dart';
+import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/models/product_class.dart';
 
@@ -12,9 +14,9 @@ class UserNew {
   List<RecipeNew> createdRecipe;
   List<ProductNew> purshasedProducts;
   List<RecipeNew> favoritesRecipes;
-  //List<PreparationMetodsNew> favoritedPreparationMetods
+  List<PreparationMetodNew> favoritedPreparationMetods;
   List<ProductNew> favoritesProducts;
-  //List<CoffeeBrand> favoritesCoffeeBrands
+  List<IngredientNew> favoritesIngredient;
   List<String> history;
   String country;
   String region;
@@ -32,7 +34,9 @@ class UserNew {
     required this.createdRecipe,
     required this.purshasedProducts,
     required this.favoritesRecipes,
+    required this.favoritedPreparationMetods,
     required this.favoritesProducts,
+    required this.favoritesIngredient,
     required this.history,
     required this.country,
     required this.region,
@@ -55,5 +59,14 @@ class UserNew {
   void addProductToFavorites(ProductNew product) {
     favoritesProducts.add(product);
   }
+
+   void addPreparationMetodsToFavorites(PreparationMetodNew preparationMethod) {
+    favoritedPreparationMetods.add(preparationMethod);
+  }
+   void addIngredientToFavorites(IngredientNew ingredient) {
+    favoritesIngredient.add(ingredient);
+  }
+
+
 
 }

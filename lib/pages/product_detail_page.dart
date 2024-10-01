@@ -76,7 +76,7 @@ class ProductWidgetState extends State<ProductWidget> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.product.name,
-                        category: 'Producto', // Pasa la categoría adecuada
+                        //category: 'Producto', // Pasa la categoría adecuada
                       ),
                     ),
                   );

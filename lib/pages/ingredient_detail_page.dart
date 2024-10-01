@@ -87,7 +87,7 @@ class IngredientWidgetState extends State<IngredientWidget> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.ingredient.type,
-                        category: 'Ingrediente', // Asegúrate de pasar la categoría
+                        //category: 'Ingrediente', // Asegúrate de pasar la categoría
                       ),
                     ),
                   );

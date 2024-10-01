@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/models/coffee_mark_class.dart';
+//import 'package:martian_cofee_app/models/coffee_mark_class.dart';
 import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/shop_class.dart';
@@ -28,12 +28,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // Lista de recetas
-  List<RecipeNew> recipes = [];
-  List<IngredientNew> ingredients = [];
-  List<ProductNew> products = [];
-  List<UserNew> users = [];
-  List<PreparationMetodNew> metods = [];
-  List<CoffeeMarkNew> marks = [];
+  //List<RecipeNew> recipes = [];
+  //List<IngredientNew> ingredients = [];
+  //List<ProductNew> products = [];
+  //List<UserNew> users = [];
+  //List<PreparationMetodNew> metods = [];
+  //List<CoffeeMarkNew> marks = [];
   List<PostNew> posts = [];
   
   //final List<SearchItemsDelegate> allItems = [];
@@ -53,7 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
     createdRecipe: [],
     purshasedProducts: [],
     favoritesRecipes: [],
+    favoritedPreparationMetods: [],
     favoritesProducts: [],
+    favoritesIngredient: [],
     history: [],
     country: "Chile",
     region: "Metropolitana",
@@ -61,21 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
     profileURL: 'assets/images/gato_mewing.jpg',
     );
   
-
-  IngredientNew ingredientt = IngredientNew(
-    type: '',
-    value: 100,
-    ubication: '',
-    rating: 0.0,
-    imageOfIngredient: '',
-  );
-  IngredientNew ingredientt2 = IngredientNew(
-    type: '',
-    value: 100,
-    ubication: '',
-    rating: 0.0,
-    imageOfIngredient: '',
-  );
 
 
 
@@ -93,7 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
               createdRecipe: [],
               purshasedProducts: [],
               favoritesRecipes: [],
+              favoritedPreparationMetods: [],
               favoritesProducts: [],
+              favoritesIngredient: [],
               history: [],
               country: "Isla Cachirula",
               region: "",
@@ -131,7 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "EE.UU",
           region: "Ohio",
@@ -162,6 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
           filterType: '',
           recomendations: '',
           rating: 0.0,
+          imageOfMetod: '',
         ),
         image: 'assets/images/caffe_marciano.jpg',
         statement: 'Delicioso café hecho con amor!',
@@ -179,7 +171,9 @@ class _MyHomePageState extends State<MyHomePage> {
             createdRecipe: [],
             purshasedProducts: [],
             favoritesRecipes: [],
+            favoritedPreparationMetods: [],
             favoritesProducts: [],
+            favoritesIngredient: [],
             history: [],
             country: "México",
             region: "Jalisco",
@@ -203,7 +197,9 @@ class _MyHomePageState extends State<MyHomePage> {
               createdRecipe: [],
               purshasedProducts: [],
               favoritesRecipes: [],
+              favoritedPreparationMetods: [],
               favoritesProducts: [],
+              favoritesIngredient: [],
               history: [],
               country: '',
               region: '',
@@ -234,6 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
             filterType: '',
             recomendations: '',
             rating: 0.0,
+            imageOfMetod: '',
           ),
           image: 'assets/images/caffe_latte.jpg', // Ruta de la imagen
           statement: 'Este café me encanta por su sabor suave y aroma intenso.',
@@ -251,7 +248,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "Colombia",
           region: "Antioquia",
@@ -275,7 +274,9 @@ class _MyHomePageState extends State<MyHomePage> {
             createdRecipe: [],
             purshasedProducts: [],
             favoritesRecipes: [],
+            favoritedPreparationMetods: [],
             favoritesProducts: [],
+            favoritesIngredient: [],
             history: [],
             country: '',
             region: '',
@@ -306,6 +307,7 @@ class _MyHomePageState extends State<MyHomePage> {
           filterType: 'Papel',
           recomendations: 'Utiliza agua filtrada para un mejor sabor.',
           rating: 4.3,
+          imageOfMetod: 'assets/images/chemex.jpg',
         ),
         image: 'assets/images/chemex.jpg', // Ruta de la imagen
         statement: 'Método Chemex, perfecto para resaltar los sabores afrutados.',
@@ -323,7 +325,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "Perú",
           region: "Lima",
@@ -347,7 +351,9 @@ class _MyHomePageState extends State<MyHomePage> {
             createdRecipe: [],
             purshasedProducts: [],
             favoritesRecipes: [],
+            favoritedPreparationMetods: [],
             favoritesProducts: [],
+            favoritesIngredient: [],
             history: [],
             country: '',
             region: '',
@@ -378,6 +384,7 @@ class _MyHomePageState extends State<MyHomePage> {
           filterType: '',
           recomendations: '',
           rating: 0.0,
+          imageOfMetod: '',
         ),
         image: 'assets/images/cafe_arabico.jpg', // Ruta de la imagen
         statement: 'Los granos de café Arábica tienen un sabor dulce y suave.',
@@ -390,7 +397,32 @@ class _MyHomePageState extends State<MyHomePage> {
   
     super.initState();
       
-      //recetas creadas de ejemplo 
+      
+      IngredientNew ingredientt = IngredientNew(
+        type: 'ola',
+        value: 0.0,
+        ubication: 'mi casa',
+        rating: 2.0,
+        imageOfIngredient: 'cafe_arabico.jpg',
+        );
+
+      PreparationMetodNew preparationMetod = PreparationMetodNew(
+          name: 'Método Chemex',
+          description: 'Un método de preparación suave y claro que resalta las notas frutales.',
+          preparationTime: 4,
+          waterTemperature: 92.0,
+          waterAmount: 500.0,
+          coffeeAmount: 30.0,
+          grindingThickness: 'Medio grueso',
+          equipment: ['Chemex', 'Filtros de papel', 'Cafetera'],
+          flavorNotes: ['Afrutado', 'Cítrico'],
+          dificulty: 'Medio',
+          filterType: 'Papel',
+          recomendations: 'Utiliza agua filtrada para un mejor sabor.',
+          rating: 4.3,
+          imageOfMetod: 'assets/images/chemex.jpg',
+        );  
+
       RecipeNew newRecipe = RecipeNew(
         name: 'Café Marcianeke',
         ingredients: [
@@ -422,7 +454,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "EE.UU",
           region: "Ohio",
@@ -464,7 +498,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "URSS",
           region: "",
@@ -506,7 +542,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "Planeta Saiyan",
           region: "",
@@ -545,7 +583,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "EEUU",
           region: "New York",
@@ -585,7 +625,9 @@ class _MyHomePageState extends State<MyHomePage> {
           createdRecipe: [],
           purshasedProducts: [],
           favoritesRecipes: [],
+          favoritedPreparationMetods: [],
           favoritesProducts: [],
+          favoritesIngredient: [],
           history: [],
           country: "EEUU",
           region: "California",
@@ -621,7 +663,9 @@ class _MyHomePageState extends State<MyHomePage> {
       createdRecipe: [],
       purshasedProducts: [],
       favoritesRecipes: [],
+      favoritedPreparationMetods: [],
       favoritesProducts: [],
+      favoritesIngredient: [],
       history: [],
       country: "Isla Cachirula",
       region: "",
@@ -655,7 +699,9 @@ class _MyHomePageState extends State<MyHomePage> {
       createdRecipe: [],
       purshasedProducts: [],
       favoritesRecipes: [],
+      favoritedPreparationMetods: [],
       favoritesProducts: [],
+      favoritesIngredient: [],
       history: [],
       country: "EEUU",
       region: "Arklay",
@@ -670,7 +716,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ProductNew productt3 = ProductNew(
       name: 'Cafetera Nescafe Dolce Gusto Piccolo Xs Negra',
       id: 14550302,
-      price: 44.990,
+      price: 4499,
       description: 
       "Material de electrodoméstico: Plástico"
       "País de origen: Indonesia"
@@ -693,7 +739,9 @@ class _MyHomePageState extends State<MyHomePage> {
       createdRecipe: [],
       purshasedProducts: [],
       favoritesRecipes: [],
+      favoritedPreparationMetods: [],
       favoritesProducts: [],
+      favoritesIngredient: [],
       history: [],
       country: "Isla Cachirula",
       region: "",
@@ -708,7 +756,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ProductNew productt4 = ProductNew(
       name: '2-Pk Mexican Nescafe Clasico Instant Coffee 200gr/7.05oz ea.',
       id: 575667585,
-      price: 24.990,
+      price: 2499,
       description: 
       "Ultimos Stocks Disponibles"
       ,
@@ -725,7 +773,9 @@ class _MyHomePageState extends State<MyHomePage> {
       createdRecipe: [],
       purshasedProducts: [],
       favoritesRecipes: [],
+      favoritedPreparationMetods: [],
       favoritesProducts: [],
+      favoritesIngredient: [],
       history: [],
       country: "EEUU",
       region: "Canis Cadem",
@@ -740,7 +790,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ProductNew productt5 = ProductNew(
       name: 'GANO CAFÉ CLASSIC: Para adelgazar, su beneficio y precios',
       id: 002103203020,
-      price: 19.990,
+      price: 1999,
       description: 
       "El Gano Café Classic es un delicioso y fino café negro sin azúcar,"
       "altamente potenciado con las magníficas propiedades del hongo Ganoderma Lucidum."
@@ -760,7 +810,9 @@ class _MyHomePageState extends State<MyHomePage> {
       createdRecipe: [],
       purshasedProducts: [],
       favoritesRecipes: [],
+      favoritedPreparationMetods: [],
       favoritesProducts: [],
+      favoritesIngredient: [],
       history: [],
       country: "EEUU",
       region: "",
@@ -779,17 +831,26 @@ class _MyHomePageState extends State<MyHomePage> {
       payMetods: ['Visa', 'MasterCard', 'Paypal'],
     );
 
-
+      /*
       recipes.add(newRecipe);
       recipes.add(newRecipe2);
       recipes.add(newRecipe3);
       recipes.add(newRecipe4);
       recipes.add(newRecipe5);
+      */
       userd.favoritesRecipes.add(newRecipe);
       userd.favoritesRecipes.add(newRecipe2);
       userd.favoritesRecipes.add(newRecipe3);
       userd.favoritesRecipes.add(newRecipe4);
       userd.favoritesRecipes.add(newRecipe5);
+
+      userd.favoritesProducts.add(productt);
+      userd.favoritesProducts.add(productt2);
+      userd.favoritesProducts.add(productt3);
+
+      userd.favoritesIngredient.add(ingredientt);
+
+      userd.favoritedPreparationMetods.add(preparationMetod);
 
   }
    // Método para cambiar entre las pantallas

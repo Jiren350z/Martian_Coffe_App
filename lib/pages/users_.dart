@@ -187,13 +187,16 @@ class UserScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(), // evitar scroll independiente
                 children: [
                   _buildCard('Publicaciones', '0'), 
-                  _buildCard('Cafés Favoritos', '0'),
-                  _buildCard('Marcas de Café Favoritos', '0'),
+                  _buildCard('Ingredientes Publicados', '0'),
+                  _buildCard('Ingredientes Favoritos', '0'),
+                  //_buildCard('Cafés Favoritos', '0'),
+                  //_buildCard('Marcas de Café Favoritos', '0'),
                   _buildCard('Productos Favoritos', '0'),
                   _buildCard('Recetas Favoritas', '0'),
                   _buildCard('Recetas Creadas', '0'),
                   _buildCard('Métodos de Preparación Favoritos', '0'),
                   _buildCard('Métodos de Preparación Creados', '0'),
+                  
                 ],
               ),
               // nueva card para Biografia, tipo de experiencia y edad
@@ -328,7 +331,7 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
                 const Text(
-                'Cafés Favoritos',
+                'Ingredientes Publicados',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Card(
@@ -341,7 +344,7 @@ class UserScreen extends StatelessWidget {
                 ),
               ),
                 const Text(
-                'Marcas de Café Favoritos',
+                'Ingredientes Favoritos',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Card(
