@@ -860,25 +860,19 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
     });
   }
-  /*
-  void openSearch() {
-    showSearch(
-      context: context,
-      delegate: SearchItemsDelegate(allItems),
-    );
-  }
-  */
+
    // Método para retornar la pantalla según el índice seleccionado
   // Pantallas correspondientes a cada selección de la barra de navegación
   Widget _getSelectedScreen() {
     switch (_selectedIndex) {
       case 0:
         //return const SearchScreen();
-        return ShopWidget(shop: myShop); 
+        //return ShopWidget(shop: myShop);
+        return PostListWidget(posts: postd); 
 
       case 1:
-          //return ShopWidget(shop: myShop); 
-          return PostListWidget(posts: postd);
+          return ShopWidget(shop: myShop); 
+          //return PostListWidget(posts: postd);
       case 2:
         
         //return PostListWidget(posts: postd);
@@ -903,14 +897,14 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             
-            icon: Icon(Icons.shopping_bag),
-            label: 'Tienda',
+            icon: Icon(Icons.list),
+            label: 'Post',
 
           ),
           BottomNavigationBarItem(
 
-            icon: Icon(Icons.list),
-            label: 'Post',
+            icon: Icon(Icons.shopping_bag),
+            label: 'Tienda',
 
           ),
           BottomNavigationBarItem(
