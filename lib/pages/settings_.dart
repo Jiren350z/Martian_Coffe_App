@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //nombre y correo del usuario
+     
             Text(
               userName,
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -40,7 +40,7 @@ class Settings extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            //selección de idioma
+   
             const Text(
               'Selección de idioma',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -61,14 +61,14 @@ class Settings extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            //configuraciones de la cuenta
+       
             const Text(
               'Configuraciones de la cuenta',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
 
-            //cambiar contraseña
+    
             ListTile(
               title: const Text('Cambiar la contraseña'),
               trailing: const Icon(Icons.arrow_forward_ios),
@@ -77,7 +77,6 @@ class Settings extends StatelessWidget {
               },
             ),
 
-            //borrar cuenta
             ListTile(
               title: const Text('Borrar cuenta'),
               trailing: const Icon(Icons.arrow_forward_ios),

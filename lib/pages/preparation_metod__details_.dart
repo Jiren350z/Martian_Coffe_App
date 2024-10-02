@@ -37,14 +37,14 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
                   return const Text('Error al cargar la imagen');
                 },
               ),
-              // Título del método
+       
               Text(
                 widget.preparationMethod.name,
                 style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
 
-              // Calificación del método
+   
               Row(
                 children: [
                   Row(
@@ -86,7 +86,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.preparationMethod.name,
-                        //category: 'Producto', // Pasa la categoría adecuada
+
                       ),
                     ),
                   );
@@ -100,7 +100,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
                 child: const Text('Calificar'),
               ),
               const SizedBox(height: 10),
-              // Descripción
+       
               const Text(
                 'Descripción:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -111,7 +111,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Tiempo de preparación
+            
               Row(
                 children: [
                   const Text(
@@ -124,7 +124,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Temperatura y cantidad de agua
+     
               Row(
                 children: [
                   const Text(
@@ -148,7 +148,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Cantidad de café
+       
               Row(
                 children: [
                   const Text(
@@ -161,7 +161,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Grosor de molienda
+     
               Row(
                 children: [
                   const Text(
@@ -174,7 +174,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Equipos necesarios
+        
               const Text(
                 'Equipos necesarios:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -187,7 +187,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Notas de sabor
+   
               const Text(
                 'Notas de sabor:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -200,7 +200,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Dificultad
+
               Row(
                 children: [
                   const Text(
@@ -213,7 +213,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
               ),
               const SizedBox(height: 10),
 
-              // Tipo de filtro
+
               Row(
                 children: [
                   const Text(
@@ -225,7 +225,7 @@ class PreparationMethodDetailPageState extends State<PreparationMethodDetailPage
                 ],
               ),
               const SizedBox(height: 10),
-              // Recomendaciones
+
               const Text(
                 'Recomendaciones:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

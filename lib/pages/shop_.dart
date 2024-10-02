@@ -10,7 +10,7 @@ class ShopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Productos
+ 
     return Scaffold(
       appBar: AppBar(
         title: Text(shop.name),
@@ -47,7 +47,7 @@ class ShopWidget extends StatelessWidget {
               ),
               trailing: const Icon(Icons.arrow_forward),
               onTap: () {
-                // Navegar a la página de detalles
+      
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -61,10 +61,10 @@ class ShopWidget extends StatelessWidget {
       ),
         floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Acción para agregar una publicación
+       
         },
         backgroundColor: Colors.amber,
-        //backgroundColor: const Color.fromARGB(255, 234, 227, 10),
+
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

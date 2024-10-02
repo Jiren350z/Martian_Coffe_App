@@ -131,7 +131,7 @@ class PostListWidget extends StatelessWidget {
                           rating = 0; 
                         }
 
-                        // Devuelve el icono correspondiente
+      
                         return Icon(
                           starIndex < rating ? Icons.star : Icons.star_border,
                           color:  Colors.amber,
@@ -141,7 +141,7 @@ class PostListWidget extends StatelessWidget {
                     ),
  
                   const SizedBox(height: 10),
-                  //botones de interaccion (favoritos, comentarios, compartir)
+
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -160,7 +160,7 @@ class PostListWidget extends StatelessWidget {
 
                   ),
                   const SizedBox(height: 15),
-                  //barra para añadir comentarios
+
                       Row(
                         children: [
                           Expanded(
@@ -186,7 +186,7 @@ class PostListWidget extends StatelessWidget {
         onPressed: () {
 
         },
-        backgroundColor:// const Color.fromARGB(255, 234, 227, 10),
+        backgroundColor:
         Colors.amber,
         child: const Icon(Icons.add),
       ),

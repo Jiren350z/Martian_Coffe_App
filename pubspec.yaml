@@ -87,6 +87,12 @@ flutter:
     - assets/images/cafe_arabico.jpg
     - assets/images/cafe_robusta.jpg
     - assets/images/leche_de_almendras.jpg
+    - assets/images/azucar_de_cana.jpg
+    - assets/images/canela_polvo.jpg
+    - assets/images/aeropress.jpg
+    - assets/images/v60.jpg
+    - assets/images/espresso.jpg
+    - assets/images/french_press.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

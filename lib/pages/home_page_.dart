@@ -27,25 +27,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
-  UserNew userd = UserNew(
-    name: 'Renji',
-    email: 'renjivj7@gmail.com',
-    biography: "Necesito Cafe",
-    typeOfExperienceWithCoffee: "Consumidor",
-    age: 21,
-    genre: "Masculino",
-    bornData: DateTime(2003,3,16),
-    createdRecipe: [],
-    purshasedProducts: [],
-    favoritesRecipes: [],
-    favoritedPreparationMetods: [],
-    favoritesProducts: [],
-    favoritesIngredient: [],
-    history: [],
-    country: "Chile",
-    region: "Metropolitana",
-    city: "Santiago",
-    profileURL: 'assets/images/gato_mewing.jpg',
+  
+    UserNew userd = UserNew(
+      name: 'Renji',
+      email: 'renjivj7@gmail.com',
+      biography: "Necesito Cafe",
+      typeOfExperienceWithCoffee: "Consumidor",
+      age: 21,
+      genre: "Masculino",
+      bornData: DateTime(2003,3,16),
+      createdRecipe: [],
+      purshasedProducts: [],
+      favoritesRecipes: [],
+      favoritedPreparationMetods: [],
+      favoritesProducts: [],
+      favoritesIngredient: [],
+      history: [],
+      country: "Chile",
+      region: "Metropolitana",
+      city: "Santiago",
+      profileURL: 'assets/images/gato_mewing.jpg',
     );
   
     IngredientNew ingredient1 = IngredientNew(
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         value: 15.0,
         ubication: 'Etiopía',
         rating: 4.5,
-        imageOfIngredient: 'cafe_arabico.jpg',
+        imageOfIngredient: 'assets/images/cafe_arabico.jpg',
     );
 
     IngredientNew ingredient2 = IngredientNew(
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         value: 12.0,
         ubication: 'Vietnam',
         rating: 4.0,
-        imageOfIngredient: 'cafe_robusta.jpg',
+        imageOfIngredient: 'assets/images/cafe_robusta.jpg',
     );
 
     IngredientNew ingredient3 = IngredientNew(
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
         value: 8.0,
         ubication: 'California, USA',
         rating: 3.5,
-        imageOfIngredient: 'leche_de_almendras.jpg',
+        imageOfIngredient: 'assets/images/leche_de_almendras.jpg',
     );
 
     IngredientNew ingredient4 = IngredientNew(
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         value: 3.0,
         ubication: 'Brasil',
         rating: 4.7,
-        imageOfIngredient: 'azucar_cana.jpg',
+        imageOfIngredient: 'assets/images/azucar_de_cana.jpg',
     );
 
     IngredientNew ingredient5 = IngredientNew(
@@ -85,10 +86,309 @@ class _MyHomePageState extends State<MyHomePage> {
         value: 5.0,
         ubication: 'Sri Lanka',
         rating: 4.8,
-        imageOfIngredient: 'canela_polvo.jpg',
+        imageOfIngredient: 'assets/images/canela_polvo.jpg',
     );
 
+    PreparationMetodNew preparationMetod = PreparationMetodNew(
+          name: 'Método Chemex',
+          description: 'Un método de preparación suave y claro que resalta las notas frutales.',
+          preparationTime: 4,
+          waterTemperature: 92.0,
+          waterAmount: 500.0,
+          coffeeAmount: 30.0,
+          grindingThickness: 'Medio grueso',
+          equipment: ['Chemex', 'Filtros de papel', 'Cafetera'],
+          flavorNotes: ['Afrutado', 'Cítrico'],
+          dificulty: 'Medio',
+          filterType: 'Papel',
+          recomendations: 'Utiliza agua filtrada para un mejor sabor.',
+          rating: 4.3,
+          imageOfMetod: 'assets/images/chemex.jpg',
+        );
+      
+    PreparationMetodNew preparationMetod1 = PreparationMetodNew(
+          name: 'Método Aeropress',
+          description: 'Un método rápido y versátil que permite ajustar la intensidad del café a gusto.',
+          preparationTime: 3,
+          waterTemperature: 85.0,
+          waterAmount: 250.0,
+          coffeeAmount: 18.0,
+          grindingThickness: 'Fino',
+          equipment: ['Aeropress', 'Filtro de papel', 'Agua caliente'],
+          flavorNotes: ['Dulce', 'Suave'],
+          dificulty: 'Bajo',
+          filterType: 'Papel',
+          recomendations: 'Experimenta con diferentes tiempos de inmersión para ajustar el sabor.',
+          rating: 4.7,
+          imageOfMetod: 'assets/images/aeropress.jpg',
+      );
 
+    PreparationMetodNew preparationMetod2 = PreparationMetodNew(
+          name: 'Método V60',
+          description: 'Método de goteo con filtro de papel que resalta la claridad y pureza del sabor.',
+          preparationTime: 3,
+          waterTemperature: 90.0,
+          waterAmount: 300.0,
+          coffeeAmount: 18.0,
+          grindingThickness: 'Medio-fino',
+          equipment: ['V60', 'Filtros de papel', 'Agua caliente'],
+          flavorNotes: ['Floral', 'Cítrico'],
+          dificulty: 'Medio',
+          filterType: 'Papel',
+          recomendations: 'Vierte el agua lentamente en movimientos circulares.',
+          rating: 4.6,
+          imageOfMetod: 'assets/images/v60.jpg',
+      );
+
+    PreparationMetodNew preparationMetod3 = PreparationMetodNew(
+          name: 'Método Espresso',
+          description: 'Un método de extracción rápida y concentrada que produce un café intenso.',
+          preparationTime: 1,
+          waterTemperature: 93.0,
+          waterAmount: 30.0,
+          coffeeAmount: 18.0,
+          grindingThickness: 'Muy fino',
+          equipment: ['Máquina de espresso', 'Agua caliente'],
+          flavorNotes: ['Intenso', 'Chocolate'],
+          dificulty: 'Alto',
+          filterType: 'Metal',
+          recomendations: 'Asegúrate de usar un buen prensado para una extracción uniforme.',
+          rating: 4.8,
+          imageOfMetod: 'assets/images/espresso.jpg',
+      );
+
+    PreparationMetodNew preparationMetod4 = PreparationMetodNew(
+          name: 'Método French Press',
+          description: 'Un método de inmersión que produce un café con cuerpo completo.',
+          preparationTime: 4,
+          waterTemperature: 96.0,
+          waterAmount: 500.0,
+          coffeeAmount: 30.0,
+          grindingThickness: 'Grueso',
+          equipment: ['French Press', 'Agua caliente'],
+          flavorNotes: ['Cuerpo completo', 'Nuez'],
+          dificulty: 'Bajo',
+          filterType: 'Metal',
+          recomendations: 'Deja reposar el café durante 4 minutos antes de presionar el émbolo.',
+          rating: 4.5,
+          imageOfMetod: 'assets/images/french_press.jpg',
+      );  
+
+    RecipeNew newRecipe = RecipeNew(
+        name: 'Café Marcianeke',
+        ingredients: [
+          IngredientNew(
+            type: 'Agua Caliente',
+            value: 1,
+            ubication: "mi casita",
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
+          IngredientNew(
+            type: 'Café en polvo',
+            value: 2,
+            ubication: "tucasa",
+            rating: 0.0,
+            imageOfIngredient: '',
+            ),
+        ],
+        utensils: ['Cafetera', 'Cuchara'],
+        preparation: "",
+        userCreator: UserNew(
+          name: 'John Doe',
+          email: "imprimansuenio@gmail.com",
+          biography: "Amo el cafe",
+          typeOfExperienceWithCoffee: "Consumidor",
+          age: 24,
+          genre: "Masculino",
+          bornData: DateTime(2000,5,6),
+          createdRecipe: [],
+          purshasedProducts: [],
+          favoritesRecipes: [],
+          favoritedPreparationMetods: [],
+          favoritesProducts: [],
+          favoritesIngredient: [],
+          history: [],
+          country: "EE.UU",
+          region: "Ohio",
+          city: "Colombus",
+          profileURL: '',
+        ),
+        imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
+        rating: 4.5, // Valoración entre 0.0 y 5.0
+      );
+
+    RecipeNew newRecipe2 = RecipeNew(
+        name: 'Café Chocolate',
+        ingredients: [
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1,
+          ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        ],
+          utensils: ['Cafetera', 'Cuchara'],
+          preparation: "",
+          userCreator: UserNew(
+          name: 'Adam Sokravotz',
+          email: "im_rock@gmail.com",
+          biography: "Dame Cafe",
+          typeOfExperienceWithCoffee: "Barista",
+          age: 20,
+          genre: "Masculino",
+          bornData: DateTime(2004,7,3),
+          createdRecipe: [],
+          purshasedProducts: [],
+          favoritesRecipes: [],
+          favoritedPreparationMetods: [],
+          favoritesProducts: [],
+          favoritesIngredient: [],
+          history: [],
+          country: "URSS",
+          region: "",
+          city: "Moscu",
+          profileURL: '',
+          ),
+        imageUrl: 'assets/images/caffe_chocolate.jpg',
+        rating: 3.0,  
+     );
+      
+    RecipeNew newRecipe3 = RecipeNew(
+        name: 'Café Latte',
+        ingredients: [
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1,
+          ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        ],
+          utensils: ['Cafetera', 'Cuchara'],
+          preparation: "",
+          userCreator: UserNew(
+          name: 'Gine',
+          email: "gine23@gmail.com",
+          biography: "Reviveme Kakaroto",
+          typeOfExperienceWithCoffee: "Consumidor/a",
+          age: 21,
+          genre: "Femenino",
+          bornData: DateTime(2003,3,14),
+          createdRecipe: [],
+          purshasedProducts: [],
+          favoritesRecipes: [],
+          favoritedPreparationMetods: [],
+          favoritesProducts: [],
+          favoritesIngredient: [],
+          history: [],
+          country: "Planeta Saiyan",
+          region: "",
+          city: "",
+          profileURL: '',
+          ),
+        imageUrl: 'assets/images/caffe_latte.jpg',
+        rating: 4.0,  
+     );
+      
+    RecipeNew newRecipe4 = RecipeNew(
+        name: 'Café Mokka',
+        ingredients: [
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1, ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',),
+        ],
+          utensils: ['Cafetera', 'Cuchara'],
+          preparation: "",
+          userCreator: UserNew(
+          name: 'Dante Sparda',
+          email: "dantesparda@gmail.com",
+          biography: "Dame dinero que estoy endeudado :C",
+          typeOfExperienceWithCoffee: "Barista Profesional",
+          age: 38,
+          genre: "Masculino",
+          bornData: DateTime(1986,10,8),
+          createdRecipe: [],
+          purshasedProducts: [],
+          favoritesRecipes: [],
+          favoritedPreparationMetods: [],
+          favoritesProducts: [],
+          favoritesIngredient: [],
+          history: [],
+          country: "EEUU",
+          region: "New York",
+          city: "Brooklyn",
+          profileURL: '',
+          ),
+        imageUrl: 'assets/images/caffe_mokka.jpg',
+        rating: 4.5,    
+     );
+      
+    RecipeNew newRecipe5 = RecipeNew(
+        name: 'Café Capuccino',
+        ingredients: [
+        IngredientNew(
+          type: 'Agua hirviendo',
+          value: 1, ubication: "micasa",
+          rating: 0.0,
+          imageOfIngredient: '',
+          ),
+        IngredientNew(
+          type: 'Sobre de cafe puro',
+          value: 2,
+          ubication: "tucasa",
+          rating: 0.0,
+          imageOfIngredient: '',),
+        ],
+          utensils: ['Cafetera', 'Cuchara'],
+          preparation: "",
+          userCreator: UserNew(
+          name: 'Vergil Sparda',
+          email: "vergilsparda@gmail.com",
+          biography: "Necesito mas cafe, dame mas cafe",
+          typeOfExperienceWithCoffee: "Productor de cafeteria",
+          age: 38,
+          genre: "Masculino",
+          bornData: DateTime(1986,10,8),
+          createdRecipe: [],
+          purshasedProducts: [],
+          favoritesRecipes: [],
+          favoritedPreparationMetods: [],
+          favoritesProducts: [],
+          favoritesIngredient: [],
+          history: [],
+          country: "EEUU",
+          region: "California",
+          city: "Los Angeles",
+          profileURL: '',
+          ),
+        imageUrl: 'assets/images/caffe_capuccino.jpg',
+        rating: 4.8,  
+     );       
+    
 
   // publicaciones de ejemplo
     final postd = [
@@ -180,7 +480,7 @@ class _MyHomePageState extends State<MyHomePage> {
           imageOfMetod: '',
         ),
         image: 'assets/images/caffe_marciano.jpg',
-        statement: 'Delicioso café hecho con amor!',
+        statement: 'Buenisimo el cafe',
         publicDate: DateTime.now(),
       ),
       PostNew(
@@ -333,7 +633,7 @@ class _MyHomePageState extends State<MyHomePage> {
           rating: 4.3,
           imageOfMetod: 'assets/images/chemex.jpg',
         ),
-        image: 'assets/images/chemex.jpg', // Ruta de la imagen
+        image: 'assets/images/chemex.jpg', 
         statement: 'Método Chemex, perfecto para resaltar los sabores afrutados.',
         publicDate: DateTime.now(),
       ),
@@ -389,7 +689,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         ingredient: IngredientNew(
           type: 'Granos de café Arábica',
-          value: 500, // gramos
+          value: 500, 
           ubication: 'Colombia',
           rating: 4.5,
           imageOfIngredient: 'assets/images/cafe_arabico.jpg',
@@ -410,7 +710,7 @@ class _MyHomePageState extends State<MyHomePage> {
           rating: 0.0,
           imageOfMetod: '',
         ),
-        image: 'assets/images/cafe_arabico.jpg', // Ruta de la imagen
+        image: 'assets/images/cafe_arabico.jpg', 
         statement: 'Los granos de café Arábica tienen un sabor dulce y suave.',
         publicDate: DateTime.now(),
       ),
@@ -423,238 +723,7 @@ class _MyHomePageState extends State<MyHomePage> {
       
       
     
-      PreparationMetodNew preparationMetod = PreparationMetodNew(
-          name: 'Método Chemex',
-          description: 'Un método de preparación suave y claro que resalta las notas frutales.',
-          preparationTime: 4,
-          waterTemperature: 92.0,
-          waterAmount: 500.0,
-          coffeeAmount: 30.0,
-          grindingThickness: 'Medio grueso',
-          equipment: ['Chemex', 'Filtros de papel', 'Cafetera'],
-          flavorNotes: ['Afrutado', 'Cítrico'],
-          dificulty: 'Medio',
-          filterType: 'Papel',
-          recomendations: 'Utiliza agua filtrada para un mejor sabor.',
-          rating: 4.3,
-          imageOfMetod: 'assets/images/chemex.jpg',
-        );  
 
-      RecipeNew newRecipe = RecipeNew(
-        name: 'Café Marcianeke',
-        ingredients: [
-          IngredientNew(
-            type: 'Agua Caliente',
-            value: 1,
-            ubication: "mi casita",
-            rating: 0.0,
-            imageOfIngredient: '',
-            ),
-          IngredientNew(
-            type: 'Café en polvo',
-            value: 2,
-            ubication: "tucasa",
-            rating: 0.0,
-            imageOfIngredient: '',
-            ),
-        ],
-        utensils: ['Cafetera', 'Cuchara'],
-        preparation: "",
-        userCreator: UserNew(
-          name: 'John Doe',
-          email: "imprimansuenio@gmail.com",
-          biography: "Amo el cafe",
-          typeOfExperienceWithCoffee: "Consumidor",
-          age: 24,
-          genre: "Masculino",
-          bornData: DateTime(2000,5,6),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "EE.UU",
-          region: "Ohio",
-          city: "Colombus",
-          profileURL: '',
-        ),
-        imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
-        rating: 4.5, // Valoración entre 0.0 y 5.0
-      );
-
-      RecipeNew newRecipe2 = RecipeNew(
-        name: 'Café Chocolate',
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1,
-          ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        ],
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          userCreator: UserNew(
-          name: 'Adam Sokravotz',
-          email: "im_rock@gmail.com",
-          biography: "Dame Cafe",
-          typeOfExperienceWithCoffee: "Barista",
-          age: 20,
-          genre: "Masculino",
-          bornData: DateTime(2004,7,3),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "URSS",
-          region: "",
-          city: "Moscu",
-          profileURL: '',
-          ),
-        imageUrl: 'assets/images/caffe_chocolate.jpg',
-        rating: 3.0,  
-     );
-      
-      RecipeNew newRecipe3 = RecipeNew(
-        name: 'Café Latte',
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1,
-          ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        ],
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          userCreator: UserNew(
-          name: 'Gine',
-          email: "gine23@gmail.com",
-          biography: "Reviveme Kakaroto",
-          typeOfExperienceWithCoffee: "Consumidor/a",
-          age: 21,
-          genre: "Femenino",
-          bornData: DateTime(2003,3,14),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "Planeta Saiyan",
-          region: "",
-          city: "",
-          profileURL: '',
-          ),
-        imageUrl: 'assets/images/caffe_latte.jpg',
-        rating: 4.0,  
-     );
-      
-      RecipeNew newRecipe4 = RecipeNew(
-        name: 'Café Mokka',
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1, ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',),
-        ],
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          userCreator: UserNew(
-          name: 'Dante Sparda',
-          email: "dantesparda@gmail.com",
-          biography: "Dame dinero que estoy endeudado :C",
-          typeOfExperienceWithCoffee: "Barista Profesional",
-          age: 38,
-          genre: "Masculino",
-          bornData: DateTime(1986,10,8),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "EEUU",
-          region: "New York",
-          city: "Brooklyn",
-          profileURL: '',
-          ),
-        imageUrl: 'assets/images/caffe_mokka.jpg',
-        rating: 4.5,    
-     );
-      
-      RecipeNew newRecipe5 = RecipeNew(
-        name: 'Café Capuccino',
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1, ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',),
-        ],
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          userCreator: UserNew(
-          name: 'Vergil Sparda',
-          email: "vergilsparda@gmail.com",
-          biography: "Necesito mas cafe, dame mas cafe",
-          typeOfExperienceWithCoffee: "Productor de cafeteria",
-          age: 38,
-          genre: "Masculino",
-          bornData: DateTime(1986,10,8),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "EEUU",
-          region: "California",
-          city: "Los Angeles",
-          profileURL: '',
-          ),
-        imageUrl: 'assets/images/caffe_capuccino.jpg',
-        rating: 4.8,  
-     );       
-    
       ProductNew productt = ProductNew(
       name: 'Najjar Coffee con Cardamom 200g',
       id: 022644006361,
@@ -852,8 +921,6 @@ class _MyHomePageState extends State<MyHomePage> {
       userd.favoritesRecipes.add(newRecipe);
       userd.favoritesRecipes.add(newRecipe2);
       userd.favoritesRecipes.add(newRecipe3);
-      userd.favoritesRecipes.add(newRecipe4);
-      userd.favoritesRecipes.add(newRecipe5);
 
       userd.favoritesProducts.add(productt);
       userd.favoritesProducts.add(productt2);
@@ -864,6 +931,8 @@ class _MyHomePageState extends State<MyHomePage> {
       userd.favoritesIngredient.add(ingredient3);
 
       userd.favoritedPreparationMetods.add(preparationMetod);
+      userd.favoritedPreparationMetods.add(preparationMetod1);
+      userd.favoritedPreparationMetods.add(preparationMetod2);
 
   }
    //metodo para cambiar entre las pantallas

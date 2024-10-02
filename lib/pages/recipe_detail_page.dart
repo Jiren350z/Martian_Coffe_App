@@ -76,7 +76,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.recipe.name,
-                        //category: 'Receta',
+
                       ),
                     ),
                   );

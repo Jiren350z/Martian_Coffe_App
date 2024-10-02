@@ -76,7 +76,7 @@ class ProductWidgetState extends State<ProductWidget> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.product.name,
-                        //category: 'Producto', // Pasa la categoría adecuada
+  
                       ),
                     ),
                   );
@@ -97,16 +97,16 @@ class ProductWidgetState extends State<ProductWidget> {
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 10),
-                //precio del producto
+   
                 Text('Precio: \$${widget.product.price.toStringAsFixed(2)}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                //stock del producto
+ 
                 Text('Stock: ${widget.product.stock.toStringAsFixed(2)}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                //contacto
+       
                 Text('Contacto: ${widget.product.contact}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
-                //nombre del vendedor
+        
                 Text('Vendedor: ${widget.product.userCreator.name}', style: const TextStyle(fontSize: 16)),
                 
                 const SizedBox(height: 10.0),

@@ -87,7 +87,6 @@ class IngredientWidgetState extends State<IngredientWidget> {
                       builder: (context) => RatingPage(
                         initialRating: userRating,
                         recipeName: widget.ingredient.type,
-                        //category: 'Ingrediente', // Asegúrate de pasar la categoría
                       ),
                     ),
                   );
@@ -100,7 +99,7 @@ class IngredientWidgetState extends State<IngredientWidget> {
                 },
                 child: const Text('Calificar'),
               ),              
-              // Información del ingrediente
+
               const Text(
                 'Detalles del Ingrediente:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -147,7 +146,7 @@ class IngredientWidgetState extends State<IngredientWidget> {
                   suffixIcon: IconButton(
                     icon: Icon(Icons.send, color: Theme.of(context).primaryColor),
                     onPressed: () {
-                      // Acción al enviar comentario
+
                     },
                   ),
                 ),
