@@ -7,7 +7,7 @@ https://github.com/Jiren350z/Martian_Coffe_App/tree/main
 nota: dentro de lib estan los widgets y dentro de models estan las clases
 
 link a video del proyecto: 
-https://www.youtube.com/watch?v=zCVez0JsAPs&ab_channel=DiegoMorales
+https://www.youtube.com/watch?v=zF5_wSwvJE8&ab_channel=DiegoMorales
 
 
 
