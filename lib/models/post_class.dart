@@ -41,30 +41,30 @@ class PostNew {
 
 
   void blockUser() {
-    // Implementar lógica para bloquear usuario
+
   }
 
   void reportPublication() {
-    // Implementar lógica para reportar publicación
+
   }
 
   void cancel() {
-    // Implementar lógica para cancelar la acción
+
   }
 
   void public() {
-    // Implementar lógica para publicar
+
   }
 
   void coment() {
-    // Implementar lógica para comentar
+    
   }
 
   void share() {
-    // Implementar lógica para compartir
+
   }
 
   void addToFavorites() {
-    // Implementar lógica para añadir a favoritos
+
   }
 }

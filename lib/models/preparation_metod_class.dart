@@ -1,7 +1,6 @@
 
 
-class PreparationMetodNew
-{
+class PreparationMetodNew{
   String name;
   String description;
   int preparationTime; 
@@ -48,7 +47,7 @@ class PreparationMetodNew
    
   }
 
-  void adjustGrindingThickness(String nuevoGrosor) {
+  void adjustGrindingThickness(String newThickness) {
     
   }
 

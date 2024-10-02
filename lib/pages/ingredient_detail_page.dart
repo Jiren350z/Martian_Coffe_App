@@ -113,7 +113,7 @@ class IngredientWidgetState extends State<IngredientWidget> {
               const SizedBox(height: 10),
               
               Text(
-                'Valor: ${widget.ingredient.value.toStringAsFixed(2)} unidades',
+                'Precio: ${widget.ingredient.value.toStringAsFixed(2)}',
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
@@ -160,55 +160,3 @@ class IngredientWidgetState extends State<IngredientWidget> {
   }
 }
 
-/*
-class IngredientWidget extends StatelessWidget {
-  final IngredientNew ingredient;
-
-  const IngredientWidget({super.key,required this.ingredient});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detalles del Ingrediente'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Tipo: ${ingredient.type}',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-
-            Text(
-              'Valor: ${ingredient.value.toStringAsFixed(2)}', // Convertimos el double a un string con 2 decimales
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 10),
-
-            Text(
-              'Ubicación: ${ingredient.ubication}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () {
-                ingredient.lookUbication();
-
-              },
-              child: const Text('Buscar Ubicación'),
-            ),
-            const SizedBox(height: 20),
-
- 
-          ],
-        ),
-      ),
-    );
-  }
-}
-*/

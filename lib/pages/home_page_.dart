@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-//import 'package:martian_cofee_app/models/coffee_mark_class.dart';
 import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/shop_class.dart';
 import 'package:martian_cofee_app/pages/shop_.dart';
-//import 'package:martian_cofee_app/pages/recipe_.dart';
-//import 'package:martian_cofee_app/pages/ingredient_.dart';
 import 'package:martian_cofee_app/pages/users_.dart';
-//import 'package:martian_cofee_app/pages/product_detail_page.dart';
 import 'package:martian_cofee_app/pages/post_.dart';
 import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/models/users_class.dart';
 import 'package:martian_cofee_app/models/product_class.dart';
-//import 'package:intl/intl.dart';
 import 'package:martian_cofee_app/pages/browser_.dart';
-import 'package:martian_cofee_app/models/browser_class.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -27,19 +22,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Lista de recetas
-  //List<RecipeNew> recipes = [];
-  //List<IngredientNew> ingredients = [];
-  //List<ProductNew> products = [];
-  //List<UserNew> users = [];
-  //List<PreparationMetodNew> metods = [];
-  //List<CoffeeMarkNew> marks = [];
-  List<PostNew> posts = [];
-  
-  //final List<SearchItemsDelegate> allItems = [];
-  //List<ShopNew> shop = [];
+
   late ShopNew myShop;
-  final List<SearchableItem> allItems = []; 
+
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
   UserNew userd = UserNew(
@@ -63,6 +48,45 @@ class _MyHomePageState extends State<MyHomePage> {
     profileURL: 'assets/images/gato_mewing.jpg',
     );
   
+    IngredientNew ingredient1 = IngredientNew(
+        type: 'Café Arábica',
+        value: 15.0,
+        ubication: 'Etiopía',
+        rating: 4.5,
+        imageOfIngredient: 'cafe_arabico.jpg',
+    );
+
+    IngredientNew ingredient2 = IngredientNew(
+        type: 'Café Robusta',
+        value: 12.0,
+        ubication: 'Vietnam',
+        rating: 4.0,
+        imageOfIngredient: 'cafe_robusta.jpg',
+    );
+
+    IngredientNew ingredient3 = IngredientNew(
+        type: 'Leche de Almendras',
+        value: 8.0,
+        ubication: 'California, USA',
+        rating: 3.5,
+        imageOfIngredient: 'leche_de_almendras.jpg',
+    );
+
+    IngredientNew ingredient4 = IngredientNew(
+        type: 'Azúcar de Caña',
+        value: 3.0,
+        ubication: 'Brasil',
+        rating: 4.7,
+        imageOfIngredient: 'azucar_cana.jpg',
+    );
+
+    IngredientNew ingredient5 = IngredientNew(
+        type: 'Canela en Polvo',
+        value: 5.0,
+        ubication: 'Sri Lanka',
+        rating: 4.8,
+        imageOfIngredient: 'canela_polvo.jpg',
+    );
 
 
 
@@ -398,14 +422,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
       
       
-      IngredientNew ingredientt = IngredientNew(
-        type: 'ola',
-        value: 0.0,
-        ubication: 'mi casa',
-        rating: 2.0,
-        imageOfIngredient: 'cafe_arabico.jpg',
-        );
-
+    
       PreparationMetodNew preparationMetod = PreparationMetodNew(
           name: 'Método Chemex',
           description: 'Un método de preparación suave y claro que resalta las notas frutales.',
@@ -831,13 +848,7 @@ class _MyHomePageState extends State<MyHomePage> {
       payMetods: ['Visa', 'MasterCard', 'Paypal'],
     );
 
-      /*
-      recipes.add(newRecipe);
-      recipes.add(newRecipe2);
-      recipes.add(newRecipe3);
-      recipes.add(newRecipe4);
-      recipes.add(newRecipe5);
-      */
+
       userd.favoritesRecipes.add(newRecipe);
       userd.favoritesRecipes.add(newRecipe2);
       userd.favoritesRecipes.add(newRecipe3);
@@ -848,12 +859,14 @@ class _MyHomePageState extends State<MyHomePage> {
       userd.favoritesProducts.add(productt2);
       userd.favoritesProducts.add(productt3);
 
-      userd.favoritesIngredient.add(ingredientt);
+      userd.favoritesIngredient.add(ingredient1);
+      userd.favoritesIngredient.add(ingredient2);
+      userd.favoritesIngredient.add(ingredient3);
 
       userd.favoritedPreparationMetods.add(preparationMetod);
 
   }
-   // Método para cambiar entre las pantallas
+   //metodo para cambiar entre las pantallas
   
   void _onItemTapped(int index) {
     setState(() {
@@ -861,25 +874,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-   // Método para retornar la pantalla según el índice seleccionado
-  // Pantallas correspondientes a cada selección de la barra de navegación
+   //metodo para retornar la pantalla segun el indice seleccionado
+  //pantallas correspondientes a cada seleccion de la barra de navegacion
   Widget _getSelectedScreen() {
     switch (_selectedIndex) {
       case 0:
-        //return const SearchScreen();
-        //return ShopWidget(shop: myShop);
         return PostListWidget(posts: postd); 
 
       case 1:
           return ShopWidget(shop: myShop); 
-          //return PostListWidget(posts: postd);
+
       case 2:
-        
-        //return PostListWidget(posts: postd);
         return const SearchScreen();
    
       case 3:
         return UserScreen(user: userd);
+
       default:
         return const Center(child: Text('Selecciona una opción en la barra de navegación'));
     }
@@ -892,7 +902,8 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: _getSelectedScreen(), // Pantalla seleccionada basada en el índice
+      //pantalla seleccionada basada en el indice
+      body: _getSelectedScreen(), 
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
