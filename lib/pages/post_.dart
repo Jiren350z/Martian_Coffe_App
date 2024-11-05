@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/models/post_class.dart'; 
+import 'package:martian_cofee_app/models/post_class.dart';
+import 'package:martian_cofee_app/pages/add_recipe.dart'; 
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 import 'package:martian_cofee_app/pages/ingredient_detail_page.dart';
 import 'package:martian_cofee_app/pages/preparation_metod__details_.dart';
@@ -184,7 +185,12 @@ class PostListWidget extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
+             Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RecipeCreationScreen (),
+                  ),
+             );
         },
         backgroundColor:
         Colors.amber,
