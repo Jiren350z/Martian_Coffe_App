@@ -33,6 +33,44 @@ class PreparationMetodNew{
     required this.imageOfMetod,
   });
 
+   Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'description': description,
+      'preparationTime': preparationTime,
+      'waterTemperature': waterTemperature,
+      'waterAmount': waterAmount,
+      'coffeeAmount': coffeeAmount,
+      'grindingThickness': grindingThickness,
+      'equipment': equipment.join(','), // Serialización de lista
+      'flavorNotes': flavorNotes.join(','), // Serialización de lista
+      'dificulty': dificulty,
+      'filterType': filterType,
+      'recomendations': recomendations,
+      'rating': rating,
+      'imageOfMetod': imageOfMetod,
+    };
+  }
+
+  static PreparationMetodNew fromMap(Map<String, dynamic> map) {
+    return PreparationMetodNew(
+      name: map['name'],
+      description: map['description'],
+      preparationTime: map['preparationTime'],
+      waterTemperature: map['waterTemperature'],
+      waterAmount: map['waterAmount'],
+      coffeeAmount: map['coffeeAmount'],
+      grindingThickness: map['grindingThickness'],
+      equipment: map['equipment'].split(','), // Deserialización
+      flavorNotes: map['flavorNotes'].split(','), // Deserialización
+      dificulty: map['dificulty'],
+      filterType: map['filterType'],
+      recomendations: map['recomendations'],
+      rating: map['rating'],
+      imageOfMetod: map['imageOfMetod'],
+    );
+  }
+
   void prepare() {
     
   }

@@ -23,6 +23,36 @@ class RecipeNew {
     required this.registrationDate, 
   });
 
+  // Convert RecipeNew to Map
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'ingredients': ingredients.map((ingredient) => ingredient.toMap()).toList(),
+      'utensils': utensils,
+      'preparation': preparation,
+      'userCreator': userCreator.toMap(),
+      'imageUrl': imageUrl,
+      'rating': rating,
+      'registrationDate': registrationDate.toIso8601String(),
+    };
+  }
+
+  // Create RecipeNew from Map
+  factory RecipeNew.fromMap(Map<String, dynamic> map) {
+    return RecipeNew(
+      name: map['name'],
+      ingredients: (map['ingredients'] as List)
+          .map((ingredient) => IngredientNew.fromMap(ingredient))
+          .toList(),
+      utensils: List<String>.from(map['utensils']),
+      preparation: map['preparation'],
+      userCreator: UserNew.fromMap(map['userCreator']),
+      imageUrl: map['imageUrl'],
+      rating: map['rating'],
+      registrationDate: DateTime.parse(map['registrationDate']),
+    );
+  }
+
   void save() {
     
   }

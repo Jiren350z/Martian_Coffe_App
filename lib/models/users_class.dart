@@ -44,6 +44,67 @@ class UserNew {
     required this.profileURL, required registrationDate,
   });
 
+  // Convert UserNew to Map
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'biography': biography,
+      'age': age,
+      'genre': genre,
+      'bornData': bornData.toIso8601String(),
+      'typeOfExperienceWithCoffee': typeOfExperienceWithCoffee,
+      'createdRecipe': createdRecipe.map((recipe) => recipe.toMap()).toList(),
+      'purchasedProducts': purshasedProducts.map((product) => product.toMap()).toList(),
+      'favoritesRecipes': favoritesRecipes.map((recipe) => recipe.toMap()).toList(),
+      'favoritedPreparationMethods': favoritedPreparationMetods.map((method) => method.toMap()).toList(),
+      'favoritesProducts': favoritesProducts.map((product) => product.toMap()).toList(),
+      'favoritesIngredient': favoritesIngredient.map((ingredient) => ingredient.toMap()).toList(),
+      'history': history,
+      'country': country,
+      'region': region,
+      'city': city,
+      'profileURL': profileURL,
+    };
+  }
+
+  // Create UserNew from Map
+  factory UserNew.fromMap(Map<String, dynamic> map) {
+    return UserNew(
+      name: map['name'],
+      email: map['email'],
+      biography: map['biography'],
+      age: map['age'],
+      genre: map['genre'],
+      bornData: DateTime.parse(map['bornData']),
+      typeOfExperienceWithCoffee: map['typeOfExperienceWithCoffee'],
+      createdRecipe: (map['createdRecipe'] as List)
+          .map((recipe) => RecipeNew.fromMap(recipe))
+          .toList(),
+      purshasedProducts: (map['purchasedProducts'] as List)
+          .map((product) => ProductNew.fromMap(product))
+          .toList(),
+      favoritesRecipes: (map['favoritesRecipes'] as List)
+          .map((recipe) => RecipeNew.fromMap(recipe))
+          .toList(),
+      favoritedPreparationMetods: (map['favoritedPreparationMethods'] as List)
+          .map((method) => PreparationMetodNew.fromMap(method))
+          .toList(),
+      favoritesProducts: (map['favoritesProducts'] as List)
+          .map((product) => ProductNew.fromMap(product))
+          .toList(),
+      favoritesIngredient: (map['favoritesIngredient'] as List)
+          .map((ingredient) => IngredientNew.fromMap(ingredient))
+          .toList(),
+      history: List<String>.from(map['history']),
+      country: map['country'],
+      region: map['region'],
+      city: map['city'],
+      profileURL: map['profileURL'],
+      registrationDate: DateTime.parse(map['registrationDate'])
+    );
+  }
+
   void rateRecipe(RecipeNew recipe, int calification) {
     
   }
