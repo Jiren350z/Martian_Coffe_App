@@ -2,11 +2,11 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 import 'package:martian_cofee_app/models/ingredient_class.dart';
-import 'package:martian_cofee_app/models/post_class.dart';
+//import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/product_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
-import 'package:martian_cofee_app/models/shop_class.dart';
+//import 'package:martian_cofee_app/models/shop_class.dart';
 import 'package:martian_cofee_app/models/users_class.dart';
 
 class DatabaseHelper {
@@ -47,7 +47,8 @@ class DatabaseHelper {
         imageOfIngredient TEXT
       );
     ''');
-
+    
+    /*
     //post
     await db.execute('''
       CREATE TABLE posts (
@@ -66,6 +67,7 @@ class DatabaseHelper {
         FOREIGN KEY (preparationMethodId) REFERENCES preparation_methods(id)
       );
     ''');
+    */
 
     //metodo de preparacion
     await db.execute('''
@@ -121,6 +123,7 @@ class DatabaseHelper {
       );
     ''');
 
+    /*
     //shop
     await db.execute('''
     CREATE TABLE shops (
@@ -129,6 +132,7 @@ class DatabaseHelper {
       payMethods TEXT
     )
   ''');
+    */
 
     //producto  
     await db.execute('''
@@ -199,11 +203,21 @@ class DatabaseHelper {
     });
   }
 
+  //metodo de preparacion
   Future<int> insertPreparationMethod(PreparationMetodNew preparationMethod) async {
     final db = await database;
     return await db.insert('preparation_methods', preparationMethod.toMap());
   }
-
+ 
+  Future<List<PreparationMetodNew>> getPreparationMethods() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('preparation_methods');
+    return List.generate(maps.length, (i) {
+      return PreparationMetodNew.fromMap(maps[i]);
+    });
+  }
+  
+  /*
   //post
   Future<int> insertPost(PostNew post) async {
   final db = await database;
@@ -315,15 +329,7 @@ class DatabaseHelper {
 
   return post;
 }
-  
-  //metodo de preparacion
-  Future<List<PreparationMetodNew>> getPreparationMethods() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('preparation_methods');
-    return List.generate(maps.length, (i) {
-      return PreparationMetodNew.fromMap(maps[i]);
-    });
-  }
+  */
 
   //producto
   Future<int> insertProduct(ProductNew product) async {
@@ -446,6 +452,7 @@ Future<RecipeNew?> getRecipe(int id) async {
   return recipe;
 }
 
+  /*
   //tienda y sus productos
   Future<int> insertShop(ShopNew shop) async {
     final db = await database;
@@ -494,6 +501,7 @@ Future<RecipeNew?> getRecipe(int id) async {
     // Crea y retorna el objeto ShopNew
     return ShopNew.fromMap(shopMap.first)..products = products;
   }
+  */
 
   //usuario
   Future<int> insertUser(UserNew user) async {

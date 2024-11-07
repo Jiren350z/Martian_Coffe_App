@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/models/post_class.dart';
+//import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
-import 'package:martian_cofee_app/models/shop_class.dart';
-import 'package:martian_cofee_app/pages/shop_.dart';
+//import 'package:martian_cofee_app/models/shop_class.dart';
+//import 'package:martian_cofee_app/pages/shop_.dart';
 import 'package:martian_cofee_app/pages/users_.dart';
-import 'package:martian_cofee_app/pages/post_.dart';
+//import 'package:martian_cofee_app/pages/post_.dart';
 import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/models/users_class.dart';
 import 'package:martian_cofee_app/models/product_class.dart';
 import 'package:martian_cofee_app/pages/browser_.dart';
-
+import 'package:martian_cofee_app/pages/my_recipes.dart';
+import 'package:martian_cofee_app/pages/my_barist.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -23,7 +24,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  late ShopNew myShop;
+  //late ShopNew myShop;
 
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
@@ -401,7 +402,7 @@ class _MyHomePageState extends State<MyHomePage> {
         registrationDate: DateTime(2009,4,10),
      );       
     
-
+  /*  
   // publicaciones de ejemplo
     final postd = [
       PostNew (
@@ -740,7 +741,9 @@ class _MyHomePageState extends State<MyHomePage> {
         publicDate: DateTime.now(),
       ),
     ];   
-                            
+  */  
+
+                         
   @override
   void initState() {
   
@@ -785,7 +788,8 @@ class _MyHomePageState extends State<MyHomePage> {
       rating: 4.5
 
     );
-    
+
+      /*
       ProductNew productt2 = ProductNew(
       name: 'Cafetera Italiana 6 Tazas Greca',
       id: 7465675647,
@@ -936,22 +940,23 @@ class _MyHomePageState extends State<MyHomePage> {
       rating: 4.5
 
     ); 
-
+      */
+    /*
     // Ahora puedes crear tu tienda
     myShop = ShopNew(
       name: 'Tienda de Café Marciano',
       products: [productt, productt2, productt3, productt4, productt5],
       payMetods: ['Visa', 'MasterCard', 'Paypal'],
     );
-
+    */
 
       userd.favoritesRecipes.add(newRecipe);
       userd.favoritesRecipes.add(newRecipe2);
       userd.favoritesRecipes.add(newRecipe3);
 
       userd.favoritesProducts.add(productt);
-      userd.favoritesProducts.add(productt2);
-      userd.favoritesProducts.add(productt3);
+      //userd.favoritesProducts.add(productt2);
+      //userd.favoritesProducts.add(productt3);
 
       userd.favoritesIngredient.add(ingredient1);
       userd.favoritesIngredient.add(ingredient2);
@@ -975,10 +980,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getSelectedScreen() {
     switch (_selectedIndex) {
       case 0:
-        return PostListWidget(posts: postd); 
+        return MyRecipesWidget(recipes: userd.favoritesRecipes); 
 
       case 1:
-          return ShopWidget(shop: myShop); 
+        return MyBaristWidget(recipes: userd.favoritesRecipes); 
 
       case 2:
         return const SearchScreen();
@@ -1002,16 +1007,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _getSelectedScreen(), 
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
+          //mi barista
           BottomNavigationBarItem(
             
             icon: Icon(Icons.list),
-            label: 'Post',
+            label: 'Mis Recetas',
 
           ),
+          //mis recetas
           BottomNavigationBarItem(
 
-            icon: Icon(Icons.shopping_bag),
-            label: 'Tienda',
+            icon: Icon(Icons.coffee),
+            label: 'Mi Barista',
 
           ),
           BottomNavigationBarItem(
