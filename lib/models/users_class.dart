@@ -41,7 +41,7 @@ class UserNew {
     required this.country,
     required this.region,
     required this.city,
-    required this.profileURL,
+    required this.profileURL, required registrationDate,
   });
 
   void rateRecipe(RecipeNew recipe, int calification) {

@@ -2,13 +2,14 @@ import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/models/users_class.dart';
-
+//import 'package:martian_cofee_app/models/product_class.dart';
 class PostNew {
   UserNew userData;
   String pubType;  
   RecipeNew recipe; 
   IngredientNew ingredient; 
   PreparationMetodNew preparationMetod; 
+  //ProductNew productt;
   String image; 
   String statement;
   DateTime publicDate;
@@ -19,6 +20,7 @@ class PostNew {
     required this.recipe,
     required this.ingredient,
     required this.preparationMetod,
+    //required this.productt,
     required this.image,
     required this.statement,
     required this.publicDate,

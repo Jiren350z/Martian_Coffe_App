@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
-
+//import 'package:martian_cofee_app/pages/product_detail_page.dart';
 
 class RecipeListWidget extends StatelessWidget {
   final List<RecipeNew> recipes;
+  //final ProductWidget product;
   
-  const RecipeListWidget({super.key, required this.recipes});
+  const RecipeListWidget({super.key, required this.recipes/*, required this.product*/});
   
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class RecipeListWidget extends StatelessWidget {
         itemCount: recipes.length,
         itemBuilder: (context, index) {
           final recipe = recipes[index];
-          
+          //final productt = product;
           return Card(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             elevation: 4,
@@ -27,7 +28,7 @@ class RecipeListWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => RecipeDetailPage(recipe: recipe),
+                    builder: (context) => RecipeDetailPage(recipe: recipe /*, product: productt*/),
                   ),
                 );
               },

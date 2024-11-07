@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       region: "Metropolitana",
       city: "Santiago",
       profileURL: 'assets/images/gato_mewing.jpg',
+      registrationDate: DateTime(2009,4,10),
     );
   
     IngredientNew ingredient1 = IngredientNew(
@@ -213,9 +214,11 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "Ohio",
           city: "Colombus",
           profileURL: '',
+          registrationDate: DateTime(2009,4,10),
         ),
         imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
         rating: 4.5, // Valoración entre 0.0 y 5.0
+        registrationDate: DateTime(2009,4,10),
       );
 
     RecipeNew newRecipe2 = RecipeNew(
@@ -257,9 +260,11 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "",
           city: "Moscu",
           profileURL: '',
+          registrationDate: DateTime(2009,4,10),
           ),
         imageUrl: 'assets/images/caffe_chocolate.jpg',
         rating: 3.0,  
+        registrationDate: DateTime(2009,4,10),
      );
       
     RecipeNew newRecipe3 = RecipeNew(
@@ -301,9 +306,11 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "",
           city: "",
           profileURL: '',
+          registrationDate: DateTime(2009,4,10),
           ),
         imageUrl: 'assets/images/caffe_latte.jpg',
         rating: 4.0,  
+        registrationDate: DateTime(2009,4,10),
      );
       
     RecipeNew newRecipe4 = RecipeNew(
@@ -342,9 +349,11 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "New York",
           city: "Brooklyn",
           profileURL: '',
+          registrationDate: DateTime(2009,4,10),
           ),
         imageUrl: 'assets/images/caffe_mokka.jpg',
         rating: 4.5,    
+        registrationDate: DateTime(2009,4,10),
      );
       
     RecipeNew newRecipe5 = RecipeNew(
@@ -361,7 +370,8 @@ class _MyHomePageState extends State<MyHomePage> {
           value: 2,
           ubication: "tucasa",
           rating: 0.0,
-          imageOfIngredient: '',),
+          imageOfIngredient: '',
+          ),
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
@@ -384,9 +394,11 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "California",
           city: "Los Angeles",
           profileURL: '',
+          registrationDate: DateTime(2009,4,10),
           ),
         imageUrl: 'assets/images/caffe_capuccino.jpg',
         rating: 4.8,  
+        registrationDate: DateTime(2009,4,10),
      );       
     
 
@@ -412,6 +424,7 @@ class _MyHomePageState extends State<MyHomePage> {
               region: "",
               city: "",
               profileURL:'assets/images/alien_thing.jpg',
+              registrationDate: DateTime(2009,4,10),
           ),
         pubType: 'Receta',
         recipe: RecipeNew(
@@ -433,6 +446,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         utensils: ['Cafetera', 'Cuchara'],
         preparation: "",
+        registrationDate: DateTime(2009,4,10),
         userCreator: UserNew(
           name: 'John Doe',
           email: "imprimansuenio@gmail.com",
@@ -452,6 +466,7 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "Ohio",
           city: "Colombus",
           profileURL: '',
+          registrationDate: DateTime(2009,4,10),
         ),
         imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
         rating: 4.5, // Valoración entre 0.0 y 5.0
@@ -478,6 +493,7 @@ class _MyHomePageState extends State<MyHomePage> {
           recomendations: '',
           rating: 0.0,
           imageOfMetod: '',
+          
         ),
         image: 'assets/images/caffe_marciano.jpg',
         statement: 'Buenisimo el cafe',
@@ -503,6 +519,7 @@ class _MyHomePageState extends State<MyHomePage> {
             region: "Jalisco",
             city: "Guadalajara",
             profileURL: 'assets/images/alien_cat.jpg',
+            registrationDate: DateTime(2009,4,10),
           ),
           pubType: 'Situacion',
           recipe: RecipeNew(
@@ -529,9 +546,11 @@ class _MyHomePageState extends State<MyHomePage> {
               region: '',
               city: '',
               profileURL: '',
+              registrationDate: DateTime(2009,4,10),
             ),
             imageUrl: '',
             rating: 0.0,
+            registrationDate: DateTime(2009,4,10),
           ),
           ingredient: IngredientNew(
             type: '',
@@ -580,6 +599,7 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "Antioquia",
           city: "Medellín",
           profileURL: 'assets/images/alien_dog.jpg',
+          registrationDate: DateTime(2009,4,10),
         ),
         pubType: 'Método',
         recipe: RecipeNew(
@@ -606,9 +626,11 @@ class _MyHomePageState extends State<MyHomePage> {
             region: '',
             city: '',
             profileURL: '',
+            registrationDate: DateTime(2009,4,10),
           ),
           imageUrl: '',
           rating: 0.0,
+          registrationDate: DateTime(2009,4,10),
         ),
         ingredient: IngredientNew(
           type: '',
@@ -657,6 +679,7 @@ class _MyHomePageState extends State<MyHomePage> {
           region: "Lima",
           city: "Lima",
           profileURL: 'assets/images/alien.jpg',
+          registrationDate: DateTime(2009,4,10),
         ),
         pubType: 'Ingrediente',
         recipe: RecipeNew(
@@ -683,9 +706,11 @@ class _MyHomePageState extends State<MyHomePage> {
             region: '',
             city: '',
             profileURL: '',
+            registrationDate: DateTime(2009,4,10),
           ),
           imageUrl: '',
           rating: 0.0,
+          registrationDate: DateTime(2009,4,10),
         ),
         ingredient: IngredientNew(
           type: 'Granos de café Arábica',
@@ -721,9 +746,6 @@ class _MyHomePageState extends State<MyHomePage> {
   
     super.initState();
       
-      
-    
-
       ProductNew productt = ProductNew(
       name: 'Najjar Coffee con Cardamom 200g',
       id: 022644006361,
@@ -757,6 +779,7 @@ class _MyHomePageState extends State<MyHomePage> {
       region: "",
       city: "",
       profileURL: '',
+      registrationDate: DateTime(2009,4,10),
       ),
       imageOfProduct: 'assets/images/caffe_najjar.jpg', // Nuevo atributo para la URL de la imagen
       rating: 4.5
@@ -793,6 +816,7 @@ class _MyHomePageState extends State<MyHomePage> {
       region: "Arklay",
       city: "Racoon City",
       profileURL: '',
+      registrationDate: DateTime(2009,4,10),
       ),
       imageOfProduct: 'assets/images/cafetera_1.jpg', // Nuevo atributo para la URL de la imagen
       rating: 4.5
@@ -833,6 +857,7 @@ class _MyHomePageState extends State<MyHomePage> {
       region: "",
       city: "",
       profileURL: '',
+      registrationDate: DateTime(2009,4,10),
       ),
       imageOfProduct: 'assets/images/cafetera_2.jpg', // Nuevo atributo para la URL de la imagen
       rating: 4.5
@@ -867,6 +892,7 @@ class _MyHomePageState extends State<MyHomePage> {
       region: "Canis Cadem",
       city: "BullWorth",
       profileURL: '',
+      registrationDate: DateTime(2009,4,10),
       ),
       imageOfProduct: 'assets/images/caffe_nescafe.jpg', // Nuevo atributo para la URL de la imagen
       rating: 4.5
@@ -904,6 +930,7 @@ class _MyHomePageState extends State<MyHomePage> {
       region: "",
       city: "NorrisVille",
       profileURL: '',
+      registrationDate: DateTime(2009,4,10),
       ),
       imageOfProduct: 'assets/images/caffe_gano.jpg', // Nuevo atributo para la URL de la imagen
       rating: 4.5

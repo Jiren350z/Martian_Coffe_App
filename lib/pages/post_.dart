@@ -71,7 +71,7 @@ class PostListWidget extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => RecipeDetailPage(recipe: post.recipe),
+                            builder: (context) => RecipeDetailPage(recipe: post.recipe/*, product: post.productt*/),
                           ),
                         );
                       }

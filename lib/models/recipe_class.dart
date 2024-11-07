@@ -8,7 +8,9 @@ class RecipeNew {
   String preparation;
   UserNew userCreator;
   String imageUrl;  
-  double rating;  
+  double rating;
+  DateTime registrationDate;  
+
 
   RecipeNew({
     required this.name,
@@ -17,7 +19,8 @@ class RecipeNew {
     required this.preparation,
     required this.userCreator,
     required this.imageUrl, 
-    required this.rating,  
+    required this.rating, 
+    required this.registrationDate, 
   });
 
   void save() {
