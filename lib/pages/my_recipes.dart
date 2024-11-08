@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
+import 'package:martian_cofee_app/pages/add_recipe.dart';
 
 class MyRecipesWidget extends StatelessWidget {
   final List<RecipeNew> recipes;
@@ -69,6 +70,21 @@ class MyRecipesWidget extends StatelessWidget {
           );
         },
       ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+             Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RecipeCreationScreen (),
+                  ),
+             );
+        },
+        backgroundColor:
+        Colors.amber,
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
     );
 
