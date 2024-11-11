@@ -1,0 +1,50 @@
+[
+
+    {
+        "name": "Café Marcianeke",
+        "ingredients": ["Agua Caliente"],
+        "utensils": ["Cafetera", "Cuchara"],
+        "preparation": "",
+        
+        "imageUrl": "assets/images/caffe_marciano.jpg", 
+        "rating": 4.5, 
+        "registrationDate": "2009-04-10",
+        "preparationTime" : 2
+    },
+    
+    {
+        "name": "Café Chocolate",
+        "ingredients": ["Agua hirviendo"],
+        "utensils": ["Cafetera", "Cuchara"],
+        "preparation": "",
+
+        "imageUrl": "assets/images/caffe_chocolate.jpg", 
+        "rating": 3.0, 
+        "registrationDate": "2009-04-10",
+        "preparationTime" : 2
+    },    
+    
+    {
+        "name": "Café Latte",
+        "ingredients": ["Sobre de cafe puro"],
+        "utensils": ["Cafetera", "Cuchara"],
+        "preparation": "",
+
+        "imageUrl": "assets/images/caffe_latte.jpg", 
+        "rating": 5.0, 
+        "registrationDate": "2008-02-03",
+        "preparationTime" : 2
+    },
+    {
+        "name": "Café Capuccino",
+        "ingredients": ["Sobre de capuccino"],
+        "utensils": ["Cafetera", "Cuchara"],
+        "preparation": "",
+
+        "imageUrl": "assets/images/vergil_silla.jpg", 
+        "rating": 4.8, 
+        "registrationDate": "2008-02-03",
+        "preparationTime" : 2
+    }         
+]
+

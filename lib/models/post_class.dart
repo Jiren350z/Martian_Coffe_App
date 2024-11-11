@@ -1,3 +1,4 @@
+/*
 import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
@@ -163,3 +164,4 @@ class PostNew {
 
   }
 }
+*/

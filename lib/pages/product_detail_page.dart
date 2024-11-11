@@ -107,7 +107,7 @@ class ProductWidgetState extends State<ProductWidget> {
                 Text('Contacto: ${widget.product.contact}', style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
         
-                Text('Vendedor: ${widget.product.userCreator.name}', style: const TextStyle(fontSize: 16)),
+                //Text('Vendedor: ${widget.product.userCreator.name}', style: const TextStyle(fontSize: 16)),
                 
                 const SizedBox(height: 10.0),
                 

@@ -43,6 +43,7 @@ dependencies:
   path: ^1.9.0
   camera: ^0.11.0+2
   path_provider: ^2.1.5
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -103,10 +104,12 @@ flutter:
     - assets/images/v60.jpg
     - assets/images/espresso.jpg
     - assets/images/french_press.jpg
+    - assets/images/vergil_silla.jpg
     - assets/icons/alien_icon2.png
     - assets/icons/alien_icon4.png
     - assets/icons/alien5.jpg
     - assets/icons/coffee.png
+    - assets/json/recipes.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

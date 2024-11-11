@@ -1,6 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:martian_cofee_app/models/ingredient_class.dart';
 //import 'package:martian_cofee_app/models/post_class.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
@@ -94,21 +96,20 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE recipes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,                -- Nombre de la receta
-        userCreatorId INTEGER,    -- ID del usuario creador
-        imageUrl TEXT,            -- URL de la imagen de la receta
-        preparation TEXT,         -- Método de preparación de la receta
-        rating REAL,              -- Calificación de la receta
-        registrationDate TEXT,    -- Fecha de registro en formato ISO8601
-        FOREIGN KEY (userCreatorId) REFERENCES users(id)
+        name TEXT,                
+        imageUrl TEXT,            
+        preparation TEXT,       
+        rating REAL,             
+        registrationDate TEXT,    
+        preparationTime INTEGER
       );
     ''');
 
     await db.execute('''
       CREATE TABLE recipe_utensils (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        recipeId INTEGER,         -- ID de la receta
-        utensil TEXT,             -- Nombre del utensilio
+        recipeId INTEGER,         
+        utensil TEXT,             
         FOREIGN KEY (recipeId) REFERENCES recipes(id)
       );
     ''');
@@ -116,8 +117,8 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE recipe_ingredients (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        recipeId INTEGER,         -- ID de la receta
-        ingredientId INTEGER,     -- ID del ingrediente en la receta
+        recipeId INTEGER,         
+        ingredientId INTEGER,     
         FOREIGN KEY (recipeId) REFERENCES recipes(id),
         FOREIGN KEY (ingredientId) REFERENCES ingredients(id)
       );
@@ -353,6 +354,75 @@ Future<ProductNew?> getProduct(int id) async {
   //receta
   Future<int> insertRecipe(RecipeNew recipe) async {
   final db = await database;
+  //final db = await openDatabase('martian_coffee.db');
+  
+
+    int recipeId = await db.insert(
+      'recipes',
+      {
+        'name': recipe.name,
+        'imageUrl': recipe.imageUrl,
+        'preparation': recipe.preparation,
+        'rating': recipe.rating,
+        'registrationDate': recipe.registrationDate.toIso8601String(),
+        'preparationTime': recipe.preparationTime,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    
+ 
+
+  /*
+  Future<int> insertRecipe(RecipeNew recipe) async {
+  final db = await database;
+
+  // Inserta la receta en la tabla `recipes`
+  
+  int recipeId = await db.insert(
+    'recipes',
+    {
+      'name': recipe.name,
+      //'userCreatorId': recipe.userCreator.id, // Solo almacena el ID del usuario
+      //'userCreator': recipe.userCreator,
+      'imageUrl': recipe.imageUrl,
+      'preparation': recipe.preparation,
+      'rating': recipe.rating,
+      'registrationDate': recipe.registrationDate.toIso8601String(),
+      'preparationTime': recipe.preparationTime
+    },
+    conflictAlgorithm: ConflictAlgorithm.replace,
+  );
+  */
+
+  // Inserta los ingredientes en la tabla `recipe_ingredients`
+  for (final ingredient in recipe.ingredients) {
+    await db.insert(
+      'recipe_ingredients',
+      {
+        'recipeId': recipeId,
+        'ingredientId': ingredient.id, // Suponiendo que `ingredient` es un objeto con un `id`
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  // Inserta los utensilios en la tabla `recipe_utensils`
+  for (final utensil in recipe.utensils) {
+    await db.insert(
+      'recipe_utensils',
+      {
+        'recipeId': recipeId,
+        'utensil': utensil,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  return recipeId;
+}
+  /*
+  Future<int> insertRecipe(RecipeNew recipe) async {
+  final db = await database;
 
   // Inserta el creador de la receta en la tabla de usuarios (si no existe ya)
   /*
@@ -395,6 +465,7 @@ Future<ProductNew?> getProduct(int id) async {
 
   return recipeId;
 }
+  */
 
 Future<RecipeNew?> getRecipe(int id) async {
   final db = await database;
@@ -408,12 +479,26 @@ Future<RecipeNew?> getRecipe(int id) async {
 
   if (recipeMap.isEmpty) return null;
 
+  // Obtén el ID del creador de la receta
+  //int userCreatorId = recipeMap.first['userCreatorId'] as int;
+
+  // Recupera el usuario usando el ID
+  /*
+  final userMap = await db.query(
+    'users',
+    where: 'id = ?',
+    whereArgs: [userCreatorId],
+  );
+  */
+
+  /*
   // Recupera el creador de la receta asociado
   final userMap = await db.query(
     'users',
     where: 'id = ?',
-    whereArgs: [recipeMap.first['userCreatorId']],
+    whereArgs: [recipeMap.first['userCreator']],
   );
+  */
 
   // Recupera los utensilios asociados a la receta
   final utensilMaps = await db.query(
@@ -430,7 +515,7 @@ Future<RecipeNew?> getRecipe(int id) async {
   );
 
   // Crea los objetos correspondientes
-  UserNew user = UserNew.fromMap(userMap.first);
+  //UserNew user = UserNew.fromMap(userMap.first);
   List<String> utensils = utensilMaps.map((map) => map['utensil'] as String).toList();
   List<IngredientNew> ingredients = ingredientMaps.map((map) {
     // Aquí deberías buscar el ingrediente en la tabla `ingredients`
@@ -443,13 +528,117 @@ Future<RecipeNew?> getRecipe(int id) async {
     ingredients: ingredients,
     utensils: utensils,
     preparation: recipeMap.first['preparation'] as String,
-    userCreator: user,
+    //userCreator: user,
     imageUrl: recipeMap.first['imageUrl'] as String,
     rating: (recipeMap.first['rating'] as num).toDouble(),
     registrationDate: DateTime.parse(recipeMap.first['registrationDate'] as String),
+    preparationTime: recipeMap.first['preparationTime'] as int,
   );
 
   return recipe;
+}
+
+Future<List<RecipeNew>> getAllRecipes() async {
+  final db = await database;
+  final List<Map<String, dynamic>> maps = await db.query('recipes');
+
+  return List.generate(maps.length, (i) {
+    return RecipeNew(
+      name: maps[i]['name'],
+      ingredients: [], // Asigna según tu estructura de datos
+      utensils: [], // Asigna según tu estructura de datos
+      preparation: maps[i]['preparation'],
+      /*
+      userCreator: UserNew(
+        
+        name: maps[i]['userCreator'],
+        email: maps[i]["imprimansuenio@gmail.com"],
+        biography: maps[i]["Amo el cafe"],
+        typeOfExperienceWithCoffee: maps[i]["Consumidor"],
+        age: maps[i][24],
+        genre: maps[i]["Masculino"],
+        bornData: maps[i][DateTime(2000,5,6)],
+        createdRecipe: maps[i][[]],
+        purshasedProducts: maps[i][[]],
+        favoritesRecipes: maps[i][[]],
+        favoritedPreparationMetods: maps[i][[]],
+        favoritesProducts: maps[i][[]],
+        favoritesIngredient: maps[i][[]],
+        history: maps[i][[]],
+        country: maps[i]["EE.UU"],
+        region: maps[i]["Ohio"],
+        city: maps[i]["Colombus"],
+        profileURL: maps[i][''],
+        registrationDate: maps[i][DateTime(2009,4,10)],
+      ),
+      */
+      imageUrl: maps[i]['imageUrl'],
+      rating: maps[i]['rating'],
+      registrationDate: DateTime.parse(maps[i]['registrationDate']),
+      preparationTime: maps[i]['preparationTime'],
+    );
+  });
+}
+
+Future<void> preloadRecipes() async {
+  final db = await database;
+
+  // Comprueba si la tabla ya tiene recetas
+  final List<Map<String, dynamic>> existingRecipes = await db.query('recipes');
+  if (existingRecipes.isNotEmpty) {
+    return; // Ya hay recetas, no se hace nada
+  }
+
+  // Cargar el archivo JSON
+  final String jsonString = await rootBundle.loadString('assets/json/recipes.json');
+  final List<dynamic> jsonData = jsonDecode(jsonString);
+
+  // Insertar cada receta en la base de datos
+  for (var item in jsonData) {
+    final recipe = RecipeNew(
+      name: item['name'],
+      ingredients: List<IngredientNew>.from(item['ingredients'].map((ingredient) => 
+      IngredientNew(
+          type: '',
+          value: 1,
+          ubication: "",
+          rating: 0.0,
+          imageOfIngredient: '',
+      
+      ))),
+      utensils: List<String>.from(item['utensils']),
+      preparation: item['preparation'],
+      /*
+      userCreator: UserNew(
+        name: item['userCreator']['name'],
+        email: item['userCreator']['email'],
+        biography: item['userCreator']['biography'],
+        typeOfExperienceWithCoffee: item['userCreator']['typeOfExperienceWithCoffee'],
+        age: item['userCreator']['age'],
+        genre: item['userCreator']['genre'],
+        bornData: DateTime.parse(item['userCreator']['bornData']),
+        createdRecipe: [],
+        purshasedProducts: [],
+        favoritesRecipes: [],
+        favoritedPreparationMetods: [],
+        favoritesProducts: [],
+        favoritesIngredient: [],
+        history: [],
+        country: "EE.UU",
+        region: "Ohio",
+        city: "Colombus",
+        profileURL: '',
+        registrationDate: DateTime.parse(item['userCreator']['registrationDate']),
+      ),
+      */
+      imageUrl: item['imageUrl'],
+      rating: item['rating'],
+      registrationDate: DateTime.parse(item['registrationDate']),
+      preparationTime: item['preparationTime'],
+    );
+
+    await insertRecipe(recipe);
+  }
 }
 
   /*

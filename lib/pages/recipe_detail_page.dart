@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/rate_.dart';
+import 'dart:io';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
 //import 'package:martian_cofee_app/models/shop_class.dart';
 
@@ -48,6 +49,18 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+                widget.recipe.imageUrl.isNotEmpty
+                ? Image.file(
+                    File(widget.recipe.imageUrl),
+                    fit: BoxFit.cover,
+                    height: 200,
+                    width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Text('Error al cargar la imagen');
+                    },
+                  )
+                : const Placeholder(fallbackHeight: 200),
+              /*
               Image.asset(
                 widget.recipe.imageUrl,
                 fit: BoxFit.cover,
@@ -57,8 +70,8 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                   return const Text('Error al cargar la imagen');
                 },
               ),
+              */
               const SizedBox(height: 10),
-              
               Row(
                 children: [
                   Row(
@@ -93,8 +106,83 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                   ),
                 ],
               ),
+              /*
+              Row(
+                children: [
+                  Row(
+                    children: List.generate(5, (starIndex) {
+                      return Icon(
+                        starIndex < widget.recipe.rating ? Icons.star : Icons.star_border,
+                        color: Colors.amber,
+                        size: 30,
+                      );
+                    }),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RatingPage(
+                            initialRating: userRating,
+                            recipeName: widget.recipe.name,
+                          ),
+                        ),
+                      );
+
+                      if (result != null) {
+                        setState(() {
+                          userRating = result;
+                        });
+                      }
+                    },
+                    child: const Text('Calificar'),
+                  ),
+                ],
+              ),
+              */
+              const SizedBox(height: 10),
+                            // Fecha de registro
+              Text(
+                'Fecha de registro: ${widget.recipe.registrationDate}',
+                style: const TextStyle(fontSize: 16),
+              ),
               const SizedBox(height: 10),
 
+              // Duración total de la preparación
+              Text(
+                'Duración total de la preparación: ${widget.recipe.preparationTime}',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+
+              // Ingredientes
+              const Text('Ingredientes:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: widget.recipe.ingredients.map((ingredient) {
+                  return Text('- ${ingredient.type} (${ingredient.value} unidades)', style: const TextStyle(fontSize: 16));
+                }).toList(),
+              ),
+              const SizedBox(height: 10),
+
+              // Utensilios
+              const Text('Utensilios:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: widget.recipe.utensils.map((utensil) {
+                  return Text('- $utensil', style: const TextStyle(fontSize: 16));
+                }).toList(),
+              ),
+              const SizedBox(height: 10),
+
+              // Preparación
+              const Text('Preparación:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(widget.recipe.preparation, style: const TextStyle(fontSize: 16)),
+              const SizedBox(height: 10),
+
+              /*
               // Fecha de registro
               Text(
                 'Fecha de registro: ${widget.recipe.registrationDate}',
@@ -103,8 +191,8 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
               const SizedBox(height: 10),
 
               // Duración total de la preparación
-              const Text(
-                'Duración total de la preparación: 00:00:00',
+              Text(
+                'Duración total de la preparación: ${widget.recipe.preparationTime}',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
@@ -130,9 +218,9 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
               const Text('Preparación:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               Text(widget.recipe.preparation, style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 10),
-
-              Text('Creador: ${widget.recipe.userCreator.name}', style: const TextStyle(fontSize: 16)),
-              const SizedBox(height: 10),
+              */
+              //Text('Creador: ${widget.recipe.userCreator.name}', style: const TextStyle(fontSize: 16)),
+              //const SizedBox(height: 10),
 
               /*
               // Productos relacionados (Scroll horizontal)

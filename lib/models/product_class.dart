@@ -1,4 +1,4 @@
-import 'package:martian_cofee_app/models/users_class.dart';
+//import 'package:martian_cofee_app/models/users_class.dart';
 
 class ProductNew {
   String name;
@@ -7,7 +7,7 @@ class ProductNew {
   String description;
   int stock;
   String contact;
-  UserNew userCreator;
+  //UserNew userCreator;
   String imageOfProduct;  
   double rating;    
 
@@ -20,7 +20,7 @@ class ProductNew {
     required this.description,
     required this.stock,
     required this.contact,
-    required this.userCreator,
+    //required this.userCreator,
     required this.imageOfProduct,
     required this.rating,
   });
@@ -34,7 +34,7 @@ class ProductNew {
       'description': description,
       'stock': stock,
       'contact': contact,
-      'userCreator': userCreator.toMap(),
+      //'userCreator': userCreator.toMap(),
       'imageOfProduct': imageOfProduct,
       'rating': rating,
     };
@@ -49,7 +49,7 @@ class ProductNew {
       description: map['description'],
       stock: map['stock'],
       contact: map['contact'],
-      userCreator: UserNew.fromMap(map['userCreator']),
+      //userCreator: UserNew.fromMap(map['userCreator']),
       imageOfProduct: map['imageOfProduct'],
       rating: map['rating'],
     );

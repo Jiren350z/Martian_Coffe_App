@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/pages/home_page_.dart';
+//import 'package:martian_cofee_app/utils/datebase_helper.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized(); // Inicializa los bindings
+  //final dbHelper = DatabaseHelper();
+  //await dbHelper.preloadRecipes();
   runApp(const MyApp());
 }
 

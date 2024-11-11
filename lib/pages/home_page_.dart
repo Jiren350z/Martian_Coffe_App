@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 //import 'package:martian_cofee_app/models/shop_class.dart';
 //import 'package:martian_cofee_app/pages/shop_.dart';
-import 'package:martian_cofee_app/pages/users_.dart';
+//import 'package:martian_cofee_app/pages/users_.dart';
 //import 'package:martian_cofee_app/pages/post_.dart';
 import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
-import 'package:martian_cofee_app/models/users_class.dart';
-import 'package:martian_cofee_app/models/product_class.dart';
+//import 'package:martian_cofee_app/models/users_class.dart';
+//import 'package:martian_cofee_app/models/product_class.dart';
 import 'package:martian_cofee_app/pages/browser_.dart';
 import 'package:martian_cofee_app/pages/my_recipes.dart';
 import 'package:martian_cofee_app/pages/my_barist.dart';
@@ -25,10 +25,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   //late ShopNew myShop;
-
+  List<RecipeNew> favoritesRecipes = [];
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
-  
+
+    /*
     UserNew userd = UserNew(
       name: 'Renji',
       email: 'renjivj7@gmail.com',
@@ -50,7 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
       profileURL: 'assets/images/gato_mewing.jpg',
       registrationDate: DateTime(2009,4,10),
     );
-  
+    */
+    
     IngredientNew ingredient1 = IngredientNew(
         type: 'Café Arábica',
         value: 15.0,
@@ -196,6 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         utensils: ['Cafetera', 'Cuchara'],
         preparation: "",
+        /*
         userCreator: UserNew(
           name: 'John Doe',
           email: "imprimansuenio@gmail.com",
@@ -217,9 +220,11 @@ class _MyHomePageState extends State<MyHomePage> {
           profileURL: '',
           registrationDate: DateTime(2009,4,10),
         ),
+        */
         imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
         rating: 4.5, // Valoración entre 0.0 y 5.0
         registrationDate: DateTime(2009,4,10),
+        preparationTime: 0,
       );
 
     RecipeNew newRecipe2 = RecipeNew(
@@ -242,6 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
+          /*
           userCreator: UserNew(
           name: 'Adam Sokravotz',
           email: "im_rock@gmail.com",
@@ -263,9 +269,11 @@ class _MyHomePageState extends State<MyHomePage> {
           profileURL: '',
           registrationDate: DateTime(2009,4,10),
           ),
+          */
         imageUrl: 'assets/images/caffe_chocolate.jpg',
         rating: 3.0,  
         registrationDate: DateTime(2009,4,10),
+        preparationTime: 0,
      );
       
     RecipeNew newRecipe3 = RecipeNew(
@@ -288,6 +296,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
+          /*
           userCreator: UserNew(
           name: 'Gine',
           email: "gine23@gmail.com",
@@ -309,9 +318,11 @@ class _MyHomePageState extends State<MyHomePage> {
           profileURL: '',
           registrationDate: DateTime(2009,4,10),
           ),
+          */
         imageUrl: 'assets/images/caffe_latte.jpg',
         rating: 4.0,  
         registrationDate: DateTime(2009,4,10),
+        preparationTime: 0,
      );
       
     RecipeNew newRecipe4 = RecipeNew(
@@ -331,6 +342,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
+          /*
           userCreator: UserNew(
           name: 'Dante Sparda',
           email: "dantesparda@gmail.com",
@@ -352,9 +364,11 @@ class _MyHomePageState extends State<MyHomePage> {
           profileURL: '',
           registrationDate: DateTime(2009,4,10),
           ),
+          */
         imageUrl: 'assets/images/caffe_mokka.jpg',
         rating: 4.5,    
         registrationDate: DateTime(2009,4,10),
+        preparationTime: 0,
      );
       
     RecipeNew newRecipe5 = RecipeNew(
@@ -376,6 +390,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
+          /*
           userCreator: UserNew(
           name: 'Vergil Sparda',
           email: "vergilsparda@gmail.com",
@@ -397,9 +412,11 @@ class _MyHomePageState extends State<MyHomePage> {
           profileURL: '',
           registrationDate: DateTime(2009,4,10),
           ),
+          */
         imageUrl: 'assets/images/caffe_capuccino.jpg',
         rating: 4.8,  
         registrationDate: DateTime(2009,4,10),
+        preparationTime: 0,
      );       
     
   /*  
@@ -749,6 +766,7 @@ class _MyHomePageState extends State<MyHomePage> {
   
     super.initState();
       
+      /*
       ProductNew productt = ProductNew(
       name: 'Najjar Coffee con Cardamom 200g',
       id: 022644006361,
@@ -763,6 +781,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ,
       stock: 10,
       contact: "cchicrula@gmail.com",
+      /*
       userCreator: UserNew(
       name: 'Cachirula',
       email: 'cchirula@gmail.com',
@@ -784,10 +803,12 @@ class _MyHomePageState extends State<MyHomePage> {
       profileURL: '',
       registrationDate: DateTime(2009,4,10),
       ),
+      */
       imageOfProduct: 'assets/images/caffe_najjar.jpg', // Nuevo atributo para la URL de la imagen
       rating: 4.5
 
     );
+    */
 
       /*
       ProductNew productt2 = ProductNew(
@@ -949,7 +970,7 @@ class _MyHomePageState extends State<MyHomePage> {
       payMetods: ['Visa', 'MasterCard', 'Paypal'],
     );
     */
-
+      /*
       userd.favoritesRecipes.add(newRecipe);
       userd.favoritesRecipes.add(newRecipe2);
       userd.favoritesRecipes.add(newRecipe3);
@@ -965,6 +986,8 @@ class _MyHomePageState extends State<MyHomePage> {
       userd.favoritedPreparationMetods.add(preparationMetod);
       userd.favoritedPreparationMetods.add(preparationMetod1);
       userd.favoritedPreparationMetods.add(preparationMetod2);
+      */
+      favoritesRecipes.add(newRecipe);
 
   }
    //metodo para cambiar entre las pantallas
@@ -980,17 +1003,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getSelectedScreen() {
     switch (_selectedIndex) {
       case 0:
-        return MyRecipesWidget(recipes: userd.favoritesRecipes); 
+        return const MyRecipesWidget(); 
 
       case 1:
-        return MyBaristWidget(recipes: userd.favoritesRecipes); 
+        return MyBaristWidget(recipes: favoritesRecipes); 
 
       case 2:
         return const SearchScreen();
-   
+      /*  
       case 3:
         return UserScreen(user: userd);
-
+      */
       default:
         return const Center(child: Text('Selecciona una opción en la barra de navegación'));
     }
@@ -1027,10 +1050,13 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Descubrir',
             
           ),
+
+          /*          
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Usuario',
           ),
+          */
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
