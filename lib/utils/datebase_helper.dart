@@ -98,8 +98,7 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,                
         imageUrl TEXT,            
-        preparation TEXT,       
-        rating REAL,             
+        preparation TEXT,                 
         registrationDate TEXT,    
         preparationTime INTEGER
       );
@@ -114,13 +113,14 @@ class DatabaseHelper {
       );
     ''');
 
+  // Cambia `ingredientId` por `ingredient` como un texto.
+  // Cambia `ingredientId` por `ingredient` como un texto.
     await db.execute('''
       CREATE TABLE recipe_ingredients (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        recipeId INTEGER,         
-        ingredientId INTEGER,     
-        FOREIGN KEY (recipeId) REFERENCES recipes(id),
-        FOREIGN KEY (ingredientId) REFERENCES ingredients(id)
+        recipeId INTEGER,
+        ingredient TEXT,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id)
       );
     ''');
 
@@ -218,120 +218,7 @@ class DatabaseHelper {
     });
   }
   
-  /*
-  //post
-  Future<int> insertPost(PostNew post) async {
-  final db = await database;
-
-  // Inserta el usuario en la tabla de usuarios (si no existe ya)
-  int userId = await db.insert(
-    'users',
-    post.userData.toMap(),
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-
-  // Inserta la receta en la tabla de recetas
-  int recipeId = await db.insert(
-    'recipes',
-    post.recipe.toMap(),
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-
-  // Inserta el ingrediente en la tabla de ingredientes
-  int ingredientId = await db.insert(
-    'ingredients',
-    post.ingredient.toMap(),
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-
-  // Inserta el método de preparación en la tabla de métodos de preparación
-  int preparationMethodId = await db.insert(
-    'preparation_methods',
-    post.preparationMetod.toMap(),
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-
-  // Inserta el post en la tabla de posts
-  int postId = await db.insert(
-    'posts',
-    {
-      'userDataId': userId,
-      'pubType': post.pubType,
-      'recipeId': recipeId,
-      'ingredientId': ingredientId,
-      'preparationMethodId': preparationMethodId,
-      'image': post.image,
-      'statement': post.statement,
-      'publicDate': post.publicDate.toIso8601String(),
-    },
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-
-  return postId;
-}
   
-  Future<PostNew?> getPost(int id) async {
-  final db = await database;
-
-  // Recupera el post de la tabla de posts
-  final postMap = await db.query(
-    'posts',
-    where: 'id = ?',
-    whereArgs: [id],
-  );
-
-  if (postMap.isEmpty) return null;
-
-  // Recupera el usuario asociado al post
-  final userMap = await db.query(
-    'users',
-    where: 'id = ?',
-    whereArgs: [postMap.first['userDataId']],
-  );
-
-  // Recupera la receta asociada al post
-  final recipeMap = await db.query(
-    'recipes',
-    where: 'id = ?',
-    whereArgs: [postMap.first['recipeId']],
-  );
-
-  // Recupera el ingrediente asociado al post
-  final ingredientMap = await db.query(
-    'ingredients',
-    where: 'id = ?',
-    whereArgs: [postMap.first['ingredientId']],
-  );
-
-  // Recupera el método de preparación asociado al post
-  final preparationMethodMap = await db.query(
-    'preparation_methods',
-    where: 'id = ?',
-    whereArgs: [postMap.first['preparationMethodId']],
-  );
-
-  // Crea los objetos correspondientes
-  UserNew user = UserNew.fromMap(userMap.first);
-  RecipeNew recipe = RecipeNew.fromMap(recipeMap.first);
-  IngredientNew ingredient = IngredientNew.fromMap(ingredientMap.first);
-  PreparationMetodNew preparationMetod = PreparationMetodNew.fromMap(preparationMethodMap.first);
-
-  // Crea el objeto PostNew
-  PostNew post = PostNew(
-    userData: user,
-    pubType: postMap.first['pubType'] as String,
-    recipe: recipe,
-    ingredient: ingredient,
-    preparationMetod: preparationMetod,
-    image: postMap.first['image'] as String,
-    statement: postMap.first['statement'] as String,
-    publicDate: DateTime.parse(postMap.first['publicDate'] as String),
-  );
-
-  return post;
-}
-  */
-
   //producto
   Future<int> insertProduct(ProductNew product) async {
   final db = await database;
@@ -352,6 +239,48 @@ Future<ProductNew?> getProduct(int id) async {
 }
 
   //receta
+    Future<int> insertRecipe(RecipeNew recipe) async {
+    final db = await database;
+
+    int recipeId = await db.insert(
+      'recipes',
+      {
+        'name': recipe.name,
+        'imageUrl': recipe.imageUrl,
+        'preparation': recipe.preparation,
+        'registrationDate': recipe.registrationDate.toIso8601String(),
+        'preparationTime': recipe.preparationTime,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+
+    // Inserta los ingredientes como texto en `recipe_ingredients`
+    for (final ingredient in recipe.ingredients) {
+      await db.insert(
+        'recipe_ingredients',
+        {
+          'recipeId': recipeId,
+          'ingredient': ingredient,  // Ahora `ingredient` es un String directamente.
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+
+    // Inserta los utensilios en la tabla `recipe_utensils`
+    for (final utensil in recipe.utensils) {
+      await db.insert(
+        'recipe_utensils',
+        {
+          'recipeId': recipeId,
+          'utensil': utensil,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+
+    return recipeId;
+  }
+  /*
   Future<int> insertRecipe(RecipeNew recipe) async {
   final db = await database;
   //final db = await openDatabase('martian_coffee.db');
@@ -420,6 +349,7 @@ Future<ProductNew?> getProduct(int id) async {
 
   return recipeId;
 }
+*/
   /*
   Future<int> insertRecipe(RecipeNew recipe) async {
   final db = await database;
@@ -467,6 +397,48 @@ Future<ProductNew?> getProduct(int id) async {
 }
   */
 
+Future<RecipeNew?> getRecipe(int id) async {
+  final db = await database;
+
+  final recipeMap = await db.query(
+    'recipes',
+    where: 'id = ?',
+    whereArgs: [id],
+  );
+
+  if (recipeMap.isEmpty) return null;
+
+  final utensilMaps = await db.query(
+    'recipe_utensils',
+    where: 'recipeId = ?',
+    whereArgs: [id],
+  );
+
+  // Recupera los ingredientes como una lista de Strings
+  final ingredientMaps = await db.query(
+    'recipe_ingredients',
+    where: 'recipeId = ?',
+    whereArgs: [id],
+  );
+
+  List<String> utensils = utensilMaps.map((map) => map['utensil'] as String).toList();
+  List<String> ingredients = ingredientMaps.map((map) => map['ingredient'] as String).toList();
+
+  // Crea el objeto RecipeNew
+  RecipeNew recipe = RecipeNew(
+    name: recipeMap.first['name'] as String,
+    ingredients: ingredients,
+    utensils: utensils,
+    preparation: recipeMap.first['preparation'] as String,
+    imageUrl: recipeMap.first['imageUrl'] as String,
+    registrationDate: DateTime.parse(recipeMap.first['registrationDate'] as String),
+    preparationTime: recipeMap.first['preparationTime'] as int,
+  );
+
+  return recipe;
+}
+
+/*
 Future<RecipeNew?> getRecipe(int id) async {
   final db = await database;
 
@@ -530,14 +502,33 @@ Future<RecipeNew?> getRecipe(int id) async {
     preparation: recipeMap.first['preparation'] as String,
     //userCreator: user,
     imageUrl: recipeMap.first['imageUrl'] as String,
-    rating: (recipeMap.first['rating'] as num).toDouble(),
+    //rating: (recipeMap.first['rating'] as num).toDouble(),
     registrationDate: DateTime.parse(recipeMap.first['registrationDate'] as String),
     preparationTime: recipeMap.first['preparationTime'] as int,
   );
 
   return recipe;
 }
+*/
 
+Future<List<RecipeNew>> getAllRecipes() async {
+  final db = await database;
+  final List<Map<String, dynamic>> maps = await db.query('recipes');
+
+  return List.generate(maps.length, (i) {
+    return RecipeNew(
+      name: maps[i]['name'],
+      ingredients: [], // Inicializa con la lista vacía o agrega lógica si es necesario.
+      utensils: [],
+      preparation: maps[i]['preparation'],
+      imageUrl: maps[i]['imageUrl'],
+      registrationDate: DateTime.parse(maps[i]['registrationDate']),
+      preparationTime: maps[i]['preparationTime'],
+    );
+  });
+}
+
+/*
 Future<List<RecipeNew>> getAllRecipes() async {
   final db = await database;
   final List<Map<String, dynamic>> maps = await db.query('recipes');
@@ -573,12 +564,13 @@ Future<List<RecipeNew>> getAllRecipes() async {
       ),
       */
       imageUrl: maps[i]['imageUrl'],
-      rating: maps[i]['rating'],
+      //rating: maps[i]['rating'],
       registrationDate: DateTime.parse(maps[i]['registrationDate']),
       preparationTime: maps[i]['preparationTime'],
     );
   });
 }
+*/
 
 Future<void> preloadRecipes() async {
   final db = await database;
@@ -597,42 +589,23 @@ Future<void> preloadRecipes() async {
   for (var item in jsonData) {
     final recipe = RecipeNew(
       name: item['name'],
+      ingredients: List<String>.from(item['ingredients']),
+      /*
       ingredients: List<IngredientNew>.from(item['ingredients'].map((ingredient) => 
       IngredientNew(
           type: '',
           value: 1,
           ubication: "",
-          rating: 0.0,
+          //rating: 0.0,
           imageOfIngredient: '',
       
       ))),
+      */
       utensils: List<String>.from(item['utensils']),
       preparation: item['preparation'],
-      /*
-      userCreator: UserNew(
-        name: item['userCreator']['name'],
-        email: item['userCreator']['email'],
-        biography: item['userCreator']['biography'],
-        typeOfExperienceWithCoffee: item['userCreator']['typeOfExperienceWithCoffee'],
-        age: item['userCreator']['age'],
-        genre: item['userCreator']['genre'],
-        bornData: DateTime.parse(item['userCreator']['bornData']),
-        createdRecipe: [],
-        purshasedProducts: [],
-        favoritesRecipes: [],
-        favoritedPreparationMetods: [],
-        favoritesProducts: [],
-        favoritesIngredient: [],
-        history: [],
-        country: "EE.UU",
-        region: "Ohio",
-        city: "Colombus",
-        profileURL: '',
-        registrationDate: DateTime.parse(item['userCreator']['registrationDate']),
-      ),
-      */
+     
       imageUrl: item['imageUrl'],
-      rating: item['rating'],
+      //rating: item['rating'],
       registrationDate: DateTime.parse(item['registrationDate']),
       preparationTime: item['preparationTime'],
     );

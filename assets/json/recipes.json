@@ -7,7 +7,6 @@
         "preparation": "",
         
         "imageUrl": "assets/images/caffe_marciano.jpg", 
-        "rating": 4.5, 
         "registrationDate": "2009-04-10",
         "preparationTime" : 2
     },
@@ -18,8 +17,7 @@
         "utensils": ["Cafetera", "Cuchara"],
         "preparation": "",
 
-        "imageUrl": "assets/images/caffe_chocolate.jpg", 
-        "rating": 3.0, 
+        "imageUrl": "assets/images/caffe_chocolate.jpg",  
         "registrationDate": "2009-04-10",
         "preparationTime" : 2
     },    
@@ -31,7 +29,6 @@
         "preparation": "",
 
         "imageUrl": "assets/images/caffe_latte.jpg", 
-        "rating": 5.0, 
         "registrationDate": "2008-02-03",
         "preparationTime" : 2
     },
@@ -42,7 +39,6 @@
         "preparation": "",
 
         "imageUrl": "assets/images/vergil_silla.jpg", 
-        "rating": 4.8, 
         "registrationDate": "2008-02-03",
         "preparationTime" : 2
     }         

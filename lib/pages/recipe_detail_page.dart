@@ -166,7 +166,8 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: widget.recipe.ingredients.map((ingredient) {
-                  return Text('- ${ingredient.type} (${ingredient.value} unidades)', style: const TextStyle(fontSize: 16));
+                  return Text('- $ingredient', style: const TextStyle(fontSize: 16));
+                  //return Text('- ${ingredient.type} (${ingredient.value} unidades)', style: const TextStyle(fontSize: 16));
                 }).toList(),
               ),
               const SizedBox(height: 10),
