@@ -5,10 +5,9 @@
         "ingredients": ["Agua Caliente"],
         "utensils": ["Cafetera", "Cuchara"],
         "preparation": "",
-        
         "imageUrl": "assets/images/caffe_marciano.jpg", 
         "registrationDate": "2009-04-10",
-        "preparationTime" : 2
+        "preparationTime" : 20
     },
     
     {
@@ -16,10 +15,9 @@
         "ingredients": ["Agua hirviendo"],
         "utensils": ["Cafetera", "Cuchara"],
         "preparation": "",
-
         "imageUrl": "assets/images/caffe_chocolate.jpg",  
         "registrationDate": "2009-04-10",
-        "preparationTime" : 2
+        "preparationTime" : 10
     },    
     
     {
@@ -27,20 +25,18 @@
         "ingredients": ["Sobre de cafe puro"],
         "utensils": ["Cafetera", "Cuchara"],
         "preparation": "",
-
         "imageUrl": "assets/images/caffe_latte.jpg", 
         "registrationDate": "2008-02-03",
-        "preparationTime" : 2
+        "preparationTime" : 13
     },
     {
         "name": "Café Capuccino",
         "ingredients": ["Sobre de capuccino"],
         "utensils": ["Cafetera", "Cuchara"],
         "preparation": "",
-
         "imageUrl": "assets/images/vergil_silla.jpg", 
         "registrationDate": "2008-02-03",
-        "preparationTime" : 2
+        "preparationTime" : 35
     }         
 ]
 

@@ -5,6 +5,7 @@ import 'dart:io';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
 //import 'package:martian_cofee_app/models/shop_class.dart';
 
+
 class RecipeDetailPage extends StatefulWidget {
   final RecipeNew recipe;
   
@@ -18,7 +19,8 @@ class RecipeDetailPage extends StatefulWidget {
 class RecipeDetailPageState extends State<RecipeDetailPage> {
   bool isFavorite = false;
   int userRating = 0;
-  final TextEditingController comment = TextEditingController();
+  //final TextEditingController comment = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +92,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
               Text(widget.recipe.preparation, style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 10),
 
-              
+              //productos
               /*
               // Productos relacionados (Scroll horizontal)
               const Text('Productos relacionados:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),

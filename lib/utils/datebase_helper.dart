@@ -3,13 +3,13 @@ import 'package:path/path.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:martian_cofee_app/models/ingredient_class.dart';
+//import 'package:martian_cofee_app/models/ingredient_class.dart';
 //import 'package:martian_cofee_app/models/post_class.dart';
-import 'package:martian_cofee_app/models/preparation_metod_class.dart';
-import 'package:martian_cofee_app/models/product_class.dart';
+//import 'package:martian_cofee_app/models/preparation_metod_class.dart';
+//import 'package:martian_cofee_app/models/product_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 //import 'package:martian_cofee_app/models/shop_class.dart';
-import 'package:martian_cofee_app/models/users_class.dart';
+//import 'package:martian_cofee_app/models/users_class.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -38,6 +38,7 @@ class DatabaseHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     
+    /*
     //ingrediente
     await db.execute('''
       CREATE TABLE ingredients(
@@ -72,6 +73,9 @@ class DatabaseHelper {
       );
     ''');
 
+    */
+
+
     //receta
     await db.execute('''
       CREATE TABLE recipes (
@@ -103,7 +107,7 @@ class DatabaseHelper {
         FOREIGN KEY (recipeId) REFERENCES recipes(id)
       );
     ''');
-
+  /*
     //producto  
     await db.execute('''
       CREATE TABLE products (
@@ -155,11 +159,13 @@ class DatabaseHelper {
       FOREIGN KEY (userId) REFERENCES users (id)
     )
   ''');
+  */
   }
 
   /////////////////
 
   //ingrediente
+  /*
   Future<int> insertIngredient(IngredientNew ingredient) async {
     final db = await database;
     return await db.insert('ingredients', ingredient.toMap());
@@ -186,9 +192,11 @@ class DatabaseHelper {
       return PreparationMetodNew.fromMap(maps[i]);
     });
   }
-  
+  */
+
   
   //producto
+/*  
   Future<int> insertProduct(ProductNew product) async {
   final db = await database;
   return await db.insert('products', product.toMap());
@@ -206,6 +214,7 @@ Future<ProductNew?> getProduct(int id) async {
   }
   return null;
 }
+*/
 
   //receta
     Future<int> insertRecipe(RecipeNew recipe) async {
@@ -332,26 +341,7 @@ Future<ProductNew?> getProduct(int id) async {
   return recipes;
 }
 
-  /*
-  Future<List<RecipeNew>> getAllRecipes() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('recipes');
-
-    return List.generate(maps.length, (i) {
-      return RecipeNew(
-        name: maps[i]['name'],
-        ingredients: [], // Inicializa con la lista vacía o agrega lógica si es necesario.
-        utensils: [],
-        preparation: maps[i]['preparation'],
-        imageUrl: maps[i]['imageUrl'],
-        registrationDate: DateTime.parse(maps[i]['registrationDate']),
-        preparationTime: maps[i]['preparationTime'],
-      );
-    });
-  }
-  */
-
-
+  
   Future<void> preloadRecipes() async {
     final db = await database;
 
@@ -372,9 +362,7 @@ Future<ProductNew?> getProduct(int id) async {
         ingredients: List<String>.from(item['ingredients']),
         utensils: List<String>.from(item['utensils']),
         preparation: item['preparation'],
-      
         imageUrl: item['imageUrl'],
-        //rating: item['rating'],
         registrationDate: DateTime.parse(item['registrationDate']),
         preparationTime: item['preparationTime'],
       );
@@ -383,8 +371,29 @@ Future<ProductNew?> getProduct(int id) async {
     }
   }
 
+  Future<List<RecipeNew>> getRecipesFromJson() async {
+  // Cargar el archivo JSON
+  final String jsonString = await rootBundle.loadString('assets/json/recipes.json');
+  final List<dynamic> jsonData = jsonDecode(jsonString);
+
+  // Convertir los datos JSON en una lista de objetos RecipeNew
+  List<RecipeNew> recipes = jsonData.map((item) {
+    return RecipeNew(
+      name: item['name'],
+      ingredients: List<String>.from(item['ingredients']),
+      utensils: List<String>.from(item['utensils']),
+      preparation: item['preparation'],
+      imageUrl: item['imageUrl'],
+      registrationDate: DateTime.parse(item['registrationDate']),
+      preparationTime: item['preparationTime'],
+    );
+  }).toList();
+
+  return recipes;
+}
 
 
+  /*
   //usuario
   Future<int> insertUser(UserNew user) async {
     final db = await database;
@@ -514,6 +523,7 @@ Future<ProductNew?> getProduct(int id) async {
       ..favoritesProducts = favoriteProducts
       ..favoritesIngredient = favoriteIngredients;
   }
+  */
 
   
 }
