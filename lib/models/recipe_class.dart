@@ -1,16 +1,16 @@
 //import 'dart:convert';
 
-import 'package:martian_cofee_app/models/ingredient_class.dart';
+//import 'package:martian_cofee_app/models/ingredient_class.dart';
 //import 'package:martian_cofee_app/models/users_class.dart';
 
 class RecipeNew {
   String name;
-  List<IngredientNew> ingredients;
+  List<String> ingredients;
   List<String> utensils;
   String preparation;
   //UserNew userCreator;
   String imageUrl;  
-  double rating;
+  //double rating;
   DateTime registrationDate;
   int preparationTime;  
 
@@ -22,7 +22,7 @@ class RecipeNew {
     required this.preparation,
     //required this.userCreator,
     required this.imageUrl, 
-    required this.rating, 
+    //required this.rating, 
     required this.registrationDate, 
     required this.preparationTime,
   });
@@ -32,15 +32,17 @@ class RecipeNew {
     return {
       'name': name,
       //'ingredients': jsonEncode(ingredients.map((i) => i.toMap()).toList()),
-      'ingredients': ingredients.map((ingredient) => ingredient.toMap()).toList(),
-      'utensils': utensils,
+      'ingredients': ingredients.join(','),
+      //'ingredients': ingredients.map((ingredient) => ingredient.toMap()).toList(),
+      'utensils': utensils.join(','),
+      //'utensils': utensils,
       //'utensils': jsonEncode(utensils),
       'preparation': preparation,
       //'userCreator': jsonEncode(userCreator.toMap()),
       //'userCreatorId': userCreator.id, // Solo el ID del usuario
       //'userCreator': userCreator.toMap(),
       'imageUrl': imageUrl,
-      'rating': rating,
+      //'rating': rating,
       'registrationDate': registrationDate.toIso8601String(),
       'preparationTime' : preparationTime,
     };
@@ -49,14 +51,17 @@ class RecipeNew {
   factory RecipeNew.fromMap(Map<String, dynamic> map) {
   return RecipeNew(
     name: map['name'],
+    ingredients: map['ingredients'],
+    /*
     ingredients: (map['ingredients'] as List)
         .map((ingredient) => IngredientNew.fromMap(ingredient))
         .toList(),
+    */    
     utensils: List<String>.from(map['utensils']),
     preparation: map['preparation'],
     //userCreator: user,
     imageUrl: map['imageUrl'],
-    rating: map['rating'],
+    //rating: map['rating'],
     registrationDate: DateTime.parse(map['registrationDate']),
     preparationTime: map['preparationTime'],
   );

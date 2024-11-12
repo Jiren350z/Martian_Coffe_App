@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:martian_cofee_app/models/post_class.dart';
-import 'package:martian_cofee_app/models/preparation_metod_class.dart';
+//import 'package:martian_cofee_app/models/preparation_metod_class.dart';
 //import 'package:martian_cofee_app/models/shop_class.dart';
 //import 'package:martian_cofee_app/pages/shop_.dart';
 //import 'package:martian_cofee_app/pages/users_.dart';
 //import 'package:martian_cofee_app/pages/post_.dart';
-import 'package:martian_cofee_app/models/ingredient_class.dart';
+//import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 //import 'package:martian_cofee_app/models/users_class.dart';
 //import 'package:martian_cofee_app/models/product_class.dart';
@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     */
     
+    /*
     IngredientNew ingredient1 = IngredientNew(
         type: 'Café Arábica',
         value: 15.0,
@@ -177,9 +178,11 @@ class _MyHomePageState extends State<MyHomePage> {
           rating: 4.5,
           imageOfMetod: 'assets/images/french_press.jpg',
       );  
-
+    */
     RecipeNew newRecipe = RecipeNew(
         name: 'Café Marcianeke',
+        ingredients: ['Cafetera', 'Cuchara'],
+        /*
         ingredients: [
           IngredientNew(
             type: 'Agua Caliente',
@@ -196,8 +199,10 @@ class _MyHomePageState extends State<MyHomePage> {
             imageOfIngredient: '',
             ),
         ],
+        */
         utensils: ['Cafetera', 'Cuchara'],
         preparation: "",
+        
         /*
         userCreator: UserNew(
           name: 'John Doe',
@@ -222,13 +227,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         */
         imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
-        rating: 4.5, // Valoración entre 0.0 y 5.0
+        //rating: 4.5, // Valoración entre 0.0 y 5.0
         registrationDate: DateTime(2009,4,10),
         preparationTime: 0,
       );
 
     RecipeNew newRecipe2 = RecipeNew(
         name: 'Café Chocolate',
+        ingredients: ['Cafetera', 'Cuchara'],
+        /*
         ingredients: [
         IngredientNew(
           type: 'Agua hirviendo',
@@ -245,6 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
           imageOfIngredient: '',
           ),
         ],
+        */
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
           /*
@@ -271,13 +279,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           */
         imageUrl: 'assets/images/caffe_chocolate.jpg',
-        rating: 3.0,  
+        //rating: 3.0,  
         registrationDate: DateTime(2009,4,10),
         preparationTime: 0,
      );
       
     RecipeNew newRecipe3 = RecipeNew(
         name: 'Café Latte',
+        ingredients: ['Cafetera', 'Cuchara'],
+        /*
         ingredients: [
         IngredientNew(
           type: 'Agua hirviendo',
@@ -294,6 +304,7 @@ class _MyHomePageState extends State<MyHomePage> {
           imageOfIngredient: '',
           ),
         ],
+        */
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
           /*
@@ -320,13 +331,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           */
         imageUrl: 'assets/images/caffe_latte.jpg',
-        rating: 4.0,  
+        //rating: 4.0,  
         registrationDate: DateTime(2009,4,10),
         preparationTime: 0,
      );
       
     RecipeNew newRecipe4 = RecipeNew(
         name: 'Café Mokka',
+        ingredients: ['Cafetera', 'Cuchara'],
+        /*
         ingredients: [
         IngredientNew(
           type: 'Agua hirviendo',
@@ -340,6 +353,7 @@ class _MyHomePageState extends State<MyHomePage> {
           rating: 0.0,
           imageOfIngredient: '',),
         ],
+        */
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
           /*
@@ -366,13 +380,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           */
         imageUrl: 'assets/images/caffe_mokka.jpg',
-        rating: 4.5,    
+        //rating: 4.5,    
         registrationDate: DateTime(2009,4,10),
         preparationTime: 0,
      );
       
     RecipeNew newRecipe5 = RecipeNew(
         name: 'Café Capuccino',
+        ingredients: ['Cafetera', 'Cuchara'],
+        /*
         ingredients: [
         IngredientNew(
           type: 'Agua hirviendo',
@@ -388,6 +404,7 @@ class _MyHomePageState extends State<MyHomePage> {
           imageOfIngredient: '',
           ),
         ],
+        */
           utensils: ['Cafetera', 'Cuchara'],
           preparation: "",
           /*
@@ -414,7 +431,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           */
         imageUrl: 'assets/images/caffe_capuccino.jpg',
-        rating: 4.8,  
+        //rating: 4.8,  
         registrationDate: DateTime(2009,4,10),
         preparationTime: 0,
      );       

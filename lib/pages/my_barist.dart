@@ -53,6 +53,7 @@ class MyBaristWidget extends StatelessWidget {
                       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 5),
+                    /*
                     Row(
                       children: List.generate(5, (starIndex) {
                         return Icon(
@@ -62,6 +63,7 @@ class MyBaristWidget extends StatelessWidget {
                         );
                       }),
                     ),
+                    */
                   ],
                 ),
               ),

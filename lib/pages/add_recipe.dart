@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
-//import 'package:martian_cofee_app/models/users_class.dart';
+//import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/utils/datebase_helper.dart';
 
 class RecipeCreationScreen extends StatefulWidget {
@@ -55,25 +55,61 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
     });
   }
 
+  Future<void> saveRecipe() async {
+  // Crear una lista de ingredientes separada por comas
   /*
-  void addStep() {
-    setState(() {
-      preparationSteps.add({
-        'name': TextEditingController(),
-        'duration': TextEditingController(),
-        'water': TextEditingController(),
-        'note': TextEditingController(),
-      });
-    });
-  }
+  final List<String> ingredients = ingredientsController.text.split(',').map((e) => e.trim()).toList();
   */
+  final List<String> ingredients = ingredientsController.text.split(',').map((e) => e.trim()).toList();
+  
+  /*
+  final List<IngredientNew> ingredients = ingredientsController.text
+    .split(',')
+    .map((e) => IngredientNew(
+          type: e.trim(),
+          value: 0.0, // Valor predeterminado; cámbialo si es necesario
+          ubication: 'Unknown', // Valor predeterminado; cámbialo si es necesario
+          rating: 0.0, // Valor predeterminado; cámbialo si es necesario
+          imageOfIngredient: '', // Valor predeterminado; cámbialo si es necesario
+        ))
+    .toList();
+  */  
+  // Crear una lista de utensilios separada por comas
+  final List<String> utensils = utensilsController.text.split(',').map((e) => e.trim()).toList();
+  
+  // Crear una lista de pasos de preparación a partir de los controladores
+  final List preparationDescriptions = preparationSteps
+      .map((step) => step['description'].text)
+      .where((description) => description.isNotEmpty)
+      .toList();
 
+  final recipe = RecipeNew(
+    name: nameController.text,
+    ingredients: ingredients,
+    utensils: utensils,
+    preparation: preparationDescriptions.join('\n'), // Unir cada paso con una nueva línea
+    imageUrl: imageFile?.path ?? '',
+    //rating: 0,
+    registrationDate: DateTime.now(),
+    preparationTime: int.tryParse(preparationTimeController.text) ?? 0,
+  );
+
+  final dbHelper = DatabaseHelper();
+  await dbHelper.insertRecipe(recipe);
+
+  // Mostrar mensaje de confirmación
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(content: Text('Receta guardada correctamente')),
+  );
+}
+
+  /*
   Future<void> saveRecipe() async {
     final recipe = RecipeNew(
-    name: '',
+    name: 'cachirula',
     ingredients: [], // Debes incluir los ingredientes
     utensils: [], // Debes incluir los utensilios
-    preparation: '',
+    preparation: 'asdasfas fafd dtsdgdsg',
     /*
     userCreator: UserNew(
       name: 'Usuario Ejemplo',
@@ -98,10 +134,11 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
     ),
     */
     imageUrl: imageFile?.path ?? '',
-    rating: 0,
+    rating: 4.0,
     registrationDate: DateTime.now(),
     preparationTime: int.tryParse(preparationTimeController.text) ?? 0,
   );
+  
 
   final dbHelper = DatabaseHelper();
   await dbHelper.insertRecipe(recipe);
@@ -111,6 +148,7 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
   );
 
   }
+  */
 
   void showImageOptions() {
     showModalBottomSheet(
@@ -175,23 +213,7 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /*  
-            const Text("Método de elaboración", style: TextStyle(fontSize: 18)),
-            DropdownButton<String>(
-              value: selectedMethod,
-              items: ['Método 1', 'Método 2', 'Método 3'].map((String method) {
-                return DropdownMenuItem<String>(
-                  value: method,
-                  child: Text(method),
-                );
-              }).toList(),
-              onChanged: (String? newMethod) {
-                setState(() {
-                  selectedMethod = newMethod!;
-                });
-              },
-            ),
-            */
+
             const Text("Nombre de la receta", style: TextStyle(fontSize: 18)),
             TextField(
               controller: nameController,
@@ -220,60 +242,7 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
               keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 16),
-            /*
-            TextField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Nombre'),
-            ),
-            const SizedBox(height: 16),
-            */
-            /*
-            const Text("Tipo de molienda", style: TextStyle(fontSize: 18)),
-            DropdownButton<String>(
-              value: selectedGrind,
-              items: ['Fina', 'Media', 'Gruesa'].map((String grind) {
-                return DropdownMenuItem<String>(
-                  value: grind,
-                  child: Text(grind),
-                );
-              }).toList(),
-              onChanged: (String? newGrind) {
-                setState(() {
-                  selectedGrind = newGrind!;
-                });
-              },
-            ),
-            */
-            /*
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: TextField(
-                    controller: waterController,
-                    decoration: const InputDecoration(labelText: 'Agua (ml)'),
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Flexible(
-                  child: TextField(
-                    controller: coffeeController,
-                    decoration: const InputDecoration(labelText: 'Café (g)'),
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Flexible(
-                  child: TextField(
-                    controller: temperatureController,
-                    decoration: const InputDecoration(labelText: 'Temperatura (°C)'),
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
-              ],
-            ),
-            */
+            
             const SizedBox(height: 16),
             Center(
               child: ElevatedButton(
@@ -304,48 +273,7 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
               },
             ),
 
-            /*
-            const Text("Pasos de preparación", style: TextStyle(fontSize: 18)),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: preparationSteps.length,
-              itemBuilder: (context, index) {
-                final step = preparationSteps[index];
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextField(
-                          controller: step['name'],
-                          decoration: const InputDecoration(labelText: 'Nombre del paso'),
-                        ),
-                        
-                        TextField(
-                          controller: step['duration'],
-                          decoration: const InputDecoration(labelText: 'Duración (minutos)'),
-                          keyboardType: TextInputType.number,
-                        ),
-                        
-                        TextField(
-                          controller: step['water'],
-                          decoration: const InputDecoration(labelText: 'Agua (ml)'),
-                          keyboardType: TextInputType.number,
-                        ),
-                        TextField(
-                          controller: step['note'],
-                          decoration: const InputDecoration(labelText: 'Nota'),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-            */
+           
             const SizedBox(height: 16),
 
             Center(
@@ -371,17 +299,7 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
       step['description'].dispose();
     }
 
-    /*
-    waterController.dispose();
-    coffeeController.dispose();
-    temperatureController.dispose();
-    for (var step in preparationSteps) {
-      step['name'].dispose();
-      step['duration'].dispose();
-      step['water'].dispose();
-      step['note'].dispose();
-    }
-    */
+
     super.dispose();
   }
 }
