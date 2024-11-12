@@ -17,11 +17,6 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
   final TextEditingController ingredientsController = TextEditingController();
   final TextEditingController utensilsController = TextEditingController();
   final TextEditingController preparationTimeController = TextEditingController();
-  //String selectedMethod = 'Método 1';
-  //String selectedGrind = 'Fina';
-  //final TextEditingController waterController = TextEditingController();
-  //final TextEditingController coffeeController = TextEditingController();
-  //final TextEditingController temperatureController = TextEditingController();
   final List<Map<String, dynamic>> preparationSteps = [];
   File? imageFile;
 
@@ -56,24 +51,9 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
   }
 
   Future<void> saveRecipe() async {
-  // Crear una lista de ingredientes separada por comas
-  /*
-  final List<String> ingredients = ingredientsController.text.split(',').map((e) => e.trim()).toList();
-  */
+
   final List<String> ingredients = ingredientsController.text.split(',').map((e) => e.trim()).toList();
   
-  /*
-  final List<IngredientNew> ingredients = ingredientsController.text
-    .split(',')
-    .map((e) => IngredientNew(
-          type: e.trim(),
-          value: 0.0, // Valor predeterminado; cámbialo si es necesario
-          ubication: 'Unknown', // Valor predeterminado; cámbialo si es necesario
-          rating: 0.0, // Valor predeterminado; cámbialo si es necesario
-          imageOfIngredient: '', // Valor predeterminado; cámbialo si es necesario
-        ))
-    .toList();
-  */  
   // Crear una lista de utensilios separada por comas
   final List<String> utensils = utensilsController.text.split(',').map((e) => e.trim()).toList();
   
@@ -89,7 +69,6 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
     utensils: utensils,
     preparation: preparationDescriptions.join('\n'), // Unir cada paso con una nueva línea
     imageUrl: imageFile?.path ?? '',
-    //rating: 0,
     registrationDate: DateTime.now(),
     preparationTime: int.tryParse(preparationTimeController.text) ?? 0,
   );
@@ -103,52 +82,6 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
   );
 }
 
-  /*
-  Future<void> saveRecipe() async {
-    final recipe = RecipeNew(
-    name: 'cachirula',
-    ingredients: [], // Debes incluir los ingredientes
-    utensils: [], // Debes incluir los utensilios
-    preparation: 'asdasfas fafd dtsdgdsg',
-    /*
-    userCreator: UserNew(
-      name: 'Usuario Ejemplo',
-      email: "imprimansuenio@gmail.com",
-      biography: "Amo el cafe",
-      typeOfExperienceWithCoffee: "Consumidor",
-      age: 24,
-      genre: "Masculino",
-      bornData: DateTime(2000,5,6),
-      createdRecipe: [],
-      purshasedProducts: [],
-      favoritesRecipes: [],
-      favoritedPreparationMetods: [],
-      favoritesProducts: [],
-      favoritesIngredient: [],
-      history: [],
-      country: "EE.UU",
-      region: "Ohio",
-      city: "Colombus",
-      profileURL: '',
-      registrationDate: DateTime(2009,4,10),
-    ),
-    */
-    imageUrl: imageFile?.path ?? '',
-    rating: 4.0,
-    registrationDate: DateTime.now(),
-    preparationTime: int.tryParse(preparationTimeController.text) ?? 0,
-  );
-  
-
-  final dbHelper = DatabaseHelper();
-  await dbHelper.insertRecipe(recipe);
-  // Mostrar mensaje de confirmación
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(content: Text('Receta guardada correctamente')),
-  );
-
-  }
-  */
 
   void showImageOptions() {
     showModalBottomSheet(
@@ -221,21 +154,21 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
             ),
             const SizedBox(height: 16),
             
-            const Text("Ingredientes (separados por coma)", style: TextStyle(fontSize: 18)),
+            const Text("Ingredientes", style: TextStyle(fontSize: 18)),
             TextField(
               controller: ingredientsController,
               decoration: const InputDecoration(labelText: 'Ingredientes'),
             ),
             const SizedBox(height: 16),
 
-            const Text("Utensilios (separados por coma)", style: TextStyle(fontSize: 18)),
+            const Text("Utensilios", style: TextStyle(fontSize: 18)),
             TextField(
               controller: utensilsController,
               decoration: const InputDecoration(labelText: 'Utensilios'),
             ),
             const SizedBox(height: 16),
 
-            const Text("Tiempo de preparación (en minutos)", style: TextStyle(fontSize: 18)),
+            const Text("Tiempo de preparación", style: TextStyle(fontSize: 18)),
             TextField(
               controller: preparationTimeController,
               decoration: const InputDecoration(labelText: 'Tiempo de preparación'),

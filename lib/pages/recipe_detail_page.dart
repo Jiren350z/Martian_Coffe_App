@@ -26,19 +26,6 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
       appBar: AppBar(
         title: Text(widget.recipe.name),
         actions: [
-          /*
-          IconButton(
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : Colors.grey,
-            ),
-            onPressed: () {
-              setState(() {
-                isFavorite = !isFavorite;
-              });
-            },
-          ),
-          */
           IconButton(
             icon: const Icon(Icons.share),
             onPressed: () {},
@@ -62,90 +49,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                     },
                   )
                 : const Placeholder(fallbackHeight: 200),
-              /*
-              Image.asset(
-                widget.recipe.imageUrl,
-                fit: BoxFit.cover,
-                height: 200,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Text('Error al cargar la imagen');
-                },
-              ),
-              */
-              const SizedBox(height: 10),
-              /*
-              Row(
-                children: [
-                  Row(
-                    children: List.generate(5, (starIndex) {
-                      return Icon(
-                        starIndex < widget.recipe.rating ? Icons.star : Icons.star_border,
-                        color: Colors.amber,
-                        size: 30,
-                      );
-                    }),
-                  ),
-                  const SizedBox(width: 10),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final result = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RatingPage(
-                            initialRating: userRating,
-                            recipeName: widget.recipe.name,
-                          ),
-                        ),
-                      );
 
-                      if (result != null) {
-                        setState(() {
-                          userRating = result;
-                        });
-                      }
-                    },
-                    child: const Text('Calificar'),
-                  ),
-                ],
-              ),
-              */
-              /*
-              Row(
-                children: [
-                  Row(
-                    children: List.generate(5, (starIndex) {
-                      return Icon(
-                        starIndex < widget.recipe.rating ? Icons.star : Icons.star_border,
-                        color: Colors.amber,
-                        size: 30,
-                      );
-                    }),
-                  ),
-                  const SizedBox(width: 10),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final result = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RatingPage(
-                            initialRating: userRating,
-                            recipeName: widget.recipe.name,
-                          ),
-                        ),
-                      );
-
-                      if (result != null) {
-                        setState(() {
-                          userRating = result;
-                        });
-                      }
-                    },
-                    child: const Text('Calificar'),
-                  ),
-                ],
-              ),
-              */
               const SizedBox(height: 10),
               // Fecha de registro
               Text(
@@ -167,7 +71,6 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: widget.recipe.ingredients.map((ingredient) {
                   return Text('- $ingredient', style: const TextStyle(fontSize: 16));
-                  //return Text('- ${ingredient.type} (${ingredient.value} unidades)', style: const TextStyle(fontSize: 16));
                 }).toList(),
               ),
               const SizedBox(height: 10),
@@ -248,25 +151,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
               ),
               const SizedBox(height: 20),
               */
-              /*
-              TextField(
-                controller: comment,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  hintText: 'Escribe un comentario...',
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.send, color: Theme.of(context).primaryColor),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              */
+              
             ],
           ),
         ),

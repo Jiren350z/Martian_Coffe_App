@@ -7,8 +7,8 @@ import 'package:martian_cofee_app/pages/add_recipe.dart';
 import 'package:martian_cofee_app/utils/datebase_helper.dart';
 
 class MyRecipesWidget extends StatefulWidget {
-  //final List<RecipeNew>? recipes;
-  const MyRecipesWidget({super.key/*,this.recipes*/});
+
+  const MyRecipesWidget({super.key});
 
   @override
   _MyRecipesWidgetState createState() => _MyRecipesWidgetState();
@@ -30,13 +30,7 @@ void _loadRecipes() async {
   setState(() {
     recipes = loadedRecipes;
   });
-  /*
-  final dbHelper = DatabaseHelper();
-  final loadedRecipes = await dbHelper.getAllRecipes();
-  setState(() {
-    recipes = loadedRecipes;
-  });
-  */
+
 }
 
   @override
@@ -76,17 +70,7 @@ void _loadRecipes() async {
                     ),
 
                     const SizedBox(height: 5),
-                    /*
-                    Row(
-                      children: List.generate(5, (starIndex) {
-                        return Icon(
-                          starIndex < recipe.rating ? Icons.star : Icons.star_border,
-                          color: Colors.amber,
-                          size: 20,
-                        );
-                      }),
-                    ),
-                    */
+
                   ],
                   
                 ),
