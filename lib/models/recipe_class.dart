@@ -13,7 +13,7 @@ class RecipeNew {
   //double rating;
   DateTime registrationDate;
   int preparationTime;  
-
+  bool isAssetImage;
 
   RecipeNew({
     required this.name,
@@ -25,6 +25,7 @@ class RecipeNew {
     //required this.rating, 
     required this.registrationDate, 
     required this.preparationTime,
+    this.isAssetImage = false,
   });
 
   // Convert RecipeNew to Map

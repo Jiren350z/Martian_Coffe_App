@@ -1,4 +1,6 @@
 //import 'dart:io';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
@@ -42,6 +44,7 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
               itemCount: recipes.length,
               itemBuilder: (context, index) {
                 final recipe = recipes[index];
+                recipe.isAssetImage = true;
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   elevation: 4,
@@ -61,11 +64,28 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          
+                          recipe.isAssetImage
+                          ? Image.asset(
+                              recipe.imageUrl,
+                              fit: BoxFit.cover,
+                              height: 200,
+                              width: double.infinity,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Text('Error al cargar la imagen');
+                              },
+                            )
+                          : recipe.imageUrl.isNotEmpty
+                            ? Image.file(
+                                File(recipe.imageUrl),
+                                fit: BoxFit.cover,
+                                height: 200,
+                                width: double.infinity,
+                              )
+                            : const Placeholder(fallbackHeight: 150),
                           //recipe.imageUrl.isNotEmpty
                           //? Image.file(File(recipe.imageUrl))
                           //: const Placeholder(fallbackHeight: 150),
-                          
+                          /*
                           Image.asset(
                             recipe.imageUrl,
                             fit: BoxFit.cover,
@@ -75,7 +95,7 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
                               return const Text('Error al cargar la imagen');
                             },
                           ),
-                          
+                          */
                           const SizedBox(height: 10),
                           Text(
                             recipe.name,

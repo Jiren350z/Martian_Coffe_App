@@ -138,6 +138,28 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                        widget.recipe.isAssetImage
+                        ? Image.asset(
+                            widget.recipe.imageUrl,
+                            fit: BoxFit.cover,
+                            height: 200,
+                            width: double.infinity,
+                            errorBuilder: (context, error, stackTrace) {
+                              return const Text('Error al cargar la imagen');
+                            },
+                          )
+                        : widget.recipe.imageUrl.isNotEmpty
+                          ? Image.file(
+                              File(widget.recipe.imageUrl),
+                              fit: BoxFit.cover,
+                              height: 200,
+                              width: double.infinity,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Text('Error al cargar la imagen');
+                              },
+                            )
+                          : const Placeholder(fallbackHeight: 200),
+                    /*
                     widget.recipe.imageUrl.isNotEmpty
                         ? Image.file(
                             File(widget.recipe.imageUrl),
@@ -149,6 +171,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
                             },
                           )
                         : const Placeholder(fallbackHeight: 200),
+                        */
                     const SizedBox(height: 10),
                     Text('Duración total de la preparación: ${widget.recipe.preparationTime}',
                         style: const TextStyle(fontSize: 16)),

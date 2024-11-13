@@ -100,19 +100,23 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(height: 10),
                             Text(
                             title,
                               style: TextStyle(
-                              fontSize: 18, // Cambia este valor al tamaño que prefieras
-                              fontWeight: FontWeight.bold, // Opcional: para hacer el texto en negrita
+                              fontSize: 15, // Cambia este valor al tamaño que prefieras
+                              //fontWeight: FontWeight.bold, // Opcional: para hacer el texto en negrita
                               ),
                             ),
+                            
                             Slider(
                               min: 0,
                               max: 5,
                               divisions: 5,
                               label: '${feedbackValues[title]} estrellas',
                               value: feedbackValues[title]?.toDouble() ?? 0,
+                              activeColor: Colors.blue,
+                              inactiveColor: Colors.blueGrey,
                               onChanged: (value) {
                                 setState(() {
                                   feedbackValues[title] = value.toInt();
@@ -120,9 +124,19 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               },
                             ),
                             SizedBox(height: 10),
-                            Text('$minDesc'),
+                            Text(
+                              '$minDesc',
+                              style: TextStyle(
+                              fontSize: 13, // Cambia este valor al tamaño que prefieras   
+                              ),                              
+                            ),
                             SizedBox(height: 10),
-                            Text('$maxDesc'),
+                            Text(
+                              '$maxDesc',
+                              style: TextStyle(
+                              fontSize: 13, // Cambia este valor al tamaño que prefieras 
+                              ),                              
+                            ),
                             SizedBox(height: 10),
                           ],
                         );
