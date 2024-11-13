@@ -65,7 +65,44 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
     });
   }
 
-  void shareRecipe() {
+  void shareRecipe() async {  // Agrega 'async' aquí
+  final String recipeDetails = '''
+    ${widget.recipe.name}
+    
+    Duración total de la preparación: ${widget.recipe.preparationTime} minutos
+    
+    Ingredientes:
+    ${widget.recipe.ingredients.map((ingredient) => '- $ingredient').join('\n')}
+    
+    Utensilios:
+    ${widget.recipe.utensils.map((utensil) => '- $utensil').join('\n')}
+    
+    Preparación:
+    ${widget.recipe.preparation}
+  ''';
+
+  // Verifica si la receta tiene una imagen disponible
+  if (!widget.recipe.isAssetImage && widget.recipe.imageUrl.isNotEmpty) {
+    try {
+      // Usa shareXFiles para compartir la receta con el texto y la imagen
+      await Share.shareXFiles(
+        [XFile(widget.recipe.imageUrl)],  // Utiliza XFile para la imagen
+        text: recipeDetails,
+        subject: 'Receta: ${widget.recipe.name}',
+      );
+    } catch (e) {
+      print("Error al compartir la imagen: $e");
+      // Si hay un error con la imagen, comparte solo el texto
+      Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+    }
+  } else {
+    // Comparte solo el texto si no hay imagen
+    Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+  }
+}
+
+  /*
+  Future<void> shareRecipe() async {
     final String recipeDetails = '''
       ${widget.recipe.name}
       
@@ -80,9 +117,47 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
       Preparación:
       ${widget.recipe.preparation}
     ''';
-
+    
+    if (!widget.recipe.isAssetImage && widget.recipe.imageUrl.isNotEmpty) {
+    try {
+      // Usa shareXFiles para compartir la receta con el texto y la imagen
+      await Share.shareXFiles(
+        [XFile(widget.recipe.imageUrl)],  // Utiliza XFile para la imagen
+        text: recipeDetails,
+        subject: 'Receta: ${widget.recipe.name}',
+      );
+    } catch (e) {
+      print("Error al compartir la imagen: $e");
+      // Si hay un error con la imagen, comparte solo el texto
+      Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+    }
+  } else {
+    // Comparte solo el texto si no hay imagen
     Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
   }
+    /*
+    // Verifica si la receta tiene una imagen disponible
+    if (!widget.recipe.isAssetImage && widget.recipe.imageUrl.isNotEmpty) {
+      try {
+        // Comparte la receta con el texto y la imagen
+        await Share.shareFiles(
+          [widget.recipe.imageUrl], // Ruta de la imagen en el dispositivo
+          text: recipeDetails,
+          subject: 'Receta: ${widget.recipe.name}',
+        );
+      } catch (e) {
+        print("Error al compartir la imagen: $e");
+        // Si hay un error con la imagen, comparte solo el texto
+        Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+      }
+    } else {
+      // Comparte solo el texto si no hay imagen
+      Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+  }
+  */
+    Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+  }
+  */
  
   @override
   Widget build(BuildContext context) {
