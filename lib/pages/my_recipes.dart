@@ -33,50 +33,6 @@ void _loadRecipes() async {
 
 }
 
-/*
-Widget _buildImage(RecipeNew recipe) {
-    // Intenta cargar la imagen de asset o de archivo y maneja el error si ambas fallan.
-    return recipe.isAssetImage
-        ? Image.asset(
-            recipe.imageUrl,
-            fit: BoxFit.cover,
-            height: 200,
-            width: double.infinity,
-            
-            errorBuilder: (context, error, stackTrace) {
-              return recipe.imageUrl.isNotEmpty
-                  ? Image.file(
-                      File(recipe.imageUrl),
-                      fit: BoxFit.cover,
-                      height: 200,
-                      width: double.infinity,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Text(
-                          'Imagen no disponible',
-                          style: TextStyle(color: Colors.red),
-                        );
-                      },
-                    )
-                  : const Placeholder(fallbackHeight: 150);
-            },
-            
-          )
-        : recipe.imageUrl.isNotEmpty
-            ? Image.file(
-                File(recipe.imageUrl),
-                fit: BoxFit.cover,
-                height: 200,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Text(
-                    'Imagen no disponible',
-                    style: TextStyle(color: Colors.red),
-                  );
-                },
-              )
-            : const Placeholder(fallbackHeight: 150);
-  }
-*/
 Widget _buildImage(RecipeNew recipe) {
  
  recipe.isAssetImage = recipe.imageUrl.startsWith('assets/');
@@ -107,29 +63,7 @@ Widget _buildImage(RecipeNew recipe) {
           ),
   );
 }
-/*
-Widget _buildImage(RecipeNew recipe) {
-    // Verifica si es una imagen de asset o archivo
-  return recipe.isAssetImage
-      ? Image.asset(
-        recipe.imageUrl,
-        fit: BoxFit.cover,
-        height: 200,
-        width: double.infinity,
-        errorBuilder: (context, error, stackTrace) {
-          return const Text('Error al cargar la imagen');
-        },
-      )
-      : recipe.imageUrl.isNotEmpty
-        ? Image.file(
-        File(recipe.imageUrl),
-        fit: BoxFit.cover,
-        height: 200,
-        width: double.infinity,
-      )
-    : const Placeholder(fallbackHeight: 150);
-}
-*/
+
 
   @override
   Widget build(BuildContext context) {
@@ -157,62 +91,7 @@ Widget _buildImage(RecipeNew recipe) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildImage(recipe), // Llama al método para construir la imagen
-                    /*
-                    Image.asset(
-                    recipe.imageUrl,
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: double.infinity,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Text('Error al cargar la imagen');
-                    },
-                  ),
-                    recipe.imageUrl.isNotEmpty
-                    ? Image.file(
-                    File(recipe.imageUrl),
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: double.infinity,
-                  )
-                  :const Placeholder(fallbackHeight: 150),
-                  */
-                    //_buildImage(recipe), // Llama al método para construir la imagen
-                    /*
-                    recipe.isAssetImage
-                      ? Image.asset(
-                          recipe.imageUrl,
-                          fit: BoxFit.cover,
-                          height: 200,
-                          width: double.infinity,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Text('Error al cargar la imagen');
-                          },
-                        )
-                      : recipe.imageUrl.isNotEmpty
-                        ? Image.file(
-                            File(recipe.imageUrl),
-                            fit: BoxFit.cover,
-                            height: 200,
-                            width: double.infinity,
-                          )
-                        : const Placeholder(fallbackHeight: 150),   
-                      */                   
-                    /*
-                    Image.asset(
-                      recipe.imageUrl,
-                      fit: BoxFit.cover,
-                      height: 200,
-                      width: double.infinity,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Text('Error al cargar la imagen');
-                      },
-                    ),
-                    */
-                    /*
-                    recipe.imageUrl.isNotEmpty
-                    ? Image.file(File(recipe.imageUrl))
-                    : const Placeholder(fallbackHeight: 150),
-                    */
+                   
                     Text(
                       recipe.name,
                       style: const TextStyle(
@@ -224,9 +103,7 @@ Widget _buildImage(RecipeNew recipe) {
 
                   ],
                   
-                  
                 ),
-                
                 
               ),
             ),
