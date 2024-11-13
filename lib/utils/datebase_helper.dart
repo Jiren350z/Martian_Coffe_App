@@ -3,13 +3,7 @@ import 'package:path/path.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-//import 'package:martian_cofee_app/models/ingredient_class.dart';
-//import 'package:martian_cofee_app/models/post_class.dart';
-//import 'package:martian_cofee_app/models/preparation_metod_class.dart';
-//import 'package:martian_cofee_app/models/product_class.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
-//import 'package:martian_cofee_app/models/shop_class.dart';
-//import 'package:martian_cofee_app/models/users_class.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -38,44 +32,7 @@ class DatabaseHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     
-    /*
-    //ingrediente
-    await db.execute('''
-      CREATE TABLE ingredients(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        type TEXT,
-        value REAL,
-        ubication TEXT,
-        rating REAL,
-        imageOfIngredient TEXT
-      );
-    ''');
-    
-
-    //metodo de preparacion
-    await db.execute('''
-      CREATE TABLE preparation_methods(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        description TEXT,
-        preparationTime INTEGER,
-        waterTemperature REAL,
-        waterAmount REAL,
-        coffeeAmount REAL,
-        grindingThickness TEXT,
-        equipment TEXT,
-        flavorNotes TEXT,
-        dificulty TEXT,
-        filterType TEXT,
-        recomendations TEXT,
-        rating REAL,
-        imageOfMetod TEXT
-      );
-    ''');
-
-    */
-
-
+ 
     //receta
     await db.execute('''
       CREATE TABLE recipes (
@@ -107,114 +64,12 @@ class DatabaseHelper {
         FOREIGN KEY (recipeId) REFERENCES recipes(id)
       );
     ''');
-  /*
-    //producto  
-    await db.execute('''
-      CREATE TABLE products (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        price REAL,
-        description TEXT,
-        stock INTEGER,
-        contact TEXT,
-        imageOfProduct TEXT,
-        rating REAL,
-        shopId INTEGER,
-        FOREIGN KEY (shopId) REFERENCES shops (id)
-      )
-    ''');
-
-    //usuario  
-      await db.execute('''
-    CREATE TABLE users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT,
-      email TEXT,
-      biography TEXT,
-      age INTEGER,
-      genre TEXT,
-      bornData TEXT,
-      typeOfExperienceWithCoffee TEXT,
-      country TEXT,
-      region TEXT,
-      city TEXT,
-      profileURL TEXT
-    )
-  ''');
-
-  await db.execute('''
-    CREATE TABLE createdRecipes (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      recipeData TEXT,
-      userId INTEGER,
-      FOREIGN KEY (userId) REFERENCES users (id)
-    )
-  ''');
-
-  await db.execute('''
-    CREATE TABLE purchasedProducts (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      productData TEXT,
-      userId INTEGER,
-      FOREIGN KEY (userId) REFERENCES users (id)
-    )
-  ''');
-  */
+ 
   }
 
   /////////////////
 
-  //ingrediente
-  /*
-  Future<int> insertIngredient(IngredientNew ingredient) async {
-    final db = await database;
-    return await db.insert('ingredients', ingredient.toMap());
-  }
 
-  Future<List<IngredientNew>> getIngredients() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('ingredients');
-    return List.generate(maps.length, (i) {
-      return IngredientNew.fromMap(maps[i]);
-    });
-  }
-
-  //metodo de preparacion
-  Future<int> insertPreparationMethod(PreparationMetodNew preparationMethod) async {
-    final db = await database;
-    return await db.insert('preparation_methods', preparationMethod.toMap());
-  }
- 
-  Future<List<PreparationMetodNew>> getPreparationMethods() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('preparation_methods');
-    return List.generate(maps.length, (i) {
-      return PreparationMetodNew.fromMap(maps[i]);
-    });
-  }
-  */
-
-  
-  //producto
-/*  
-  Future<int> insertProduct(ProductNew product) async {
-  final db = await database;
-  return await db.insert('products', product.toMap());
-}
-
-Future<ProductNew?> getProduct(int id) async {
-  final db = await database;
-  final maps = await db.query(
-    'products',
-    where: 'id = ?',
-    whereArgs: [id],
-  );
-  if (maps.isNotEmpty) {
-    return ProductNew.fromMap(maps.first);
-  }
-  return null;
-}
-*/
 
   //receta
     Future<int> insertRecipe(RecipeNew recipe) async {
@@ -393,137 +248,70 @@ Future<ProductNew?> getProduct(int id) async {
 }
 
 
-  /*
-  //usuario
-  Future<int> insertUser(UserNew user) async {
-    final db = await database;
+Future<void> updateRecipe(RecipeNew recipe) async {
+  final db = await database;
 
-    // Inserta el usuario en la tabla de usuarios
-    int userId = await db.insert(
-      'users',
-      user.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+  // Recupera el 'id' de la receta desde la base de datos (asumiendo que ya existe)
+  final List<Map<String, dynamic>> recipeMaps = await db.query(
+    'recipes',
+    where: 'name = ?',
+    whereArgs: [recipe.name], // Usamos 'name' o cualquier campo único que tengas
+  );
 
-    // Inserta las relaciones (productos, recetas, etc.)
-    for (var recipe in user.createdRecipe) {
-      await db.insert(
-        'createdRecipes',
-        recipe.toMap()..['userId'] = userId,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
+  if (recipeMaps.isNotEmpty) {
+    final recipeId = recipeMaps.first['id'];
 
-    for (var product in user.purshasedProducts) {
-      await db.insert(
-        'purchasedProducts',
-        product.toMap()..['userId'] = userId,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-
-    for (var favoriteRecipe in user.favoritesRecipes) {
-      await db.insert(
-        'favoriteRecipes',
-        favoriteRecipe.toMap()..['userId'] = userId,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-
-    for (var preparationMethod in user.favoritedPreparationMetods) {
-      await db.insert(
-        'favoritedPreparationMethods',
-        preparationMethod.toMap()..['userId'] = userId,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-
-    for (var favoriteProduct in user.favoritesProducts) {
-      await db.insert(
-        'favoritesProducts',
-        favoriteProduct.toMap()..['userId'] = userId,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-
-    for (var ingredient in user.favoritesIngredient) {
-      await db.insert(
-        'favoritesIngredients',
-        ingredient.toMap()..['userId'] = userId,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-
-    return userId;
-  }
-
-  Future<UserNew?> getUser(int id) async {
-    final db = await database;
-
-    // Recupera el usuario de la tabla de usuarios
-    final userMap = await db.query(
-      'users',
+    // Realiza la actualización de la receta con el id obtenido
+    await db.update(
+      'recipes',
+      {
+        'name': recipe.name,
+        'imageUrl': recipe.imageUrl,
+        'preparation': recipe.preparation,
+        'registrationDate': recipe.registrationDate.toIso8601String(),
+        'preparationTime': recipe.preparationTime,
+      },
       where: 'id = ?',
-      whereArgs: [id],
+      whereArgs: [recipeId],
     );
 
-    if (userMap.isEmpty) return null;
+    // Actualiza los ingredientes
+    for (final ingredient in recipe.ingredients) {
+      await db.insert(
+        'recipe_ingredients',
+        {
+          'recipeId': recipeId,
+          'ingredient': ingredient,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
 
-    // Recupera las relaciones de otras tablas usando userId
-    final createdRecipeMaps = await db.query(
-      'createdRecipes',
-      where: 'userId = ?',
-      whereArgs: [id],
-    );
-
-    final purchasedProductMaps = await db.query(
-      'purchasedProducts',
-      where: 'userId = ?',
-      whereArgs: [id],
-    );
-
-    final favoriteRecipeMaps = await db.query(
-      'favoriteRecipes',
-      where: 'userId = ?',
-      whereArgs: [id],
-    );
-
-    final favoritedPreparationMethodMaps = await db.query(
-      'favoritedPreparationMethods',
-      where: 'userId = ?',
-      whereArgs: [id],
-    );
-
-    final favoriteProductMaps = await db.query(
-      'favoritesProducts',
-      where: 'userId = ?',
-      whereArgs: [id],
-    );
-
-    final favoriteIngredientMaps = await db.query(
-      'favoritesIngredients',
-      where: 'userId = ?',
-      whereArgs: [id],
-    );
-
-    // Convierte los datos en listas de objetos
-    List<RecipeNew> createdRecipes = createdRecipeMaps.map((map) => RecipeNew.fromMap(map)).toList();
-    List<ProductNew> purchasedProducts = purchasedProductMaps.map((map) => ProductNew.fromMap(map)).toList();
-    List<RecipeNew> favoriteRecipes = favoriteRecipeMaps.map((map) => RecipeNew.fromMap(map)).toList();
-    List<PreparationMetodNew> favoritedPreparationMethods = favoritedPreparationMethodMaps.map((map) => PreparationMetodNew.fromMap(map)).toList();
-    List<ProductNew> favoriteProducts = favoriteProductMaps.map((map) => ProductNew.fromMap(map)).toList();
-    List<IngredientNew> favoriteIngredients = favoriteIngredientMaps.map((map) => IngredientNew.fromMap(map)).toList();
-
-    // Crea y retorna el objeto UserNew
-    return UserNew.fromMap(userMap.first)
-      ..createdRecipe = createdRecipes
-      ..purshasedProducts = purchasedProducts
-      ..favoritesRecipes = favoriteRecipes
-      ..favoritedPreparationMetods = favoritedPreparationMethods
-      ..favoritesProducts = favoriteProducts
-      ..favoritesIngredient = favoriteIngredients;
+    // Actualiza los utensilios
+    for (final utensil in recipe.utensils) {
+      await db.insert(
+        'recipe_utensils',
+        {
+          'recipeId': recipeId,
+          'utensil': utensil,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
   }
-  */
+}
 
+
+/*
+Future<void> updateRecipe(RecipeNew recipe) async {
+  final db = await database;
+  await db.update(
+    'recipes',
+    recipe.toMap(),
+    where: 'id = ?',
+    whereArgs: [recipe],
+  );
+}
+*/
   
 }

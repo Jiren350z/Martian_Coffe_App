@@ -4,8 +4,6 @@ import 'package:martian_cofee_app/pages/home_page_.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized(); // Inicializa los bindings
-  //final dbHelper = DatabaseHelper();
-  //await dbHelper.preloadRecipes();
   runApp(const MyApp());
 }
 
