@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
-import 'package:martian_cofee_app/pages/browser_.dart';
+//import 'package:martian_cofee_app/pages/browser_.dart';
 import 'package:martian_cofee_app/pages/my_recipes.dart';
 import 'package:martian_cofee_app/pages/my_barist.dart';
-
+import 'package:martian_cofee_app/pages/opinion.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -74,211 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         preparationTime: 0,
       );
 
-    RecipeNew newRecipe2 = RecipeNew(
-        name: 'Café Chocolate',
-        ingredients: ['Cafetera', 'Cuchara'],
-        /*
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1,
-          ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        ],
-        */
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          /*
-          userCreator: UserNew(
-          name: 'Adam Sokravotz',
-          email: "im_rock@gmail.com",
-          biography: "Dame Cafe",
-          typeOfExperienceWithCoffee: "Barista",
-          age: 20,
-          genre: "Masculino",
-          bornData: DateTime(2004,7,3),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "URSS",
-          region: "",
-          city: "Moscu",
-          profileURL: '',
-          registrationDate: DateTime(2009,4,10),
-          ),
-          */
-        imageUrl: 'assets/images/caffe_chocolate.jpg',
-        //rating: 3.0,  
-        registrationDate: DateTime(2009,4,10),
-        preparationTime: 0,
-     );
-      
-    RecipeNew newRecipe3 = RecipeNew(
-        name: 'Café Latte',
-        ingredients: ['Cafetera', 'Cuchara'],
-        /*
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1,
-          ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        ],
-        */
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          /*
-          userCreator: UserNew(
-          name: 'Gine',
-          email: "gine23@gmail.com",
-          biography: "Reviveme Kakaroto",
-          typeOfExperienceWithCoffee: "Consumidor/a",
-          age: 21,
-          genre: "Femenino",
-          bornData: DateTime(2003,3,14),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "Planeta Saiyan",
-          region: "",
-          city: "",
-          profileURL: '',
-          registrationDate: DateTime(2009,4,10),
-          ),
-          */
-        imageUrl: 'assets/images/caffe_latte.jpg',
-        //rating: 4.0,  
-        registrationDate: DateTime(2009,4,10),
-        preparationTime: 0,
-     );
-      
-    RecipeNew newRecipe4 = RecipeNew(
-        name: 'Café Mokka',
-        ingredients: ['Cafetera', 'Cuchara'],
-        /*
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1, ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',),
-        ],
-        */
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          /*
-          userCreator: UserNew(
-          name: 'Dante Sparda',
-          email: "dantesparda@gmail.com",
-          biography: "Dame dinero que estoy endeudado :C",
-          typeOfExperienceWithCoffee: "Barista Profesional",
-          age: 38,
-          genre: "Masculino",
-          bornData: DateTime(1986,10,8),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "EEUU",
-          region: "New York",
-          city: "Brooklyn",
-          profileURL: '',
-          registrationDate: DateTime(2009,4,10),
-          ),
-          */
-        imageUrl: 'assets/images/caffe_mokka.jpg',
-        //rating: 4.5,    
-        registrationDate: DateTime(2009,4,10),
-        preparationTime: 0,
-     );
-      
-    RecipeNew newRecipe5 = RecipeNew(
-        name: 'Café Capuccino',
-        ingredients: ['Cafetera', 'Cuchara'],
-        /*
-        ingredients: [
-        IngredientNew(
-          type: 'Agua hirviendo',
-          value: 1, ubication: "micasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        IngredientNew(
-          type: 'Sobre de cafe puro',
-          value: 2,
-          ubication: "tucasa",
-          rating: 0.0,
-          imageOfIngredient: '',
-          ),
-        ],
-        */
-          utensils: ['Cafetera', 'Cuchara'],
-          preparation: "",
-          /*
-          userCreator: UserNew(
-          name: 'Vergil Sparda',
-          email: "vergilsparda@gmail.com",
-          biography: "Necesito mas cafe, dame mas cafe",
-          typeOfExperienceWithCoffee: "Productor de cafeteria",
-          age: 38,
-          genre: "Masculino",
-          bornData: DateTime(1986,10,8),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "EEUU",
-          region: "California",
-          city: "Los Angeles",
-          profileURL: '',
-          registrationDate: DateTime(2009,4,10),
-          ),
-          */
-        imageUrl: 'assets/images/caffe_capuccino.jpg',
-        //rating: 4.8,  
-        registrationDate: DateTime(2009,4,10),
-        preparationTime: 0,
-     );       
-    
-                         
+                        
   @override
   void initState() {
   
@@ -307,7 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return MyBaristWidget(); 
 
       case 2:
-        return const SearchScreen();
+        return FeedbackScreen();
+        //return const SearchScreen();
       /*  
       case 3:
         return UserScreen(user: userd);
@@ -344,8 +141,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
 
-            icon: Icon(Icons.search),
-            label: 'Descubrir',
+            icon: Icon(Icons.comment),
+            label: 'Mi Opinion',
             
           ),
 
