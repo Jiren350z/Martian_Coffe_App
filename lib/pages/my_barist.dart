@@ -1,3 +1,4 @@
+//import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
@@ -20,6 +21,7 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
     //await dbHelper.preloadRecipes(); // Esto carga las recetas desde el archivo JSON
     return await dbHelper.getRecipesFromJson(); // Luego obtenemos las recetas desde la base de datos
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RecipeDetailPage(recipe: recipe),
+                          builder: (context) => RecipeDetailPage(recipe: recipe, fromJson: true),
                         ),
                       ).then((value) {
                         setState(() {}); // Refrescar la lista de recetas al volver
@@ -59,6 +61,11 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          
+                          //recipe.imageUrl.isNotEmpty
+                          //? Image.file(File(recipe.imageUrl))
+                          //: const Placeholder(fallbackHeight: 150),
+                          
                           Image.asset(
                             recipe.imageUrl,
                             fit: BoxFit.cover,
@@ -68,6 +75,7 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
                               return const Text('Error al cargar la imagen');
                             },
                           ),
+                          
                           const SizedBox(height: 10),
                           Text(
                             recipe.name,

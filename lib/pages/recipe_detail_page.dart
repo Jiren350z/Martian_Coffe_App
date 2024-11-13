@@ -5,8 +5,9 @@ import 'package:martian_cofee_app/utils/datebase_helper.dart';
 
 class RecipeDetailPage extends StatefulWidget {
   final RecipeNew recipe;
+  final bool fromJson; // Indica si la receta viene del JSON
 
-  const RecipeDetailPage({super.key, required this.recipe});
+  const RecipeDetailPage({super.key, required this.recipe, required this.fromJson});
 
   @override
   RecipeDetailPageState createState() => RecipeDetailPageState();
@@ -39,7 +40,31 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
     preparationController.dispose();
     super.dispose();
   }
+  Future<void> _saveRecipe() async {
+    setState(() {
+      widget.recipe.name = nameController.text;
+      widget.recipe.preparationTime = int.tryParse(prepTimeController.text) ?? widget.recipe.preparationTime;
+      widget.recipe.ingredients = ingredientsController.text.split(',').map((e) => e.trim()).toList();
+      widget.recipe.utensils = utensilsController.text.split(',').map((e) => e.trim()).toList();
+      widget.recipe.preparation = preparationController.text;
+    });
 
+    final db = DatabaseHelper();
+
+    if (widget.fromJson) {
+      // Si es una receta precargada de JSON, guárdala en "Mis Recetas"
+      await db.insertRecipe(widget.recipe);
+    } else {
+      // Si ya está en la base de datos, solo actualízala
+      await db.updateRecipe(widget.recipe);
+    }
+
+    setState(() {
+      isEditing = false;
+    });
+  }
+
+  /*
   Future<void> _saveRecipe() async {
     setState(() {
       widget.recipe.name = nameController.text;
@@ -56,7 +81,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
       isEditing = false;
     });
   }
-
+  */
   @override
   Widget build(BuildContext context) {
     return Scaffold(

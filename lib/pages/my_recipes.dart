@@ -49,7 +49,7 @@ void _loadRecipes() async {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => RecipeDetailPage(recipe: recipe),
+                    builder: (context) => RecipeDetailPage(recipe: recipe, fromJson: false),
                   ),
                 );
               },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
-import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
+//import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
 
 class RecipeListWidget extends StatelessWidget {
@@ -25,12 +25,14 @@ class RecipeListWidget extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 // navegar a la pagina de detalles
+                /*
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => RecipeDetailPage(recipe: recipe /*, product: productt*/),
                   ),
                 );
+                */
               },
               child: Padding(
                 padding: const EdgeInsets.all(10),
