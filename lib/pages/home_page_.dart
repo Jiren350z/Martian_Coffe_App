@@ -47,11 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       case 2:
         return FeedbackScreen();
-        //return const SearchScreen();
-      /*  
-      case 3:
-        return UserScreen(user: userd);
-      */
+
       default:
         return const Center(child: Text('Selecciona una opción en la barra de navegación'));
     }

@@ -8,7 +8,7 @@ package="cl.dmorales.martian_cofee_app">
     </intent>
 </queries>
     <application
-        android:label="martian_cofee_app"
+        android:label="Martian Coffee"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
