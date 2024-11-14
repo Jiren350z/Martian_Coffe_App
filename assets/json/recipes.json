@@ -2,49 +2,50 @@
 
     {
         "name": "Café Mokka",
-        "ingredients": ["Agua Caliente"],
-        "utensils": ["Cafetera", "Cuchara"],
-        "preparation": "",
-        "imageUrl": "assets/images/caffe_marciano.jpg", 
+        "ingredients": ["Agua caliente", "Café espresso", "Chocolate negro", "Leche", "Azúcar (opcional)"],
+        "utensils": ["Cafetera", "Cuchara", "Taza"],
+        "preparation": "Prepara un espresso fuerte en la cafetera. Calienta la leche y mézclala con el chocolate negro hasta que se derrita por completo. Agrega el espresso y mezcla bien. Endulza al gusto y sirve caliente.",
+        "imageUrl": "assets/images/caffe_mokka.jpg", 
         "registrationDate": "2009-04-10",
-        "preparationTime" : 20,
-        "products":["Cafetera marca Obex"],
-        "preparationCounter" : 0
+        "preparationTime": 10,
+        "products": ["Cafetera marca Obex", "Chocolate marca Amargo"],
+        "preparationCounter": 0
     },
     
     {
-        "name": "Café Chocolate",
-        "ingredients": ["Agua hirviendo"],
-        "utensils": ["Cafetera", "Cuchara"],
-        "preparation": "",
+        "name": "Café con Chocolate",
+        "ingredients": ["Agua caliente", "Café instantáneo", "Chocolate en polvo", "Leche", "Azúcar (opcional)"],
+        "utensils": ["Cafetera", "Cuchara", "Taza"],
+        "preparation": "Prepara el café en la cafetera. En una taza, mezcla el chocolate en polvo con un poco de agua caliente. Agrega el café y la leche caliente, revolviendo bien. Endulza al gusto.",
         "imageUrl": "assets/images/caffe_chocolate.jpg",  
         "registrationDate": "2009-04-10",
-        "preparationTime" : 10,
-        "products":["Cafetera marca Tinax"],
-        "preparationCounter" : 0
+        "preparationTime": 10,
+        "products": ["Cafetera marca Tinax", "Chocolate marca Dulce"],
+        "preparationCounter": 0
     },    
     
     {
         "name": "Café Latte",
-        "ingredients": ["Sobre de cafe puro"],
-        "utensils": ["Cafetera", "Cuchara"],
-        "preparation": "",
+        "ingredients": ["Café espresso", "Leche caliente", "Azúcar (opcional)"],
+        "utensils": ["Cafetera", "Cuchara", "Taza"],
+        "preparation": "Prepara un espresso en la cafetera. Calienta la leche y bátela hasta que quede espumosa. Vierte el espresso en una taza y añade la leche espumosa encima. Endulza si lo deseas.",
         "imageUrl": "assets/images/caffe_latte.jpg", 
         "registrationDate": "2008-02-03",
-        "preparationTime" : 13,
-        "products":["Cafetera marca Revex"],
-        "preparationCounter" : 0
+        "preparationTime": 7,
+        "products": ["Cafetera marca Revex", "Espumador de leche marca Latté"],
+        "preparationCounter": 0
     },
+    
     {
         "name": "Café Capuccino",
-        "ingredients": ["Sobre de capuccino"],
-        "utensils": ["Cafetera", "Cuchara"],
-        "preparation": "",
-        "imageUrl": "assets/images/vergil_silla.jpg", 
+        "ingredients": ["Café espresso", "Leche", "Espuma de leche", "Cacao en polvo"],
+        "utensils": ["Cafetera", "Cuchara", "Taza", "Espumador de leche"],
+        "preparation": "Prepara el espresso en la cafetera. Calienta la leche y bátela hasta que quede espumosa. Llena la taza con el espresso, añade la leche caliente y corona con espuma de leche. Espolvorea cacao en polvo encima para decorar.",
+        "imageUrl": "assets/images/caffe_capuccino.jpg", 
         "registrationDate": "2008-02-03",
-        "preparationTime" : 35,
-        "products":["Cafetera marca Owen"],
-        "preparationCounter" : 0
-    }         
+        "preparationTime": 8,
+        "products": ["Cafetera marca Owen", "Cacao marca Pureza"],
+        "preparationCounter": 0
+    }  
 ]
 
