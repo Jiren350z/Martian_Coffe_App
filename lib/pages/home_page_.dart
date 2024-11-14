@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:martian_cofee_app/models/recipe_class.dart';
+//import 'package:martian_cofee_app/models/recipe_class.dart';
 //import 'package:martian_cofee_app/pages/browser_.dart';
 import 'package:martian_cofee_app/pages/my_recipes.dart';
 import 'package:martian_cofee_app/pages/my_barist.dart';
@@ -15,65 +15,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  //late ShopNew myShop;
-  List<RecipeNew> favoritesRecipes = [];
+
 
   int _selectedIndex = 0; // para rastrear la pestaña seleccionada
 
     
-    RecipeNew newRecipe = RecipeNew(
-        name: 'Café Marcianeke',
-        ingredients: ['Cafetera', 'Cuchara'],
-        /*
-        ingredients: [
-          IngredientNew(
-            type: 'Agua Caliente',
-            value: 1,
-            ubication: "mi casita",
-            rating: 0.0,
-            imageOfIngredient: '',
-            ),
-          IngredientNew(
-            type: 'Café en polvo',
-            value: 2,
-            ubication: "tucasa",
-            rating: 0.0,
-            imageOfIngredient: '',
-            ),
-        ],
-        */
-        utensils: ['Cafetera', 'Cuchara'],
-        preparation: "",
-        
-        /*
-        userCreator: UserNew(
-          name: 'John Doe',
-          email: "imprimansuenio@gmail.com",
-          biography: "Amo el cafe",
-          typeOfExperienceWithCoffee: "Consumidor",
-          age: 24,
-          genre: "Masculino",
-          bornData: DateTime(2000,5,6),
-          createdRecipe: [],
-          purshasedProducts: [],
-          favoritesRecipes: [],
-          favoritedPreparationMetods: [],
-          favoritesProducts: [],
-          favoritesIngredient: [],
-          history: [],
-          country: "EE.UU",
-          region: "Ohio",
-          city: "Colombus",
-          profileURL: '',
-          registrationDate: DateTime(2009,4,10),
-        ),
-        */
-        imageUrl: 'assets/images/caffe_marciano.jpg', // URL de la imagen
-        //rating: 4.5, // Valoración entre 0.0 y 5.0
-        registrationDate: DateTime(2009,4,10),
-        preparationTime: 0,
-      );
-
                         
   @override
   void initState() {
@@ -81,7 +27,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
       
       
-      favoritesRecipes.add(newRecipe);
 
   }
    //metodo para cambiar entre las pantallas

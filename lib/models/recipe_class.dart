@@ -14,6 +14,8 @@ class RecipeNew {
   DateTime registrationDate;
   int preparationTime;  
   bool isAssetImage;
+  List<String> products; // Lista de productos
+  int preparationCounter; // Contador de preparación
 
   RecipeNew({
     required this.name,
@@ -25,6 +27,8 @@ class RecipeNew {
     //required this.rating, 
     required this.registrationDate, 
     required this.preparationTime,
+    required this.products, // Ahora es requerido
+    required this.preparationCounter, // Ahora es requerido
     this.isAssetImage = false,
   });
 
@@ -38,6 +42,8 @@ class RecipeNew {
       'imageUrl': imageUrl,
       'registrationDate': registrationDate.toIso8601String(),
       'preparationTime' : preparationTime,
+      'products': products.join(','), // Convertir productos a String
+      'preparationCounter': preparationCounter,
     };
   }
 
@@ -50,6 +56,8 @@ class RecipeNew {
     imageUrl: map['imageUrl'],
     registrationDate: DateTime.parse(map['registrationDate']),
     preparationTime: map['preparationTime'],
+    products: List<String>.from(map['products'].split(',')), // Convertir String a lista
+    preparationCounter: map['preparationCounter'] ?? 0,
   );
 }
 

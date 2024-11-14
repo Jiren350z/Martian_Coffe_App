@@ -41,7 +41,8 @@ class DatabaseHelper {
         imageUrl TEXT,            
         preparation TEXT,                 
         registrationDate TEXT,    
-        preparationTime INTEGER
+        preparationTime INTEGER,
+        preparationCounter INTEGER
       );
     ''');
 
@@ -64,6 +65,15 @@ class DatabaseHelper {
         FOREIGN KEY (recipeId) REFERENCES recipes(id)
       );
     ''');
+
+    await db.execute('''
+      CREATE TABLE recipe_products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        recipeId INTEGER,
+        product TEXT,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id)
+      );
+    ''');
  
   }
 
@@ -83,6 +93,7 @@ class DatabaseHelper {
         'preparation': recipe.preparation,
         'registrationDate': recipe.registrationDate.toIso8601String(),
         'preparationTime': recipe.preparationTime,
+        'preparationCounter': recipe.preparationCounter,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -106,6 +117,18 @@ class DatabaseHelper {
         {
           'recipeId': recipeId,
           'utensil': utensil,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+
+
+    for (final product in recipe.products) {
+      await db.insert(
+        'recipe_products',
+        {
+          'recipeId': recipeId,
+          'product': product,  
         },
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
@@ -138,8 +161,15 @@ class DatabaseHelper {
       whereArgs: [id],
     );
 
+    final productMaps = await db.query(
+      'recipe_products',
+      where: 'recipeId = ?',
+      whereArgs: [id],
+    );
+
     List<String> utensils = utensilMaps.map((map) => map['utensil'] as String).toList();
     List<String> ingredients = ingredientMaps.map((map) => map['ingredient'] as String).toList();
+    List<String> products = productMaps.map((map) => map['product'] as String).toList();
 
     // Crea el objeto RecipeNew
     RecipeNew recipe = RecipeNew(
@@ -150,6 +180,8 @@ class DatabaseHelper {
       imageUrl: recipeMap.first['imageUrl'] as String,
       registrationDate: DateTime.parse(recipeMap.first['registrationDate'] as String),
       preparationTime: recipeMap.first['preparationTime'] as int,
+      products: products,
+      preparationCounter: recipeMap.first['preparationCounter'] as int,
     );
 
     return recipe;
@@ -175,9 +207,16 @@ class DatabaseHelper {
       whereArgs: [recipeMap['id']],
     );
 
+    final List<Map<String, dynamic>> productMaps = await db.query(
+      'recipe_products',
+      where: 'recipeId = ?',
+      whereArgs: [recipeMap['id']],
+    );
+
     // Mapear los resultados a listas de String
     List<String> ingredients = ingredientMaps.map((map) => map['ingredient'] as String).toList();
     List<String> utensils = utensilMaps.map((map) => map['utensil'] as String).toList();
+    List<String> products = productMaps.map((map) => map['product'] as String).toList();
 
     // Añadir el objeto `RecipeNew` a la lista
     recipes.add(
@@ -189,6 +228,8 @@ class DatabaseHelper {
         imageUrl: recipeMap['imageUrl'],
         registrationDate: DateTime.parse(recipeMap['registrationDate']),
         preparationTime: recipeMap['preparationTime'],
+        products: products,  // Agregar los productos
+        preparationCounter: recipeMap['preparationCounter'] as int,
       ),
     );
   }
@@ -220,6 +261,8 @@ class DatabaseHelper {
         imageUrl: item['imageUrl'],
         registrationDate: DateTime.parse(item['registrationDate']),
         preparationTime: item['preparationTime'],
+        products: List<String>.from(item['products']),
+        preparationCounter: item['preparationCounter']
       );
 
       await insertRecipe(recipe);
@@ -240,7 +283,9 @@ class DatabaseHelper {
       preparation: item['preparation'],
       imageUrl: item['imageUrl'],
       registrationDate: DateTime.parse(item['registrationDate']),
+      products: List<String>.from(item['products']),
       preparationTime: item['preparationTime'],
+      preparationCounter: item['preparationCounter']
     );
   }).toList();
 
@@ -270,10 +315,15 @@ Future<void> updateRecipe(RecipeNew recipe) async {
         'preparation': recipe.preparation,
         'registrationDate': recipe.registrationDate.toIso8601String(),
         'preparationTime': recipe.preparationTime,
+        'preparationCounter': recipe.preparationCounter,
       },
       where: 'id = ?',
       whereArgs: [recipeId],
     );
+
+    await db.delete('recipe_ingredients', where: 'recipeId = ?', whereArgs: [recipeId]);
+    await db.delete('recipe_utensils', where: 'recipeId = ?', whereArgs: [recipeId]);
+    await db.delete('recipe_products', where: 'recipeId = ?', whereArgs: [recipeId]);
 
     // Actualiza los ingredientes
     for (final ingredient in recipe.ingredients) {
@@ -294,6 +344,18 @@ Future<void> updateRecipe(RecipeNew recipe) async {
         {
           'recipeId': recipeId,
           'utensil': utensil,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+
+    // Actualiza los productos
+    for (final product in recipe.products) {
+      await db.insert(
+        'recipe_products',
+        {
+          'recipeId': recipeId,
+          'product': product,
         },
         conflictAlgorithm: ConflictAlgorithm.replace,
       );

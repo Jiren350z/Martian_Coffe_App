@@ -7,7 +7,9 @@
         "preparation": "",
         "imageUrl": "assets/images/caffe_marciano.jpg", 
         "registrationDate": "2009-04-10",
-        "preparationTime" : 20
+        "preparationTime" : 20,
+        "products":["Cafetera marca Obex"],
+        "preparationCounter" : 0
     },
     
     {
@@ -17,7 +19,9 @@
         "preparation": "",
         "imageUrl": "assets/images/caffe_chocolate.jpg",  
         "registrationDate": "2009-04-10",
-        "preparationTime" : 10
+        "preparationTime" : 10,
+        "products":["Cafetera marca Tinax"],
+        "preparationCounter" : 0
     },    
     
     {
@@ -27,7 +31,9 @@
         "preparation": "",
         "imageUrl": "assets/images/caffe_latte.jpg", 
         "registrationDate": "2008-02-03",
-        "preparationTime" : 13
+        "preparationTime" : 13,
+        "products":["Cafetera marca Revex"],
+        "preparationCounter" : 0
     },
     {
         "name": "Café Capuccino",
@@ -36,7 +42,9 @@
         "preparation": "",
         "imageUrl": "assets/images/vergil_silla.jpg", 
         "registrationDate": "2008-02-03",
-        "preparationTime" : 35
+        "preparationTime" : 35,
+        "products":["Cafetera marca Owen"],
+        "preparationCounter" : 0
     }         
 ]
 
