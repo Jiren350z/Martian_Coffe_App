@@ -4,7 +4,7 @@
 //import 'package:martian_cofee_app/models/users_class.dart';
 
 class RecipeNew {
-  int id;
+  int? id;
   String name;
   List<String> ingredients;
   List<String> utensils;
@@ -19,6 +19,7 @@ class RecipeNew {
   int preparationCounter; // Contador de preparación
 
   RecipeNew({
+    this.id,
     required this.name,
     required this.ingredients,
     required this.utensils,
@@ -33,6 +34,25 @@ class RecipeNew {
     this.isAssetImage = false,
   });
 
+  Map<String, dynamic> toMap() {
+    final map = {
+      'name': name,
+      'ingredients': ingredients.join(','),
+      'utensils': utensils.join(','),
+      'preparation': preparation,
+      'imageUrl': imageUrl,
+      'registrationDate': registrationDate.toIso8601String(),
+      'preparationTime': preparationTime,
+      'products': products.join(','), // Convertir productos a String
+      'preparationCounter': preparationCounter,
+    };
+    if (id != null) {
+      map['id'] = id as Object;  // Incluir id solo si existe
+    }
+    return map;
+  }
+
+  /*
   // Convert RecipeNew to Map
   Map<String, dynamic> toMap() {
     return {
@@ -46,10 +66,13 @@ class RecipeNew {
       'products': products.join(','), // Convertir productos a String
       'preparationCounter': preparationCounter,
     };
+    
   }
+  */
 
   factory RecipeNew.fromMap(Map<String, dynamic> map) {
   return RecipeNew(
+    id: map['id'] as int?, 
     name: map['name'],
     ingredients: map['ingredients'],   
     utensils: List<String>.from(map['utensils']),

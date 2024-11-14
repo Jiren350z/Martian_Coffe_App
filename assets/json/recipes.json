@@ -1,7 +1,6 @@
 [
 
     {
-        "id": 0,
         "name": "Café Marcianeke",
         "ingredients": ["Agua Caliente"],
         "utensils": ["Cafetera", "Cuchara"],

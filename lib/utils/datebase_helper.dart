@@ -344,7 +344,7 @@ Future<List<RecipeNew>> getAllRecipes() async {
 Future<void> updateRecipe(RecipeNew recipe) async {
   final db = await database;
 
-  if (recipe.id == true) {
+  if (recipe.id != null) {
     // Realiza la actualización de la receta con el id obtenido
     await db.update(
       'recipes',
