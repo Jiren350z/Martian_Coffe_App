@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:martian_cofee_app/models/recipe_class.dart';
-//import 'package:martian_cofee_app/pages/browser_.dart';
 import 'package:martian_cofee_app/pages/my_recipes.dart';
 import 'package:martian_cofee_app/pages/my_barist.dart';
 import 'package:martian_cofee_app/pages/opinion.dart';
