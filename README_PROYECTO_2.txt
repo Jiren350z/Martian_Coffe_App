@@ -9,7 +9,7 @@ link a github del proyecto:
 https://github.com/Jiren350z/Martian_Coffe_App
 
 link a video del proyecto: 
-
+https://www.youtube.com/watch?v=FQ4xpSUYdDU&ab_channel=DiegoMorales
 
 Martian Cofee: aplicacion creada en flutter, esta enfocada
 a que los usuarios puedan descubrir, crear, gestionar y compartir diferentes recetas de cafe.
