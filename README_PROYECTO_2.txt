@@ -11,20 +11,9 @@ https://github.com/Jiren350z/Martian_Coffe_App
 link a video del proyecto: 
 
 
-Instalacion:
-para instalar y ejecutar el proyecto localmente:
-
-
 Martian Cofee: aplicacion creada en flutter, esta enfocada
 a que los usuarios puedan descubrir, crear, gestionar y compartir diferentes recetas de cafe.
 la aplicacion esta diseñada para aficionados al cafe y gente que se quiera iniciar en el tema.
-
-Diagrama UML:
-
-Diagrama de Arquitectura de informacion:
-
-Diagrama de Flujo:
-
 
 tras los periodos de prueba del antiguo prototipo enfocado a ser una maqueta funcional, se sacaron conclusiones
 y se decidio tomar lo mas importante e implementarlo de forma funcional.
