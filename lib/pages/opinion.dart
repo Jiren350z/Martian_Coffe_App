@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:martian_cofee_app/utils/colors.dart';
 //import 'package:martian_cofee_app/utils/colors.dart';
 
 class FeedbackScreen extends StatefulWidget {
@@ -78,6 +79,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Tu Opinión'),
+      backgroundColor: AppColors.backgroundColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -115,6 +117,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                 });
               },
             ),
+            SizedBox(height: 10),
             Expanded(
               child: ListView(
                 children: questions.entries.map((entry) {
@@ -143,8 +146,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                     Icons.star,
                                     color: feedbackValues[title] != null &&
                                             feedbackValues[title]! > index
-                                        ? Colors.yellow
-                                        : Colors.grey,
+                                        ? AppColors.buttonColor
+                                        : AppColors.backgroundColor,
                                   ),
                                   onPressed: () {
                                     setState(() {

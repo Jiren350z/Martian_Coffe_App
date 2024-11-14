@@ -29,9 +29,9 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        //backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundColor,
         title: const Text('Mi Barista')
         ),
       body: FutureBuilder<List<RecipeNew>>(

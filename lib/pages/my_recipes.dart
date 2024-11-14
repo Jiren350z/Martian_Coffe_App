@@ -70,9 +70,9 @@ Widget _buildImage(RecipeNew recipe) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        //backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.backgroundColor,
         title: const Text('Mis Recetas'),
         
         ),

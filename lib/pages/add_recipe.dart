@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
+import 'package:martian_cofee_app/utils/colors.dart';
 //import 'package:martian_cofee_app/models/ingredient_class.dart';
 import 'package:martian_cofee_app/utils/datebase_helper.dart';
 
@@ -136,6 +137,7 @@ class RecipeCreationScreenState extends State<RecipeCreationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryColor,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
