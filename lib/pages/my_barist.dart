@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
+import 'package:martian_cofee_app/utils/colors.dart';
 import 'package:martian_cofee_app/utils/datebase_helper.dart';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
 
@@ -28,7 +29,11 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mi Barista')),
+      //backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        //backgroundColor: AppColors.backgroundColor,
+        title: const Text('Mi Barista')
+        ),
       body: FutureBuilder<List<RecipeNew>>(
         future: _loadRecipes(),
         builder: (context, snapshot) {
@@ -46,6 +51,7 @@ class _MyBaristWidgetState extends State<MyBaristWidget> {
                 final recipe = recipes[index];
                 recipe.isAssetImage = true;
                 return Card(
+                  color: AppColors.recipeContainerColor,
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   elevation: 4,
                   child: InkWell(

@@ -4,6 +4,7 @@ import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'package:martian_cofee_app/pages/recipe_detail_page.dart';
 //import 'package:martian_cofee_app/pages/product_detail_page.dart';
 import 'package:martian_cofee_app/pages/add_recipe.dart';
+import 'package:martian_cofee_app/utils/colors.dart';
 import 'package:martian_cofee_app/utils/datebase_helper.dart';
 
 class MyRecipesWidget extends StatefulWidget {
@@ -40,6 +41,7 @@ Widget _buildImage(RecipeNew recipe) {
   return Container(
     width: double.infinity,
     height: 200,
+    //color: AppColors.recipeContainerColor,
     child: recipe.isAssetImage
         ? Image.asset(
             recipe.imageUrl,
@@ -68,12 +70,18 @@ Widget _buildImage(RecipeNew recipe) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mis Recetas')),
+      //backgroundColor: AppColors.primaryColor,
+      appBar: AppBar(
+        //backgroundColor: AppColors.primaryColor,
+        title: const Text('Mis Recetas'),
+        
+        ),
       body: ListView.builder(
         itemCount: recipes.length,
         itemBuilder: (context, index) {
           final recipe = recipes[index];
           return Card(
+            color: AppColors.recipeContainerColor,
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             elevation: 4,
             child: InkWell(
@@ -123,8 +131,7 @@ Widget _buildImage(RecipeNew recipe) {
           _loadRecipes();
           }
         },
-        backgroundColor:
-        Colors.amber,
+        backgroundColor: AppColors.buttonColor,
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
