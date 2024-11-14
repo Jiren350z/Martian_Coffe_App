@@ -1,10 +1,16 @@
+//import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:martian_cofee_app/models/recipe_class.dart';
 import 'dart:io';
 import 'package:martian_cofee_app/utils/datebase_helper.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:martian_cofee_app/utils/colors.dart';
+//import 'package:martian_cofee_app/models/recipe_class.dart';
+import 'package:path/path.dart';
 
 class RecipeDetailPage extends StatefulWidget {
   final RecipeNew recipe;
@@ -96,6 +102,111 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
     ${widget.recipe.preparation}
   ''';
 
+     bool isAssetImage = widget.recipe.imageUrl.startsWith('assets/');
+
+  if (isAssetImage) {
+    try {
+      // Si la receta usa una imagen de asset, la convertimos en archivo
+      final ByteData data = await rootBundle.load(widget.recipe.imageUrl);
+      final Uint8List bytes = data.buffer.asUint8List();
+      
+      // Obtenemos el directorio temporal
+      final tempDir = await getTemporaryDirectory();
+      final tempFile = File('${tempDir.path}/${basename(widget.recipe.imageUrl)}');
+
+      // Escribimos los bytes en el archivo temporal
+      await tempFile.writeAsBytes(bytes);
+
+      // Ahora compartimos el archivo temporal
+      await Share.shareXFiles(
+        [XFile(tempFile.path)], // Ruta del archivo temporal
+        text: recipeDetails,
+        subject: 'Receta: ${widget.recipe.name}',
+      );
+    } catch (e) {
+      // Si ocurre un error al compartir, solo compartimos el texto
+      Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+    }
+  } else if (widget.recipe.imageUrl.isNotEmpty) {
+    // Si la receta tiene una imagen de archivo
+    try {
+      await Share.shareXFiles(
+        [XFile(widget.recipe.imageUrl)], // Compartimos la ruta del archivo
+        text: recipeDetails,
+        subject: 'Receta: ${widget.recipe.name}',
+      );
+    } catch (e) {
+      // Si ocurre un error al compartir, solo compartimos el texto
+      Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+    }
+  } else {
+    // Si no tiene imagen, solo compartimos el texto
+    Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+  }
+
+    /*
+    // Verificamos si la imagen es de tipo asset
+      recipe.isAssetImage = widget.recipe.imageUrl.startsWith('assets/');
+
+      if (isAssetImage) {
+        try {
+          // Si la receta usa una imagen de asset
+          await Share.shareXFiles(
+            [XFile(widget.recipe.imageUrl)], // Compartimos el asset
+            text: recipeDetails,
+            subject: 'Receta: ${widget.recipe.name}',
+          );
+        } catch (e) {
+          // Si ocurre un error al compartir, solo compartimos el texto
+          Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+        }
+      } else if (widget.recipe.imageUrl.isNotEmpty) {
+        // Si la receta tiene una imagen de archivo
+        try {
+          await Share.shareXFiles(
+            [XFile(widget.recipe.imageUrl)], // Compartimos el archivo
+            text: recipeDetails,
+            subject: 'Receta: ${widget.recipe.name}',
+          );
+        } catch (e) {
+          // Si ocurre un error al compartir, solo compartimos el texto
+          Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+        }
+      } else {
+        // Si no tiene imagen, solo compartimos el texto
+        Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+      }
+    */
+
+    /*
+      if (widget.recipe.isAssetImage && widget.recipe.imageUrl.isNotEmpty) {
+      try {
+        // Si la receta usa una imagen de asset
+        await Share.shareXFiles(
+          [XFile(widget.recipe.imageUrl)], // Asegúrate de que imageUrl sea un asset válido
+          text: recipeDetails,
+          subject: 'Receta: ${widget.recipe.name}',
+        );
+      } catch (e) {
+        Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+      }
+    } else if (!widget.recipe.isAssetImage && widget.recipe.imageUrl.isNotEmpty) {
+      // Si la receta tiene una imagen de archivo
+      try {
+        await Share.shareXFiles(
+          [XFile(widget.recipe.imageUrl)],
+          text: recipeDetails,
+          subject: 'Receta: ${widget.recipe.name}',
+        );
+      } catch (e) {
+        Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+      }
+    } else {
+      // Si no tiene imagen, solo compartimos el texto
+      Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
+    }
+    */
+    /*
     if (!widget.recipe.isAssetImage && widget.recipe.imageUrl.isNotEmpty) {
       try {
         await Share.shareXFiles(
@@ -109,6 +220,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
     } else {
       Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
     }
+    */
   }
 
   // Incrementar el contador de preparaciones
