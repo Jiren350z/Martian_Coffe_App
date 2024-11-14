@@ -187,6 +187,55 @@ class DatabaseHelper {
     return recipe;
   }
 
+Future<List<RecipeNew>> getAllRecipes() async {
+  final db = await database;
+  final List<Map<String, dynamic>> maps = await db.query('recipes');
+
+  List<RecipeNew> recipes = [];
+
+  for (var recipeMap in maps) {
+    final List<Map<String, dynamic>> ingredientMaps = await db.query(
+      'recipe_ingredients',
+      where: 'recipeId = ?',
+      whereArgs: [recipeMap['id']],
+    );
+
+    final List<Map<String, dynamic>> utensilMaps = await db.query(
+      'recipe_utensils',
+      where: 'recipeId = ?',
+      whereArgs: [recipeMap['id']],
+    );
+
+    final List<Map<String, dynamic>> productMaps = await db.query(
+      'recipe_products',
+      where: 'recipeId = ?',
+      whereArgs: [recipeMap['id']],
+    );
+
+    List<String> ingredients = ingredientMaps.map((map) => map['ingredient'] as String).toList();
+    List<String> utensils = utensilMaps.map((map) => map['utensil'] as String).toList();
+    List<String> products = productMaps.map((map) => map['product'] as String).toList();
+
+    recipes.add(
+      RecipeNew(
+        id: recipeMap['id'],  // Agregar el ID aquí
+        name: recipeMap['name'],
+        ingredients: ingredients,
+        utensils: utensils,
+        preparation: recipeMap['preparation'],
+        imageUrl: recipeMap['imageUrl'],
+        registrationDate: DateTime.parse(recipeMap['registrationDate']),
+        preparationTime: recipeMap['preparationTime'],
+        products: products,
+        preparationCounter: recipeMap['preparationCounter'] as int,
+      ),
+    );
+  }
+
+  return recipes;
+}
+
+/*
   Future<List<RecipeNew>> getAllRecipes() async {
   final db = await database;
   final List<Map<String, dynamic>> maps = await db.query('recipes');
@@ -236,7 +285,7 @@ class DatabaseHelper {
 
   return recipes;
 }
-
+*/
   
   Future<void> preloadRecipes() async {
     final db = await database;
@@ -292,7 +341,69 @@ class DatabaseHelper {
   return recipes;
 }
 
+Future<void> updateRecipe(RecipeNew recipe) async {
+  final db = await database;
 
+  if (recipe.id == true) {
+    // Realiza la actualización de la receta con el id obtenido
+    await db.update(
+      'recipes',
+      {
+        'name': recipe.name,
+        'imageUrl': recipe.imageUrl,
+        'preparation': recipe.preparation,
+        'registrationDate': recipe.registrationDate.toIso8601String(),
+        'preparationTime': recipe.preparationTime,
+        'preparationCounter': recipe.preparationCounter,
+      },
+      where: 'id = ?',
+      whereArgs: [recipe.id],  // Usar 'id' en lugar de 'name' para identificar la receta
+    );
+
+    // Elimina los ingredientes, utensilios y productos previos
+    await db.delete('recipe_ingredients', where: 'recipeId = ?', whereArgs: [recipe.id]);
+    await db.delete('recipe_utensils', where: 'recipeId = ?', whereArgs: [recipe.id]);
+    await db.delete('recipe_products', where: 'recipeId = ?', whereArgs: [recipe.id]);
+
+    // Actualiza los ingredientes
+    for (final ingredient in recipe.ingredients) {
+      await db.insert(
+        'recipe_ingredients',
+        {
+          'recipeId': recipe.id,
+          'ingredient': ingredient,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+
+    // Actualiza los utensilios
+    for (final utensil in recipe.utensils) {
+      await db.insert(
+        'recipe_utensils',
+        {
+          'recipeId': recipe.id,
+          'utensil': utensil,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+
+    // Actualiza los productos
+    for (final product in recipe.products) {
+      await db.insert(
+        'recipe_products',
+        {
+          'recipeId': recipe.id,
+          'product': product,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+  }
+}
+
+/*
 Future<void> updateRecipe(RecipeNew recipe) async {
   final db = await database;
 
@@ -362,7 +473,7 @@ Future<void> updateRecipe(RecipeNew recipe) async {
     }
   }
 }
-
+*/
 
 
 /*

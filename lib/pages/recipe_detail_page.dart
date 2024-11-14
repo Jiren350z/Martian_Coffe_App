@@ -108,6 +108,7 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
     } else {
       Share.share(recipeDetails, subject: 'Receta: ${widget.recipe.name}');
     }
+    
   }
 
   // Incrementar el contador de preparaciones

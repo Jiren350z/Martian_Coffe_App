@@ -4,6 +4,7 @@
 //import 'package:martian_cofee_app/models/users_class.dart';
 
 class RecipeNew {
+  int id;
   String name;
   List<String> ingredients;
   List<String> utensils;
