@@ -1,4 +1,4 @@
-package com.example.martian_cofee_app
+package cl.dmorales.martian_cofee_app
 
 import io.flutter.embedding.android.FlutterActivity
 

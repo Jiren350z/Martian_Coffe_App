@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="cl.dmorales.martian_cofee_app">
 <uses-permission android:name="android.permission.INTERNET" />
 <queries>
     <intent>
